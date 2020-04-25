@@ -1,1 +1,1 @@
-make -f kalimakefile
+make -f makefile
