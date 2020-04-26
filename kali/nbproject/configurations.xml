@@ -4,6 +4,14 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Buzzer.h</itemPath>
+      <itemPath>Camera.h</itemPath>
+      <itemPath>InfraredSensor.h</itemPath>
+      <itemPath>KaliRobot.h</itemPath>
+      <itemPath>Sensors.h</itemPath>
+      <itemPath>UltrasonicSensor.h</itemPath>
+      <itemPath>Wheel.h</itemPath>
+      <itemPath>Wheels.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +20,14 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Buzzer.cpp</itemPath>
+      <itemPath>Camera.cpp</itemPath>
+      <itemPath>InfraredSensor.cpp</itemPath>
+      <itemPath>KaliRobot.cpp</itemPath>
+      <itemPath>Sensors.cpp</itemPath>
+      <itemPath>UltrasonicSensor.cpp</itemPath>
+      <itemPath>Wheel.cpp</itemPath>
+      <itemPath>Wheels.cpp</itemPath>
       <itemPath>kali.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,6 +52,38 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InfraredSensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="InfraredSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="KaliRobot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="KaliRobot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sensors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UltrasonicSensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UltrasonicSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Wheel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Wheel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Wheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Wheels.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="kali.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +107,38 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InfraredSensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="InfraredSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="KaliRobot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="KaliRobot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sensors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UltrasonicSensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UltrasonicSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Wheel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Wheel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Wheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Wheels.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="kali.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>

@@ -35,6 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Buzzer.o \
+	${OBJECTDIR}/Camera.o \
+	${OBJECTDIR}/InfraredSensor.o \
+	${OBJECTDIR}/KaliRobot.o \
+	${OBJECTDIR}/Sensors.o \
+	${OBJECTDIR}/UltrasonicSensor.o \
+	${OBJECTDIR}/Wheel.o \
+	${OBJECTDIR}/Wheels.o \
 	${OBJECTDIR}/kali.o
 
 
@@ -61,6 +69,46 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Buzzer.o: Buzzer.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Buzzer.o Buzzer.cpp
+
+${OBJECTDIR}/Camera.o: Camera.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camera.o Camera.cpp
+
+${OBJECTDIR}/InfraredSensor.o: InfraredSensor.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfraredSensor.o InfraredSensor.cpp
+
+${OBJECTDIR}/KaliRobot.o: KaliRobot.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/KaliRobot.o KaliRobot.cpp
+
+${OBJECTDIR}/Sensors.o: Sensors.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensors.o Sensors.cpp
+
+${OBJECTDIR}/UltrasonicSensor.o: UltrasonicSensor.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UltrasonicSensor.o UltrasonicSensor.cpp
+
+${OBJECTDIR}/Wheel.o: Wheel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheel.o Wheel.cpp
+
+${OBJECTDIR}/Wheels.o: Wheels.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheels.o Wheels.cpp
 
 ${OBJECTDIR}/kali.o: kali.cpp
 	${MKDIR} -p ${OBJECTDIR}
