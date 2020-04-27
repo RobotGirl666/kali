@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Camera.o \
 	${OBJECTDIR}/InfraredSensor.o \
 	${OBJECTDIR}/KaliRobot.o \
+	${OBJECTDIR}/Logging.o \
 	${OBJECTDIR}/Sensors.o \
 	${OBJECTDIR}/UltrasonicSensor.o \
 	${OBJECTDIR}/Wheel.o \
@@ -89,6 +90,11 @@ ${OBJECTDIR}/KaliRobot.o: KaliRobot.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/KaliRobot.o KaliRobot.cpp
+
+${OBJECTDIR}/Logging.o: Logging.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
 
 ${OBJECTDIR}/Sensors.o: Sensors.cpp
 	${MKDIR} -p ${OBJECTDIR}

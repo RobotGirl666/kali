@@ -13,6 +13,8 @@
 
 #include <cstdlib>
 
+#include "Logging.h"
+
 using namespace std;
 
 /*
@@ -20,6 +22,18 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
+    Logging* kaliLog = Logging::Instance();
+    
+    string message("Kali Awakens! Bow to your machine overlord!");
+    kaliLog->log(message);
+    
+    // do stuff here
+    
+    
+    // goodbye
+    message = "Goodbye puny humans!";
+    kaliLog->log(message);
+    
     return 0;
 }
 
