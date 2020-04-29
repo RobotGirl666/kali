@@ -16,7 +16,7 @@
 
 #include "Wheel.h"
 
-class LeftWheels : Wheel {
+class LeftWheels : public Wheel {
 public:
     LeftWheels();
     LeftWheels(const LeftWheels& orig);

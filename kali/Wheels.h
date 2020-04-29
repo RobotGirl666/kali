@@ -30,12 +30,15 @@ public:
 protected:
     LeftWheels leftWheels;
     RightWheels rightWheels;
+    int currentSpeed;
     
     // Wheel behaviour helpers
-    void forwardRampUp(int speed, int milliseconds = 0);
-    void forwardRampDown(int speed, int milliseconds = 0);
-    void reverseRampUp(int speed, int milliseconds = 0);
-    void reverseRampDown(int speed, int milliseconds = 0);
+    void forwardRampUp(int speed);
+    void forwardRampDown(int speed);
+    void reverseRampUp(int speed);
+    void reverseRampDown(int speed);
+    void brakeSoft();
+    void brakeHard();
     
 private:
 };
