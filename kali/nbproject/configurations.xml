@@ -8,7 +8,9 @@
       <itemPath>Camera.h</itemPath>
       <itemPath>InfraredSensor.h</itemPath>
       <itemPath>KaliRobot.h</itemPath>
+      <itemPath>LeftWheels.h</itemPath>
       <itemPath>Logging.h</itemPath>
+      <itemPath>RightWheels.h</itemPath>
       <itemPath>Sensors.h</itemPath>
       <itemPath>UltrasonicSensor.h</itemPath>
       <itemPath>Wheel.h</itemPath>
@@ -25,7 +27,9 @@
       <itemPath>Camera.cpp</itemPath>
       <itemPath>InfraredSensor.cpp</itemPath>
       <itemPath>KaliRobot.cpp</itemPath>
+      <itemPath>LeftWheels.cpp</itemPath>
       <itemPath>Logging.cpp</itemPath>
+      <itemPath>RightWheels.cpp</itemPath>
       <itemPath>Sensors.cpp</itemPath>
       <itemPath>UltrasonicSensor.cpp</itemPath>
       <itemPath>Wheel.cpp</itemPath>
@@ -70,9 +74,17 @@
       </item>
       <item path="KaliRobot.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LeftWheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LeftWheels.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Logging.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RightWheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RightWheels.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -129,9 +141,17 @@
       </item>
       <item path="KaliRobot.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LeftWheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LeftWheels.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Logging.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RightWheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RightWheels.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
       </item>

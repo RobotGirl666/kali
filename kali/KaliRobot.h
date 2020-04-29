@@ -25,6 +25,10 @@ public:
     KaliRobot(const KaliRobot& orig);
     virtual ~KaliRobot();
     
+    // Kali's behaviours
+    void moveForward(int speed, int seconds = 0);
+    void moveReverse(int speed, int seconds = 0);
+    
 protected:
     Wheels wheels;
     Sensors sensors;
@@ -32,7 +36,6 @@ protected:
     Camera camera;
     
 private:
-
 };
 
 #endif /* KALIROBOT_H */

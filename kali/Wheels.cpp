@@ -22,3 +22,38 @@ Wheels::Wheels(const Wheels& orig) {
 Wheels::~Wheels() {
 }
 
+void Wheels::moveForward(int speed, int seconds)
+{
+    int rampTime = 1000 * speed / 50;
+    forwardRampUp(speed, rampTime);
+    
+    if (seconds > 0)
+    {
+        
+    }
+}
+
+void Wheels::moveReverse(int speed, int seconds)
+{
+    
+}
+
+void Wheels::forwardRampUp(int speed, int milliseconds)
+{
+    
+}
+
+void Wheels::forwardRampDown(int speed, int milliseconds)
+{
+    
+}
+
+void Wheels::reverseRampUp(int speed, int milliseconds)
+{
+    
+}
+
+void Wheels::reverseRampDown(int speed, int milliseconds)
+{
+    
+}

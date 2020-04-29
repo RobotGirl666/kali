@@ -14,7 +14,8 @@
 #ifndef WHEELS_H
 #define WHEELS_H
 
-#include "Wheel.h"
+#include "LeftWheels.h"
+#include "RightWheels.h"
 
 class Wheels {
 public:
@@ -22,14 +23,21 @@ public:
     Wheels(const Wheels& orig);
     virtual ~Wheels();
     
+    // Wheel behaviours
+    void moveForward(int speed, int seconds = 0);
+    void moveReverse(int speed, int seconds = 0);
+    
 protected:
-    Wheel frontRightWheel;
-    Wheel frontLeftWheel;
-    Wheel rearRightWheel;
-    Wheel rearLeftWheel;
+    LeftWheels leftWheels;
+    RightWheels rightWheels;
+    
+    // Wheel behaviour helpers
+    void forwardRampUp(int speed, int milliseconds = 0);
+    void forwardRampDown(int speed, int milliseconds = 0);
+    void reverseRampUp(int speed, int milliseconds = 0);
+    void reverseRampDown(int speed, int milliseconds = 0);
     
 private:
-
 };
 
 #endif /* WHEELS_H */

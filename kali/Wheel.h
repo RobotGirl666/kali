@@ -19,6 +19,18 @@ public:
     Wheel();
     Wheel(const Wheel& orig);
     virtual ~Wheel();
+
+protected:
+    // Pin assignments for this/these wheel(s) - these will be set by the derived classes as this class does not know
+    // whether this/these wheel(s) is/are left or right
+    int pinForwardMotors = 0;
+    int pinReverseMotors = 0;
+    int pinMotorSpeed = 0;
+    
+    // implementation of wheel behaviours - basic pinouts
+    void setForwardMotion(int speed);
+    void setReverseMotion(int speed);
+
 private:
 
 };

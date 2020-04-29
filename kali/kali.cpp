@@ -12,8 +12,10 @@
  */
 
 #include <cstdlib>
+#include <string>
 
 #include "Logging.h"
+#include "KaliRobot.h"
 
 using namespace std;
 
@@ -28,7 +30,8 @@ int main(int argc, char** argv) {
     kaliLog->log(message);
     
     // do stuff here
-    
+    KaliRobot kali;
+    kali.moveForward(30, 3);
     
     // goodbye
     message = "Goodbye puny humans!";
