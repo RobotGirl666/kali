@@ -11,6 +11,9 @@
  * Created on 26 April 2020, 7:31 pm
  */
 
+#include <wiringPi.h>
+#include <softPwm.h>
+
 #include "Wheels.h"
 
 Wheels::Wheels() {
