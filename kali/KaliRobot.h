@@ -28,6 +28,8 @@ public:
     // Kali's behaviours
     void moveForward(int speed, int seconds = 0);
     void moveReverse(int speed, int seconds = 0);
+    void remote();
+    void party();
     
 protected:
     Wheels wheels;

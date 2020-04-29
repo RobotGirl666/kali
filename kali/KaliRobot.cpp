@@ -49,3 +49,13 @@ void KaliRobot::moveReverse(int speed, int seconds)
 
     wheels.moveReverse(speed, seconds);
 }
+
+void KaliRobot::remote()
+{
+    
+}
+
+void KaliRobot::party()
+{
+    
+}
