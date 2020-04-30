@@ -12,6 +12,7 @@
  */
 
 #include <time.h>
+ #include <iostream>
 
 #include "Logging.h"
 
@@ -37,9 +38,15 @@ Logging* Logging::Instance() {
     return _instance;
 }
 
-void Logging::log(string& message)
+void Logging::log(string& message, bool output_to_screen)
 {
-    logFile << Logging::Instance()->currentDateTime() + " : " + message << endl;
+    string logMessage = Logging::Instance()->currentDateTime() + " : " + message;
+    
+    if (output_to_screen)
+    {
+        cout << logMessage << endl;
+    }
+    logFile << logMessage << endl;
 }
 
 // shit code but a copy/paste from the interwebs
