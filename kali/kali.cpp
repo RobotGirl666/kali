@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     kaliLog->log(message);
     
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
-    wiringPiSetupGpio(); // Initalize Pi GPIO
+    wiringPiSetup(); // Initalize WiringPi
     KaliRobot kali;  // create the container class - overall robot
     kali.moveForward(30, 3); 
     
