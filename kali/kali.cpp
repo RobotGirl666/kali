@@ -29,8 +29,7 @@ int main(int argc, char** argv) {
 
     Logging* kaliLog = Logging::Instance();
     //start
-    string message("Kali Awakens! Bow to your machine overlord!");
-    kaliLog->log(message);
+    kaliLog->log("Kali Awakens! Bow to your machine overlord!", __FUNCTION__);
     
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
     wiringPiSetup(); // Initalize WiringPi
@@ -64,9 +63,11 @@ int main(int argc, char** argv) {
             else
             {
                 int speed = atoi(argv[i+1]);
+                i++;
                 if (i + 1 >= argc)
                 {
-                    int time = atoi(argv[i+2]);
+                    int time = atoi(argv[i+1]);
+                    i++;
                     kali.moveForward(speed, time);
                 }
                 else
@@ -77,14 +78,6 @@ int main(int argc, char** argv) {
         }
         else if (input.compare("reverse") == 0)
         {
-            //if (checkNum(argv[i+1])) {
-                // int speed = atoi(argv[i+1]);
-                //if RangeCheck(speed, 0, 100) 
-            
-            //if (checkNum(argv[i+2]))P
-            // int time = atoi(argv[i+2]);
-            //if RangeCheck(time, 0, 1000);
-            
             if (i + 1 >= argc)
             {
                 kali.moveReverse(30, 3);
@@ -92,9 +85,11 @@ int main(int argc, char** argv) {
             else
             {
                 int speed = atoi(argv[i+1]);
+                i++;
                 if (i + 1 >= argc)
                 {
-                    int time = atoi(argv[i+2]);
+                    int time = atoi(argv[i+1]);
+                    i++;
                     kali.moveReverse(speed, time);
                 }
                 else
@@ -105,14 +100,6 @@ int main(int argc, char** argv) {
         }
         else if (input.compare("twirlleft") == 0)
         {
-            //if (checkNum(argv[i+1])) {
-                // int speed = atoi(argv[i+1]);
-                //if RangeCheck(speed, 0, 100) 
-            
-            //if (checkNum(argv[i+2]))P
-            // int time = atoi(argv[i+2]);
-            //if RangeCheck(time, 0, 1000);
-            
             if (i + 1 >= argc)
             {
                 kali.twirlLeft(30, 3);
@@ -120,9 +107,11 @@ int main(int argc, char** argv) {
             else
             {
                 int speed = atoi(argv[i+1]);
+                i++;
                 if (i + 1 >= argc)
                 {
-                    int time = atoi(argv[i+2]);
+                    int time = atoi(argv[i+1]);
+                    i++;
                     kali.twirlLeft(speed, time);
                 }
                 else
@@ -133,14 +122,6 @@ int main(int argc, char** argv) {
         }
         else if (input.compare("twirlright") == 0)
         {
-            //if (checkNum(argv[i+1])) {
-                // int speed = atoi(argv[i+1]);
-                //if RangeCheck(speed, 0, 100) 
-            
-            //if (checkNum(argv[i+2]))P
-            // int time = atoi(argv[i+2]);
-            //if RangeCheck(time, 0, 1000);
-            
             if (i + 1 >= argc)
             {
                 kali.twirlRight(30, 3);
@@ -148,9 +129,11 @@ int main(int argc, char** argv) {
             else
             {
                 int speed = atoi(argv[i+1]);
+                i++;
                 if (i + 1 >= argc)
                 {
-                    int time = atoi(argv[i+2]);
+                    int time = atoi(argv[i+1]);
+                    i++;
                     kali.twirlRight(speed, time);
                 }
                 else
@@ -167,8 +150,7 @@ int main(int argc, char** argv) {
     
     
     // goodbye
-    message = "Goodbye puny humans!";
-    kaliLog->log(message);
+    kaliLog->log("Goodbye puny humans!", __FUNCTION__);
     
     return 0;
 }

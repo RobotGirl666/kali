@@ -24,7 +24,7 @@ public:
     static Logging* Instance();
     virtual ~Logging();
     
-    void log(string& message, bool output_to_screen = true);
+    void log(string message, string method, bool output_to_screen = true);
     
 protected:
     Logging();
