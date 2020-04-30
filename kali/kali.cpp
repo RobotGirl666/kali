@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 #include "Logging.h"
 #include "KaliRobot.h"
@@ -35,25 +36,126 @@ int main(int argc, char** argv) {
     kali.moveForward(30, 3); 
     
     // switch statement 
-    cout << "What is your command? Choose from the following: remote, movement," << endl;
     for(int i = 1; i < argc; i++)
     {      
         string input = argv[i];
+        transform(input.begin(), input.end(), input.begin(),
+            [](unsigned char c){ return std::tolower(c); });
         if (input.compare("remote") == 0)
         {
             kali.remote();
         }
-        else if (input.compare("forward") == 0) 
+        else if (input.compare("forward") == 0)
         {
             //if (checkNum(argv[i+1])) {
                 // int speed = atoi(argv[i+1]);
                 //if RangeCheck(speed, 0, 100) 
             
             //if (checkNum(argv[i+2]))P
-            // int time = atoi(arv[i+2]);
+            // int time = atoi(argv[i+2]);
             //if RangeCheck(time, 0, 1000);
             
-            kali.moveForward(30);
+            if (i + 1 >= argc)
+            {
+                kali.moveForward(30, 3);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                if (i + 1 >= argc)
+                {
+                    int time = atoi(argv[i+2]);
+                    kali.moveForward(speed, time);
+                }
+                else
+                {
+                    kali.moveForward(speed);
+                }
+            }
+        }
+        else if (input.compare("reverse") == 0)
+        {
+            //if (checkNum(argv[i+1])) {
+                // int speed = atoi(argv[i+1]);
+                //if RangeCheck(speed, 0, 100) 
+            
+            //if (checkNum(argv[i+2]))P
+            // int time = atoi(argv[i+2]);
+            //if RangeCheck(time, 0, 1000);
+            
+            if (i + 1 >= argc)
+            {
+                kali.moveReverse(30, 3);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                if (i + 1 >= argc)
+                {
+                    int time = atoi(argv[i+2]);
+                    kali.moveReverse(speed, time);
+                }
+                else
+                {
+                    kali.moveReverse(speed);
+                }
+            }
+        }
+        else if (input.compare("twirlleft") == 0)
+        {
+            //if (checkNum(argv[i+1])) {
+                // int speed = atoi(argv[i+1]);
+                //if RangeCheck(speed, 0, 100) 
+            
+            //if (checkNum(argv[i+2]))P
+            // int time = atoi(argv[i+2]);
+            //if RangeCheck(time, 0, 1000);
+            
+            if (i + 1 >= argc)
+            {
+                kali.twirlLeft(30, 3);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                if (i + 1 >= argc)
+                {
+                    int time = atoi(argv[i+2]);
+                    kali.twirlLeft(speed, time);
+                }
+                else
+                {
+                    kali.twirlLeft(speed);
+                }
+            }
+        }
+        else if (input.compare("twirlright") == 0)
+        {
+            //if (checkNum(argv[i+1])) {
+                // int speed = atoi(argv[i+1]);
+                //if RangeCheck(speed, 0, 100) 
+            
+            //if (checkNum(argv[i+2]))P
+            // int time = atoi(argv[i+2]);
+            //if RangeCheck(time, 0, 1000);
+            
+            if (i + 1 >= argc)
+            {
+                kali.twirlRight(30, 3);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                if (i + 1 >= argc)
+                {
+                    int time = atoi(argv[i+2]);
+                    kali.twirlRight(speed, time);
+                }
+                else
+                {
+                    kali.twirlRight(speed);
+                }
+            }
         }
         
     }
