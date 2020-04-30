@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
             // int time = atoi(arv[i+2]);
             //if RangeCheck(time, 0, 1000);
             
-            kali.moveForward();
+            kali.moveForward(30);
         }
         
     }
