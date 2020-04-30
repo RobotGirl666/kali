@@ -40,9 +40,9 @@ Logging* Logging::Instance() {
     return _instance;
 }
 
-void Logging::log(string message, string method, bool output_to_screen)
+void Logging::log(string class_name, string method_name, string message, bool output_to_screen)
 {
-    string logMessage = Logging::Instance()->currentDateTime() + " : " + method + " : " + message;
+    string logMessage = Logging::Instance()->currentDateTime() + " : " + class_name + "::" + method_name + " : " + message;
     
     if (output_to_screen)
     {
@@ -54,6 +54,7 @@ void Logging::log(string message, string method, bool output_to_screen)
 // shit code but a copy/paste from the interwebs
 const std::string Logging::currentDateTime() {
     char buffer[26];
+    char timestring[80];
     int millisec;
     struct tm* tm_info;
     struct timeval tv;
@@ -69,7 +70,7 @@ const std::string Logging::currentDateTime() {
     tm_info = localtime(&tv.tv_sec);
 
     strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
-    printf("%s.%03d\n", buffer, millisec);
+    sprintf(timestring, "%s.%03d\n", buffer, millisec);
 
-    return buffer;
+    return timestring;
 }

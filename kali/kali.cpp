@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
 
     Logging* kaliLog = Logging::Instance();
     //start
-    kaliLog->log("Kali Awakens! Bow to your machine overlord!", __FUNCTION__);
+    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
     
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
     wiringPiSetup(); // Initalize WiringPi
@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
     
     // switch statement 
     for(int i = 1; i < argc; i++)
-    {      
+    {
         string input = argv[i];
         transform(input.begin(), input.end(), input.begin(),
             [](unsigned char c){ return std::tolower(c); });
@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
             {
                 int speed = atoi(argv[i+1]);
                 i++;
-                if (i + 1 >= argc)
+                if (i + 1 <= argc)
                 {
                     int time = atoi(argv[i+1]);
                     i++;
@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
             {
                 int speed = atoi(argv[i+1]);
                 i++;
-                if (i + 1 >= argc)
+                if (i + 1 <= argc)
                 {
                     int time = atoi(argv[i+1]);
                     i++;
@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
             {
                 int speed = atoi(argv[i+1]);
                 i++;
-                if (i + 1 >= argc)
+                if (i + 1 <= argc)
                 {
                     int time = atoi(argv[i+1]);
                     i++;
@@ -130,7 +130,7 @@ int main(int argc, char** argv) {
             {
                 int speed = atoi(argv[i+1]);
                 i++;
-                if (i + 1 >= argc)
+                if (i + 1 <= argc)
                 {
                     int time = atoi(argv[i+1]);
                     i++;
@@ -150,7 +150,7 @@ int main(int argc, char** argv) {
     
     
     // goodbye
-    kaliLog->log("Goodbye puny humans!", __FUNCTION__);
+    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
     
     return 0;
 }
