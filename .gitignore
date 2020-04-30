@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# nbproject files
+/kali/dist/
+/kali/build/
+/kali/nbproject/private/
+
+# Dependencies
+.dep/
+
+# Log files
+*.log
+
