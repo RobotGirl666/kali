@@ -204,7 +204,7 @@
         </asmTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libwiringPi.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libwiringPi.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
