@@ -149,8 +149,128 @@ void Wheels::brakeSoft()
 void Wheels::brakeHard()
 {
     // set the final speed accurately
-    leftWheels.setReverseMotion(0);
-    rightWheels.setReverseMotion(0);
+    leftWheels.setForwardMotion(0);
+    rightWheels.setForwardMotion(0);
     
     currentSpeed = 0;
+}
+
+void Wheels::twirlLeft(int speed, int milliseconds)
+{
+    // twirl according to the given wheel speed
+    leftWheels.setReverseMotion(speed);
+    rightWheels.setForwardMotion(speed);
+    currentSpeed = speed;
+
+    if (milliseconds > 0)
+    {
+        // continue twirling for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        leftWheels.setForwardMotion(0);
+        rightWheels.setForwardMotion(0);
+
+        currentSpeed = 0;
+    }
+}
+
+void Wheels::twirlRight(int speed, int milliseconds)
+{
+    // twirl according to the given wheel speed
+    leftWheels.setForwardMotion(speed);
+    rightWheels.setReverseMotion(speed);
+    currentSpeed = speed;
+
+    if (milliseconds > 0)
+    {
+        // continue twirling for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        leftWheels.setForwardMotion(0);
+        rightWheels.setForwardMotion(0);
+
+        currentSpeed = 0;
+    }
+}
+
+void Wheels::turnLeft(int speed, int milliseconds)
+{
+    // twirl according to the given wheel speed
+    leftWheels.setReverseMotion(speed / 5);
+    rightWheels.setForwardMotion(speed);
+    currentSpeed = speed;
+
+    if (milliseconds > 0)
+    {
+        // continue twirling for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        leftWheels.setForwardMotion(0);
+        rightWheels.setForwardMotion(0);
+
+        currentSpeed = 0;
+    }
+}
+
+void Wheels::turnRight(int speed, int milliseconds)
+{
+    // twirl according to the given wheel speed
+    rightWheels.setReverseMotion(speed / 5);
+    leftWheels.setForwardMotion(speed);
+    currentSpeed = speed;
+
+    if (milliseconds > 0)
+    {
+        // continue twirling for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        leftWheels.setForwardMotion(0);
+        rightWheels.setForwardMotion(0);
+
+        currentSpeed = 0;
+    }
+}
+
+void Wheels::turnHardLeft(int speed, int milliseconds)
+{
+    // twirl according to the given wheel speed
+    leftWheels.setReverseMotion(speed / 15);
+    rightWheels.setForwardMotion(speed);
+    currentSpeed = speed;
+
+    if (milliseconds > 0)
+    {
+        // continue twirling for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        leftWheels.setForwardMotion(0);
+        rightWheels.setForwardMotion(0);
+
+        currentSpeed = 0;
+    }
+}
+
+void Wheels::turnHardRight(int speed, int milliseconds)
+{
+    // twirl according to the given wheel speed
+    rightWheels.setReverseMotion(speed / 15);
+    leftWheels.setForwardMotion(speed);
+    currentSpeed = speed;
+
+    if (milliseconds > 0)
+    {
+        // continue twirling for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        leftWheels.setForwardMotion(0);
+        rightWheels.setForwardMotion(0);
+
+        currentSpeed = 0;
+    }
 }
