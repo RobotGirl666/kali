@@ -22,7 +22,6 @@
 using namespace std;
 
 KaliRobot::KaliRobot() {
-    wiringPiSetupGpio(); // Initalize Pi GPIO
 }
 
 KaliRobot::KaliRobot(const KaliRobot& orig) {

@@ -15,6 +15,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <wiringPi.h>
 
 #include "Logging.h"
 #include "KaliRobot.h"
@@ -32,6 +33,7 @@ int main(int argc, char** argv) {
     kaliLog->log(message);
     
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
+    wiringPiSetupGpio(); // Initalize Pi GPIO
     KaliRobot kali;  // create the container class - overall robot
     kali.moveForward(30, 3); 
     
