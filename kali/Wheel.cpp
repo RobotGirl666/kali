@@ -38,15 +38,15 @@ void Wheel::initialise()
 
 void Wheel::setForwardMotion(int speed)
 {
-    digitalWrite(pinForwardMotors, HIGH);   
-    digitalWrite(pinReverseMotors, LOW);  
-    softPwmWrite(pinMotorSpeed, speed);   
+    digitalWrite(pinForwardMotors, HIGH);
+    digitalWrite(pinReverseMotors, LOW);
+    softPwmWrite(pinMotorSpeed, speed);
 }
 
 
 void Wheel::setReverseMotion(int speed)
 {
-    digitalWrite(pinForwardMotors, LOW);   
-    digitalWrite(pinReverseMotors, HIGH);  
-    softPwmWrite(pinMotorSpeed, speed);   
+    digitalWrite(pinForwardMotors, LOW);
+    digitalWrite(pinReverseMotors, HIGH);
+    softPwmWrite(pinMotorSpeed, speed);
 }

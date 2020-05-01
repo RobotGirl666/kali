@@ -174,7 +174,7 @@ void Wheels::twirlLeft(int speed, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
+        leftWheels.setReverseMotion(0);
         rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
@@ -195,7 +195,7 @@ void Wheels::twirlRight(int speed, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        rightWheels.setReverseMotion(0);
 
         currentSpeed = 0;
     }
@@ -214,7 +214,7 @@ void Wheels::turnLeft(int speed, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
+        leftWheels.setReverseMotion(0);
         rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
@@ -235,7 +235,7 @@ void Wheels::turnRight(int speed, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        rightWheels.setReverseMotion(0);
 
         currentSpeed = 0;
     }
@@ -254,7 +254,7 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
+        leftWheels.setReverseMotion(0);
         rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
@@ -275,7 +275,7 @@ void Wheels::turnHardRight(int speed, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        rightWheels.setReverseMotion(0);
 
         currentSpeed = 0;
     }

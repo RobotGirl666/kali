@@ -110,7 +110,7 @@ int main(int argc, char** argv) {
                 i++;
                 if (i + 1 <= argc)
                 {
-                    int time = atoi(argv[i+1]);
+                    int time = atoi(argv[i+1]) * 1000; // need to pass milliseconds to the twirl method
                     i++;
                     kali.twirlLeft(speed, time);
                 }
@@ -132,7 +132,7 @@ int main(int argc, char** argv) {
                 i++;
                 if (i + 1 <= argc)
                 {
-                    int time = atoi(argv[i+1]);
+                    int time = atoi(argv[i+1]) * 1000; // need to pass milliseconds to the twirl method
                     i++;
                     kali.twirlRight(speed, time);
                 }
