@@ -15,7 +15,6 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
-#include <wiringPi.h>
 
 #include "Logging.h"
 #include "KaliRobot.h"
@@ -32,9 +31,8 @@ int main(int argc, char** argv) {
     kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
     
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
-    wiringPiSetup(); // Initalize WiringPi
     KaliRobot kali;  // create the container class - overall robot
-    kali.initialise(); // initialise all the Kali components
+    kali.initialise(); // initialise all the Kali components - must do this before anything else!
     
     // switch statement 
     for(int i = 1; i < argc; i++)

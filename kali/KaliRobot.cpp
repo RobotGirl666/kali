@@ -30,14 +30,26 @@ KaliRobot::KaliRobot(const KaliRobot& orig) {
 KaliRobot::~KaliRobot() {
 }
 
+/*
+    Initialises the Wiring Pi library and each component of KaliRobot is asked to do the same.
+
+*/
 void KaliRobot::initialise()
 {
+    wiringPiSetup(); // Initalize WiringPi
+
     wheels.initialise();
     
     // give it a couple of seconds to work its way through
     delay(2000);
 }
 
+/*
+    Moves Kali Robot forward. Calls the wheels to move forward.
+
+    @param speed - A speed from 0-100.
+    @param seconds - How many seconds to move forward for. A value of 0 will start movement and not stop.
+*/
 void KaliRobot::moveForward(int speed, int seconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -48,6 +60,12 @@ void KaliRobot::moveForward(int speed, int seconds)
     wheels.moveForward(speed, seconds);
 }
 
+/*
+    Moves Kali Robot in the reverse direction. Calls the wheels to reverse.
+
+    @param speed - A speed from 0-100.
+    @param seconds - How many seconds to reverse for. A value of 0 will start movement and not stop.
+*/
 void KaliRobot::moveReverse(int speed, int seconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -58,6 +76,10 @@ void KaliRobot::moveReverse(int speed, int seconds)
     wheels.moveReverse(speed, seconds);
 }
 
+/*
+    Gently brings forward or reverse movement to a halt. Calls the wheels to slow down and stop.
+
+*/
 void KaliRobot::brakeSoft()
 {
     Logging* kaliLog = Logging::Instance();
@@ -68,6 +90,10 @@ void KaliRobot::brakeSoft()
     wheels.brakeSoft();
 }
 
+/*
+    Abruptly brings forward or reverse movement to a halt. Calls the wheels to suddenly stop.
+
+*/
 void KaliRobot::brakeHard()
 {
     Logging* kaliLog = Logging::Instance();
@@ -78,6 +104,12 @@ void KaliRobot::brakeHard()
     wheels.brakeHard();
 }
 
+/*
+    Twirls Kali Robot in the left direction (anticlockwise). Calls the wheels to twirl.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to twirl for.
+*/
 void KaliRobot::twirlLeft(int speed, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -88,6 +120,12 @@ void KaliRobot::twirlLeft(int speed, int milliseconds)
     wheels.twirlLeft(speed, milliseconds);
 }
 
+/*
+    Twirls Kali Robot in the right direction (clockwise). Calls the wheels to twirl.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to twirl for.
+*/
 void KaliRobot::twirlRight(int speed, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -98,6 +136,12 @@ void KaliRobot::twirlRight(int speed, int milliseconds)
     wheels.twirlRight(speed, milliseconds);
 }
 
+/*
+    Turns Kali Robot in the left direction with a gentle turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
 void KaliRobot::turnLeft(int speed, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -108,6 +152,12 @@ void KaliRobot::turnLeft(int speed, int milliseconds)
     wheels.turnLeft(speed, milliseconds);
 }
 
+/*
+    Turns Kali Robot in the right direction with a gentle turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
 void KaliRobot::turnRight(int speed, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -118,6 +168,12 @@ void KaliRobot::turnRight(int speed, int milliseconds)
     wheels.turnRight(speed, milliseconds);
 }
 
+/*
+    Turns Kali Robot in the left direction with a sharp turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
 void KaliRobot::turnHardLeft(int speed, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -128,6 +184,12 @@ void KaliRobot::turnHardLeft(int speed, int milliseconds)
     wheels.turnHardLeft(speed, milliseconds);
 }
 
+/*
+    Turns Kali Robot in the right direction with a gentle turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
 void KaliRobot::turnHardRight(int speed, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
