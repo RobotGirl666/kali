@@ -15,6 +15,7 @@
 #include <softPwm.h>
 
 #include "Wheel.h"
+#include "Logging.h"
 
 Wheel::Wheel() {
 }
@@ -38,6 +39,11 @@ void Wheel::initialise()
 
 void Wheel::setForwardMotion(int speed)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Motors moving forward with speed " + to_string(speed);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     digitalWrite(pinForwardMotors, HIGH);
     digitalWrite(pinReverseMotors, LOW);
     softPwmWrite(pinMotorSpeed, speed);
@@ -46,6 +52,11 @@ void Wheel::setForwardMotion(int speed)
 
 void Wheel::setReverseMotion(int speed)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Motors reversing with speed " + to_string(speed);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     digitalWrite(pinForwardMotors, LOW);
     digitalWrite(pinReverseMotors, HIGH);
     softPwmWrite(pinMotorSpeed, speed);

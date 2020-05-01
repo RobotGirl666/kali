@@ -15,6 +15,7 @@
 #include <softPwm.h>
 
 #include "Wheels.h"
+#include "Logging.h"
 
 Wheels::Wheels() {
     currentSpeed = 0;
@@ -163,6 +164,11 @@ void Wheels::brakeHard()
 
 void Wheels::twirlLeft(int speed, int milliseconds)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Twirling left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     // twirl according to the given wheel speed
     leftWheels.setReverseMotion(speed);
     rightWheels.setForwardMotion(speed);
@@ -172,6 +178,8 @@ void Wheels::twirlLeft(int speed, int milliseconds)
     {
         // continue twirling for the specified time
         delay(milliseconds);
+
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the twirling motion.");
 
         // stop twirling (wheel speed = 0)
         leftWheels.setReverseMotion(0);
@@ -183,6 +191,11 @@ void Wheels::twirlLeft(int speed, int milliseconds)
 
 void Wheels::twirlRight(int speed, int milliseconds)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Twirling right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     // twirl according to the given wheel speed
     leftWheels.setForwardMotion(speed);
     rightWheels.setReverseMotion(speed);
@@ -192,6 +205,8 @@ void Wheels::twirlRight(int speed, int milliseconds)
     {
         // continue twirling for the specified time
         delay(milliseconds);
+
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the twirling motion.");
 
         // stop twirling (wheel speed = 0)
         leftWheels.setForwardMotion(0);
@@ -203,8 +218,15 @@ void Wheels::twirlRight(int speed, int milliseconds)
 
 void Wheels::turnLeft(int speed, int milliseconds)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    message = "Left wheel speed is " + to_string(speed / 5) + " and right wheel speed is " + to_string(speed);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     // twirl according to the given wheel speed
-    leftWheels.setReverseMotion(speed / 5);
+    leftWheels.setForwardMotion(speed / 5);
     rightWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
@@ -213,8 +235,10 @@ void Wheels::turnLeft(int speed, int milliseconds)
         // continue twirling for the specified time
         delay(milliseconds);
 
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
+
         // stop twirling (wheel speed = 0)
-        leftWheels.setReverseMotion(0);
+        leftWheels.setForwardMotion(0);
         rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
@@ -223,8 +247,15 @@ void Wheels::turnLeft(int speed, int milliseconds)
 
 void Wheels::turnRight(int speed, int milliseconds)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    message = "Left wheel speed is " + to_string(speed) + " and right wheel speed is " + to_string(speed / 5);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     // twirl according to the given wheel speed
-    rightWheels.setReverseMotion(speed / 5);
+    rightWheels.setForwardMotion(speed / 5);
     leftWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
@@ -233,9 +264,11 @@ void Wheels::turnRight(int speed, int milliseconds)
         // continue twirling for the specified time
         delay(milliseconds);
 
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
+
         // stop twirling (wheel speed = 0)
         leftWheels.setForwardMotion(0);
-        rightWheels.setReverseMotion(0);
+        rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
     }
@@ -243,6 +276,13 @@ void Wheels::turnRight(int speed, int milliseconds)
 
 void Wheels::turnHardLeft(int speed, int milliseconds)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning hard left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    message = "Left wheel speed is " + to_string(speed / 15) + " and right wheel speed is " + to_string(speed);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     // twirl according to the given wheel speed
     leftWheels.setReverseMotion(speed / 15);
     rightWheels.setForwardMotion(speed);
@@ -253,8 +293,10 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
         // continue twirling for the specified time
         delay(milliseconds);
 
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
+
         // stop twirling (wheel speed = 0)
-        leftWheels.setReverseMotion(0);
+        leftWheels.setForwardMotion(0);
         rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
@@ -263,8 +305,15 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
 
 void Wheels::turnHardRight(int speed, int milliseconds)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning hard right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    message = "Left wheel speed is " + to_string(speed) + " and right wheel speed is " + to_string(speed / 15);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     // twirl according to the given wheel speed
-    rightWheels.setReverseMotion(speed / 15);
+    rightWheels.setForwardMotion(speed / 15);
     leftWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
@@ -273,9 +322,11 @@ void Wheels::turnHardRight(int speed, int milliseconds)
         // continue twirling for the specified time
         delay(milliseconds);
 
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
+
         // stop twirling (wheel speed = 0)
         leftWheels.setForwardMotion(0);
-        rightWheels.setReverseMotion(0);
+        rightWheels.setForwardMotion(0);
 
         currentSpeed = 0;
     }
