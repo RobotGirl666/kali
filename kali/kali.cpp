@@ -102,7 +102,7 @@ int main(int argc, char** argv) {
         {
             if (i + 1 >= argc)
             {
-                kali.twirlLeft(30, 3);
+                kali.twirlLeft(30, 3000);
             }
             else
             {
@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
         {
             if (i + 1 >= argc)
             {
-                kali.twirlRight(30, 3);
+                kali.twirlRight(30, 3000);
             }
             else
             {

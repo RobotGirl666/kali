@@ -70,7 +70,7 @@ const std::string Logging::currentDateTime() {
     tm_info = localtime(&tv.tv_sec);
 
     strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
-    sprintf(timestring, "%s.%03d\n", buffer, millisec);
+    sprintf(timestring, "%s.%03d", buffer, millisec);
 
     return timestring;
 }
