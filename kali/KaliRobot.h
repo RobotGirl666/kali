@@ -26,6 +26,7 @@ public:
     virtual ~KaliRobot();
     
     // Kali's behaviours
+    void initialise();
     void moveForward(int speed, int seconds = 0);
     void moveReverse(int speed, int seconds = 0);
     void brakeSoft();

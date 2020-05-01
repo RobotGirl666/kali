@@ -30,6 +30,14 @@ KaliRobot::KaliRobot(const KaliRobot& orig) {
 KaliRobot::~KaliRobot() {
 }
 
+void KaliRobot::initialise()
+{
+    wheels.initialise();
+    
+    // give it a couple of seconds to work its way through
+    delay(2000);
+}
+
 void KaliRobot::moveForward(int speed, int seconds)
 {
     Logging* kaliLog = Logging::Instance();

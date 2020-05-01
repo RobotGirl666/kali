@@ -25,6 +25,17 @@ Wheel::Wheel(const Wheel& orig) {
 Wheel::~Wheel() {
 }
 
+void Wheel::initialise()
+{
+    //Initializethe motor drive IO as outputs
+    pinMode(pinForwardMotors, OUTPUT);
+    pinMode(pinReverseMotors, OUTPUT);
+
+    //int softPwmCreate(int pin,int initialValue,int pwmRange);
+    // initialise the motor speed range 0-100
+    softPwmCreate(pinMotorSpeed,0,100);
+}
+
 void Wheel::setForwardMotion(int speed)
 {
     digitalWrite(pinForwardMotors, HIGH);   

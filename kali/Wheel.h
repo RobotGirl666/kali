@@ -21,6 +21,7 @@ public:
     virtual ~Wheel();
     
     // implementation of wheel behaviours - basic pinouts
+    void initialise();
     void setForwardMotion(int speed);
     void setReverseMotion(int speed);
 

@@ -26,6 +26,12 @@ Wheels::Wheels(const Wheels& orig) {
 Wheels::~Wheels() {
 }
 
+void Wheels::initialise()
+{
+    leftWheels.initialise();
+    rightWheels.initialise();
+}
+
 void Wheels::moveForward(int speed, int seconds)
 {
     forwardRampUp(speed);

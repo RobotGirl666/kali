@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
     wiringPiSetup(); // Initalize WiringPi
     KaliRobot kali;  // create the container class - overall robot
-    kali.moveForward(30, 3); 
+    kali.initialise(); // initialise all the Kali components
     
     // switch statement 
     for(int i = 1; i < argc; i++)

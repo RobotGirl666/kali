@@ -20,8 +20,6 @@ LeftWheels::LeftWheels() {
     pinForwardMotors = 28;
     pinReverseMotors = 29;
     pinMotorSpeed = 27;
-
-    softPwmCreate(pinMotorSpeed,0,100); 
 }
 
 LeftWheels::LeftWheels(const LeftWheels& orig) {
@@ -29,4 +27,3 @@ LeftWheels::LeftWheels(const LeftWheels& orig) {
 
 LeftWheels::~LeftWheels() {
 }
-
