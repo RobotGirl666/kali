@@ -1,1 +1,2 @@
-make -f makefile
+#!/bin/sh
+make -f makefile CONF=KaliRelease

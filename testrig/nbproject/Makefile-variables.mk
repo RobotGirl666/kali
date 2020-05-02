@@ -9,27 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=kali
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/kali
+CND_ARTIFACT_NAME_Debug=testrig
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/testrig
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=kali.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/kali.tar
+CND_PACKAGE_NAME_Debug=testrig.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/testrig.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=kali
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/kali
+CND_ARTIFACT_NAME_Release=testrig
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/testrig
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=kali.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/kali.tar
-# KaliRelease configuration
-CND_PLATFORM_KaliRelease=GNU-Linux
-CND_ARTIFACT_DIR_KaliRelease=dist/KaliRelease/GNU-Linux
-CND_ARTIFACT_NAME_KaliRelease=kali
-CND_ARTIFACT_PATH_KaliRelease=dist/KaliRelease/GNU-Linux/kali
-CND_PACKAGE_DIR_KaliRelease=dist/KaliRelease/GNU-Linux/package
-CND_PACKAGE_NAME_KaliRelease=kali.tar
-CND_PACKAGE_PATH_KaliRelease=dist/KaliRelease/GNU-Linux/package/kali.tar
+CND_PACKAGE_NAME_Release=testrig.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/testrig.tar
 #
 # include compiler specific variables
 #

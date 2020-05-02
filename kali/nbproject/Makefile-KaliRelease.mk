@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
-CND_CONF=Release
+CND_CONF=KaliRelease
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -46,8 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/UltrasonicSensor.o \
 	${OBJECTDIR}/Wheel.o \
 	${OBJECTDIR}/Wheels.o \
-	${OBJECTDIR}/kali.o \
-	${OBJECTDIR}/validation.o
+	${OBJECTDIR}/kali.o
 
 
 # C Compiler Flags
@@ -64,13 +63,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so
+LDLIBSOPTIONS=/usr/lib/libwiringPi.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libwiringPi.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/libwiringPi.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -135,11 +134,6 @@ ${OBJECTDIR}/kali.o: kali.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kali.o kali.cpp
-
-${OBJECTDIR}/validation.o: validation.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/validation.o validation.cpp
 
 # Subprojects
 .build-subprojects:

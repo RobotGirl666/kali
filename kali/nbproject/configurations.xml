@@ -136,6 +136,83 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libwiringPi.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InfraredSensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="InfraredSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="KaliRobot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="KaliRobot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LeftWheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LeftWheels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Logging.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RightWheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RightWheels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sensors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UltrasonicSensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UltrasonicSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Wheel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Wheel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Wheels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Wheels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kali.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="KaliRelease" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>/usr/lib/libwiringPi.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>

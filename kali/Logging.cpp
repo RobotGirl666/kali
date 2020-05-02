@@ -12,6 +12,9 @@
  */
 
 #include <time.h>
+#include <iostream>
+#include <sys/time.h>
+#include <tgmath.h>
 
 #include "Logging.h"
 
@@ -37,20 +40,37 @@ Logging* Logging::Instance() {
     return _instance;
 }
 
-void Logging::log(string& message)
+void Logging::log(string class_name, string method_name, string message, bool output_to_screen)
 {
-    logFile << Logging::Instance()->currentDateTime() + " : " + message << endl;
+    string logMessage = Logging::Instance()->currentDateTime() + " : " + class_name + "::" + method_name + " : " + message;
+    
+    if (output_to_screen)
+    {
+        cout << logMessage << endl;
+    }
+    logFile << logMessage << endl;
 }
 
 // shit code but a copy/paste from the interwebs
 const std::string Logging::currentDateTime() {
-    time_t     now = time(0);
-    struct tm  tstruct;
-    char       buf[80];
-    tstruct = *localtime(&now);
+    char buffer[26];
+    char timestring[80];
+    int millisec;
+    struct tm* tm_info;
+    struct timeval tv;
 
-    
-    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+    gettimeofday(&tv, NULL);
 
-    return buf;
+    millisec = lrint(tv.tv_usec/1000.0); // Round to nearest millisec
+    if (millisec>=1000) { // Allow for rounding up to nearest second
+      millisec -=1000;
+      tv.tv_sec++;
+    }
+
+    tm_info = localtime(&tv.tv_sec);
+
+    strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
+    sprintf(timestring, "%s.%03d", buffer, millisec);
+
+    return timestring;
 }

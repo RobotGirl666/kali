@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 #include "Logging.h"
 #include "KaliRobot.h"
@@ -28,23 +29,23 @@ int main(int argc, char** argv) {
 
     Logging* kaliLog = Logging::Instance();
     //start
-    string message("Kali Awakens! Bow to your machine overlord!");
-    kaliLog->log(message);
+    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
     
     // do stuff here (BE MORE SPECIFIC PLSSS DAD)
     KaliRobot kali;  // create the container class - overall robot
-    kali.moveForward(30, 3); 
+    kali.initialise(); // initialise all the Kali components - must do this before anything else!
     
     // switch statement 
-    cout << "What is your command? Choose from the following: remote, movement," << endl;
     for(int i = 1; i < argc; i++)
-    {      
+    {
         string input = argv[i];
+        transform(input.begin(), input.end(), input.begin(),
+            [](unsigned char c){ return std::tolower(c); });
         if (input.compare("remote") == 0)
         {
             kali.remote();
         }
-        else if (input.compare("forward") == 0) 
+        else if (input.compare("forward") == 0)
         {
             if (checkNum(argv[1])) {
                 int speed = atoi(argv[i+1]);
@@ -54,10 +55,94 @@ int main(int argc, char** argv) {
             }  
         }
             //if (checkNum(argv[i+2]))P
-            // int time = atoi(arv[i+2]);
+            // int time = atoi(argv[i+2]);
             //if RangeCheck(time, 0, 1000);
             
-            //kali.moveForward();
+            if (i + 1 >= argc)
+            {
+                kali.moveForward(30, 3);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                i++;
+                if (i + 1 <= argc)
+                {
+                    int time = atoi(argv[i+1]);
+                    i++;
+                    kali.moveForward(speed, time);
+                }
+                else
+                {
+                    kali.moveForward(speed);
+                }
+            }
+        }
+        else if (input.compare("reverse") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                kali.moveReverse(30, 3);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                i++;
+                if (i + 1 <= argc)
+                {
+                    int time = atoi(argv[i+1]);
+                    i++;
+                    kali.moveReverse(speed, time);
+                }
+                else
+                {
+                    kali.moveReverse(speed);
+                }
+            }
+        }
+        else if (input.compare("twirlleft") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                kali.twirlLeft(30, 3000);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                i++;
+                if (i + 1 <= argc)
+                {
+                    int time = atoi(argv[i+1]) * 1000; // need to pass milliseconds to the twirl method
+                    i++;
+                    kali.twirlLeft(speed, time);
+                }
+                else
+                {
+                    kali.twirlLeft(speed);
+                }
+            }
+        }
+        else if (input.compare("twirlright") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                kali.twirlRight(30, 3000);
+            }
+            else
+            {
+                int speed = atoi(argv[i+1]);
+                i++;
+                if (i + 1 <= argc)
+                {
+                    int time = atoi(argv[i+1]) * 1000; // need to pass milliseconds to the twirl method
+                    i++;
+                    kali.twirlRight(speed, time);
+                }
+                else
+                {
+                    kali.twirlRight(speed);
+                }
+            }
         }
         
     
@@ -67,8 +152,7 @@ int main(int argc, char** argv) {
     
     
     // goodbye
-    message = "Goodbye puny humans!";
-    kaliLog->log(message);
+    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
     
     return 0;
 }
