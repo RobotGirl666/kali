@@ -14,14 +14,14 @@
 #ifndef VALIDATION_H
 #define VALIDATION_H
 
-class validation {
+class Validation {
 public:
-    validation();
-    validation(const validation& orig);
-    virtual ~validation();
+    Validation();
+    Validation(const Validation& orig);
+    virtual ~Validation();
     //validation functions
-    bool RangeCheck(int val,int lowerBound, int upperBound);
-    bool checkNum(char num[]);
+    static bool RangeCheck(int val,int lowerBound, int upperBound);
+    static bool checkNum(char num[]);
 
 
 private:

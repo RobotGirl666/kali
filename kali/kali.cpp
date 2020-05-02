@@ -18,6 +18,7 @@
 
 #include "Logging.h"
 #include "KaliRobot.h"
+#include "validation.h"
 
 
 using namespace std;
@@ -40,25 +41,28 @@ int main(int argc, char** argv) {
     {
         string input = argv[i];
         transform(input.begin(), input.end(), input.begin(),
-            [](unsigned char c){ return std::tolower(c); });
+            [](unsigned char c){ return std::tolower(c); });  //wtf is this?
         if (input.compare("remote") == 0)
         {
             kali.remote();
         }
         else if (input.compare("forward") == 0)
         {
-            if (checkNum(argv[1])) {
-                int speed = atoi(argv[i+1]);
-               // if RangeCheck(speed, 0, 100) {
-                    
-                //}
+            int speed = 0;
+            int time = 0;
+            if (Validation::checkNum(argv[i+1])) {
+                speed = atoi(argv[i+1]);
+                if (Validation::RangeCheck(speed, 0, 100)) {
+                    if (Validation::checkNum(argv[i+2])){
+                        time = atoi(argv[i+2]);
+                        if (Validation::RangeCheck(time,0,10000)){
+                        }
+                    }
+                }
             }  
+            kali.moveForward(speed, time);
         }
-            //if (checkNum(argv[i+2]))P
-            // int time = atoi(argv[i+2]);
-            //if RangeCheck(time, 0, 1000);
-            
-            if (i + 1 >= argc)
+            /*if (i + 1 >= argc)
             {
                 kali.moveForward(30, 3);
             }
@@ -77,7 +81,7 @@ int main(int argc, char** argv) {
                     kali.moveForward(speed);
                 }
             }
-        }
+        }*/
         else if (input.compare("reverse") == 0)
         {
             if (i + 1 >= argc)
@@ -144,6 +148,7 @@ int main(int argc, char** argv) {
                 }
             }
         }
+    }
         
     
     

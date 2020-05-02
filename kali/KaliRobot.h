@@ -18,7 +18,7 @@
 #include "Sensors.h"
 #include "Buzzer.h"
 #include "Camera.h"
-#include "validation.h"
+
 
 class KaliRobot {
 public:

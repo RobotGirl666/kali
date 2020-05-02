@@ -21,17 +21,17 @@ using namespace std;
 #include "validation.h"
 
 
-validation::validation() {
+Validation::Validation() {
 }
 
-validation::validation(const validation& orig) {
+Validation::Validation(const Validation& orig) {
 }
 
-validation::~validation() {
+Validation::~Validation() {
 }
 
 // Check if user input is within desired range. Return true if within range. 
-bool RangeCheck(int val,int lowerBound, int upperBound) 
+bool Validation::RangeCheck(int val,int lowerBound, int upperBound) 
 {
     if (val < lowerBound || val > upperBound) 
     {
@@ -43,7 +43,7 @@ bool RangeCheck(int val,int lowerBound, int upperBound)
 }
 
 // check if user input is an integer number. 
-bool checkNum(char num[]) {
+bool Validation::checkNum(char num[]) {
     int test = 0;
     for (int i = 0; num[i] != '\0'; i++) 
     {

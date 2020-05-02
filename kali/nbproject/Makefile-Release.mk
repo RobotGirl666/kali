@@ -46,8 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/UltrasonicSensor.o \
 	${OBJECTDIR}/Wheel.o \
 	${OBJECTDIR}/Wheels.o \
-	${OBJECTDIR}/kali.o \
-	${OBJECTDIR}/validation.o
+	${OBJECTDIR}/kali.o
 
 
 # C Compiler Flags
@@ -135,11 +134,6 @@ ${OBJECTDIR}/kali.o: kali.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kali.o kali.cpp
-
-${OBJECTDIR}/validation.o: validation.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/validation.o validation.cpp
 
 # Subprojects
 .build-subprojects:
