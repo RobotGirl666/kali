@@ -18,6 +18,7 @@
 #include "Logging.h"
 #include "KaliRobot.h"
 
+
 using namespace std;
 
 /*
@@ -45,18 +46,21 @@ int main(int argc, char** argv) {
         }
         else if (input.compare("forward") == 0) 
         {
-            //if (checkNum(argv[i+1])) {
-                // int speed = atoi(argv[i+1]);
-                //if RangeCheck(speed, 0, 100) 
-            
+            if (checkNum(argv[1])) {
+                int speed = atoi(argv[i+1]);
+               // if RangeCheck(speed, 0, 100) {
+                    
+                //}
+            }  
+        }
             //if (checkNum(argv[i+2]))P
             // int time = atoi(arv[i+2]);
             //if RangeCheck(time, 0, 1000);
             
-            kali.moveForward();
+            //kali.moveForward();
         }
         
-    }
+    
     
     
     

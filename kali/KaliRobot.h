@@ -18,6 +18,7 @@
 #include "Sensors.h"
 #include "Buzzer.h"
 #include "Camera.h"
+#include "validation.h"
 
 class KaliRobot {
 public:
@@ -30,6 +31,7 @@ public:
     void moveReverse(int speed, int seconds = 0);
     void remote();
     void party();
+    //bool checkNum(char num[]);
     
 protected:
     Wheels wheels;
