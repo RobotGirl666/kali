@@ -141,6 +141,55 @@ int main(int argc, char** argv) {
             }
             kali.twirlRight(speed, time);  //add in time
         }
+
+        else if (input.compare("turnleft") == 0)
+        {
+            int speed = 0;
+            int time = 0;
+            if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                speed = atoi(argv[i+1]);
+                if (Validation::RangeCheck(speed, 0, 100)) {
+                    if (Validation::checkNum(argv[i+2])){
+                        time = atoi(argv[i+2]);
+                        if (Validation::RangeCheck(time,0,10000)){
+                        }
+                    }
+                    else {
+                        time = 2000;
+                    }
+                }
+            }
+            else {
+                speed = 30;
+                time = 2000;
+            }
+            kali.turnLeft(speed, time);
+        }
+            
+        else if (input.compare("turnright") == 0)
+        {
+            int speed = 0;
+            int time = 0;
+            if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                speed = atoi(argv[i+1]);
+                if (Validation::RangeCheck(speed, 0, 100)) {
+                    if (Validation::checkNum(argv[i+2])){
+                        time = atoi(argv[i+2]);
+                        if (Validation::RangeCheck(time,0,10000)){
+                        }
+                    }
+                    else {
+                        time = 2000;
+                    }
+                }
+            }
+            else {
+                speed = 30;
+                time = 2000;
+            }
+            kali.turnRight(speed, time);
+        }
+            
     }
         
     
