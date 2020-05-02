@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
             }
             else {
                 speed = 30;
+                time = 2;
             }
             kali.moveForward(speed, time);
         }
