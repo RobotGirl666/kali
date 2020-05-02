@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
         {
             int speed = 0;
             int time = 0;
-            if (Validation::checkNum(argv[i+1])) {
+            if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
                 speed = atoi(argv[i+1]);
                 if (Validation::RangeCheck(speed, 0, 100)) {
                     if (Validation::checkNum(argv[i+2])){
@@ -89,6 +89,7 @@ int main(int argc, char** argv) {
             }
             else {
                 speed = 30;
+                time = 2;
             }
             kali.moveReverse(speed, time);
         }
@@ -97,7 +98,7 @@ int main(int argc, char** argv) {
         {
             int speed = 0;
             int time = 0;
-            if (Validation::checkNum(argv[i+1])) {
+            if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
                 speed = atoi(argv[i+1]);
                 if (Validation::RangeCheck(speed, 0, 100)) {
                     if (Validation::checkNum(argv[i+2])){
@@ -112,6 +113,7 @@ int main(int argc, char** argv) {
             }
             else {
                 speed = 30;
+                time = 2000;
             }
             kali.twirlLeft(speed, time);
         }
@@ -120,7 +122,7 @@ int main(int argc, char** argv) {
         {
             int speed = 0;
             int time = 0;
-            if (Validation::checkNum(argv[i+1])) {
+            if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
                 speed = atoi(argv[i+1]);
                 if (Validation::RangeCheck(speed, 0, 100)) {
                     if (Validation::checkNum(argv[i+2])){
@@ -135,6 +137,7 @@ int main(int argc, char** argv) {
             }
             else {
                 speed = 30;
+                time = 2000;
             }
             kali.twirlRight(speed, time);  //add in time
         }
