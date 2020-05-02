@@ -37,8 +37,8 @@ void Wheel::initialise()
     pinMode(pinReverseMotors, OUTPUT);
 
     //int softPwmCreate(int pin,int initialValue,int pwmRange);
-    // initialise the motor speed range 0-255 (maximum bit output)
-    softPwmCreate(pinMotorSpeed,0,255);
+    // initialise the motor speed range 0-100 (maximum bit output)
+    softPwmCreate(pinMotorSpeed,0,100);
 }
 
 /*
@@ -51,8 +51,6 @@ void Wheel::initialise()
 void Wheel::setForwardMotion(int speed)
 {
     Logging* kaliLog = Logging::Instance();
-    
-    speed = speed * 255 / 100;
     
     string message = "Motors moving forward with speed " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
@@ -73,8 +71,6 @@ void Wheel::setForwardMotion(int speed)
 void Wheel::setReverseMotion(int speed)
 {
     Logging* kaliLog = Logging::Instance();
-    
-    speed = speed * 255 / 100;
     
     string message = "Motors reversing with speed " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);

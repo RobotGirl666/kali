@@ -108,7 +108,7 @@ void Wheels::moveReverse(int speed, int seconds)
 */
 void Wheels::forwardRampUp(int speed)
 {
-    int rampIncrement = 1000 * speed / 50 / 10;
+    int rampIncrement = speed / 2;
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping up the speed to " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
@@ -139,7 +139,7 @@ void Wheels::forwardRampUp(int speed)
 */
 void Wheels::forwardRampDown(int speed)
 {
-    int rampIncrement = 1000 * speed / 50 / 10;
+    int rampIncrement = speed / 2;
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping down the speed from " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
@@ -169,7 +169,7 @@ void Wheels::forwardRampDown(int speed)
 */
 void Wheels::reverseRampUp(int speed)
 {
-    int rampIncrement = 1000 * speed / 50 / 10;
+    int rampIncrement = speed / 2;
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping up the speed to " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
@@ -200,7 +200,7 @@ void Wheels::reverseRampUp(int speed)
 */
 void Wheels::reverseRampDown(int speed)
 {
-    int rampIncrement = 1000 * speed / 50 / 10;
+    int rampIncrement = speed / 2;
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping down the speed from " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
