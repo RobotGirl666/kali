@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
         {
             int speed = 0;
             int time = 0;
-            if (Validation::checkNum(argv[i+1])) {
+            if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
                 speed = atoi(argv[i+1]);
                 if (Validation::RangeCheck(speed, 0, 100)) {
                     if (Validation::checkNum(argv[i+2])){
