@@ -52,10 +52,10 @@ void Wheel::setForwardMotion(int speed)
 {
     Logging* kaliLog = Logging::Instance();
     
+    speed = speed * 255 / 100;
+    
     string message = "Motors moving forward with speed " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    
-    speed = speed * 255 / 100;
 
     digitalWrite(pinForwardMotors, HIGH);
     digitalWrite(pinReverseMotors, LOW);
@@ -74,10 +74,10 @@ void Wheel::setReverseMotion(int speed)
 {
     Logging* kaliLog = Logging::Instance();
     
+    speed = speed * 255 / 100;
+    
     string message = "Motors reversing with speed " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    
-    speed = speed * 255 / 100;
 
     digitalWrite(pinForwardMotors, LOW);
     digitalWrite(pinReverseMotors, HIGH);
