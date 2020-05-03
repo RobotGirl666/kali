@@ -49,6 +49,8 @@ void Logging::log(string class_name, string method_name, string message, bool ou
         cout << logMessage << endl;
     }
     logFile << logMessage << endl;
+    
+    logFile.flush();
 }
 
 // shit code but a copy/paste from the interwebs
