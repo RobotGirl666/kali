@@ -343,7 +343,7 @@ void Wheels::turnLeft(int speed, int milliseconds)
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
     // twirl according to the given wheel speed
-    leftWheels.setForwardMotion(speed / 5);
+    leftWheels.setForwardMotion(speed / 10);
     rightWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
@@ -378,7 +378,7 @@ void Wheels::turnRight(int speed, int milliseconds)
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
     // twirl according to the given wheel speed
-    rightWheels.setForwardMotion(speed / 5);
+    rightWheels.setForwardMotion(speed / 10);
     leftWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
@@ -413,7 +413,7 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
     // twirl according to the given wheel speed
-    leftWheels.setReverseMotion(speed / 15);
+    leftWheels.setReverseMotion(speed / 30);
     rightWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
@@ -448,7 +448,7 @@ void Wheels::turnHardRight(int speed, int milliseconds)
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
     // twirl according to the given wheel speed
-    rightWheels.setForwardMotion(speed / 15);
+    rightWheels.setForwardMotion(speed / 30);
     leftWheels.setForwardMotion(speed);
     currentSpeed = speed;
 
