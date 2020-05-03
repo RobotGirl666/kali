@@ -155,9 +155,9 @@ void Wheels::forwardRampDown(int speed)
     }
     
     // set the final speed accurately
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Set the speed of both wheels to 0 to come to a halt.");
-    leftWheels.setForwardMotion(0);
-    rightWheels.setForwardMotion(0);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+    leftWheels.stop();
+    rightWheels.stop();
     
     currentSpeed = 0;
 }
@@ -216,9 +216,9 @@ void Wheels::reverseRampDown(int speed)
     }
     
     // set the final speed accurately
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Set the speed of both wheels to 0 to come to a halt.");
-    leftWheels.setReverseMotion(0);
-    rightWheels.setReverseMotion(0);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+    leftWheels.stop();
+    rightWheels.stop();
     
     currentSpeed = 0;
 }
@@ -251,23 +251,10 @@ void Wheels::brakeSoft()
 void Wheels::brakeHard()
 {
     Logging* kaliLog = Logging::Instance();
-    
-    string message = "Braking abruptly down from a speed of " + to_string(currentSpeed) ;
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-
-    if (currentSpeed > 0)
-    {
-        // set the final speed accurately
-        leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
-    }
-    else if (currentSpeed < 0)
-    {
-        // set the final speed accurately
-        leftWheels.setReverseMotion(0);
-        rightWheels.setReverseMotion(0);
-    }
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+    leftWheels.stop();
+    rightWheels.stop();
     
     currentSpeed = 0;
 }
@@ -298,9 +285,9 @@ void Wheels::twirlLeft(int speed, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the twirling motion.");
-        leftWheels.setReverseMotion(0);
-        rightWheels.setForwardMotion(0);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        leftWheels.stop();
+        rightWheels.stop();
 
         currentSpeed = 0;
     }
@@ -332,9 +319,9 @@ void Wheels::twirlRight(int speed, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the twirling motion.");
-        leftWheels.setForwardMotion(0);
-        rightWheels.setReverseMotion(0);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        leftWheels.stop();
+        rightWheels.stop();
 
         currentSpeed = 0;
     }
@@ -366,11 +353,10 @@ void Wheels::turnLeft(int speed, int milliseconds)
         message = "Holding the turn for " + to_string(milliseconds) + " milliseconds.";
         delay(milliseconds);
 
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
-
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        leftWheels.stop();
+        rightWheels.stop();
 
         currentSpeed = 0;
     }
@@ -402,11 +388,10 @@ void Wheels::turnRight(int speed, int milliseconds)
         message = "Holding the turn for " + to_string(milliseconds) + " milliseconds.";
         delay(milliseconds);
 
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
-
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        leftWheels.stop();
+        rightWheels.stop();
 
         currentSpeed = 0;
     }
@@ -438,11 +423,10 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
         message = "Holding the turn for " + to_string(milliseconds) + " milliseconds.";
         delay(milliseconds);
 
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
-
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        leftWheels.stop();
+        rightWheels.stop();
 
         currentSpeed = 0;
     }
@@ -474,11 +458,10 @@ void Wheels::turnHardRight(int speed, int milliseconds)
         message = "Holding the turn for " + to_string(milliseconds) + " milliseconds.";
         delay(milliseconds);
 
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping the turn.");
-
         // stop twirling (wheel speed = 0)
-        leftWheels.setForwardMotion(0);
-        rightWheels.setForwardMotion(0);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        leftWheels.stop();
+        rightWheels.stop();
 
         currentSpeed = 0;
     }

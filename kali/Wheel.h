@@ -24,6 +24,7 @@ public:
     void initialise();
     void setForwardMotion(int speed);
     void setReverseMotion(int speed);
+    void stop();
 
 protected:
     // Pin assignments for this/these wheel(s) - these will be set by the derived classes as this class does not know

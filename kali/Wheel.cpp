@@ -60,7 +60,6 @@ void Wheel::setForwardMotion(int speed)
     softPwmWrite(pinMotorSpeed, speed);
 }
 
-
 /*
     Moves Kali Robot in the reverse direction or halts her if speed is 0.
    
@@ -78,4 +77,18 @@ void Wheel::setReverseMotion(int speed)
     digitalWrite(pinForwardMotors, LOW);
     digitalWrite(pinReverseMotors, HIGH);
     softPwmWrite(pinMotorSpeed, speed);
+}
+
+/*
+    Comes to a complete halt.
+   
+*/
+void Wheel::stop()
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping motor");
+
+    digitalWrite(pinForwardMotors, LOW);
+    digitalWrite(pinReverseMotors, LOW);
 }
