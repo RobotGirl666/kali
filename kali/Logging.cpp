@@ -26,6 +26,7 @@ Logging::Logging() {
 }
 
 Logging::Logging(const Logging& orig) {
+    logFile.close();
 }
 
 Logging::~Logging() {
