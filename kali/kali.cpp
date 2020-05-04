@@ -239,6 +239,102 @@ int main(int argc, char** argv) {
                 kali.turnHardRight(speed, time);
             }
 
+            else if (input.compare("turnleftreverse") == 0)
+            {
+                int speed = 0;
+                int time = 0;
+                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                    speed = atoi(argv[i+1]);
+                    if (Validation::RangeCheck(speed, 0, 100)) {
+                        if (Validation::checkNum(argv[i+2])){
+                            time = atoi(argv[i+2]);
+                            if (Validation::RangeCheck(time,0,10000)){
+                            }
+                        }
+                        else {
+                            time = 2000;
+                        }
+                    }
+                }
+                else {
+                    speed = 30;
+                    time = 2000;
+                }
+                kali.turnLeftReverse(speed, time);
+            }
+
+            else if (input.compare("turnrightreverse") == 0)
+            {
+                int speed = 0;
+                int time = 0;
+                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                    speed = atoi(argv[i+1]);
+                    if (Validation::RangeCheck(speed, 0, 100)) {
+                        if (Validation::checkNum(argv[i+2])){
+                            time = atoi(argv[i+2]);
+                            if (Validation::RangeCheck(time,0,10000)){
+                            }
+                        }
+                        else {
+                            time = 2000;
+                        }
+                    }
+                }
+                else {
+                    speed = 30;
+                    time = 2000;
+                }
+                kali.turnRightReverse(speed, time);
+            }
+
+            else if (input.compare("turnhardleftreverse") == 0)
+            {
+                int speed = 0;
+                int time = 0;
+                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                    speed = atoi(argv[i+1]);
+                    if (Validation::RangeCheck(speed, 0, 100)) {
+                        if (Validation::checkNum(argv[i+2])){
+                            time = atoi(argv[i+2]);
+                            if (Validation::RangeCheck(time,0,10000)){
+                            }
+                        }
+                        else {
+                            time = 2000;
+                        }
+                    }
+                }
+                else {
+                    speed = 30;
+                    time = 2000;
+                }
+                kali.turnHardLeftReverse(speed, time);
+            }
+
+            else if (input.compare("turnhardrightreverse") == 0)
+            {
+                int speed = 0;
+                int time = 0;
+                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                    speed = atoi(argv[i+1]);
+                    if (Validation::RangeCheck(speed, 0, 100)) {
+                        if (Validation::checkNum(argv[i+2])){
+                            time = atoi(argv[i+2]);
+                            if (Validation::RangeCheck(time,0,10000)){
+                            }
+                        }
+                        else {
+                            time = 2000;
+                        }
+                    }
+                }
+                else {
+                    speed = 30;
+                    time = 2000;
+                }
+                kali.turnHardRightReverse(speed, time);
+            }
+
         }
       // goodbye
         kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");

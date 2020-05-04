@@ -200,6 +200,70 @@ void KaliRobot::turnHardRight(int speed, int milliseconds)
     wheels.turnHardRight(speed, milliseconds);
 }
 
+/*
+    Turns Kali Robot in the left direction with a gentle turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void KaliRobot::turnLeftReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning left in reverse with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+    wheels.turnLeftReverse(speed, milliseconds);
+}
+
+/*
+    Turns Kali Robot in the right direction with a gentle turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void KaliRobot::turnRightReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning right in reverse with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+    wheels.turnRightReverse(speed, milliseconds);
+}
+
+/*
+    Turns Kali Robot in the left direction with a sharp turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void KaliRobot::turnHardLeftReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning hard left in reverse with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+    wheels.turnHardLeftReverse(speed, milliseconds);
+}
+
+/*
+    Turns Kali Robot in the right direction with a gentle turning radius. Calls the wheels to turn.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void KaliRobot::turnHardRightReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning hard right in reverse with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+    wheels.turnHardRightReverse(speed, milliseconds);
+}
+
 void KaliRobot::remote()
 {
     

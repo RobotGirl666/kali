@@ -38,6 +38,10 @@ public:
     void turnRight(int speed, int milliseconds = 0);
     void turnHardLeft(int speed, int milliseconds = 0);
     void turnHardRight(int speed, int milliseconds = 0);
+    void turnLeftReverse(int speed, int milliseconds = 0);
+    void turnRightReverse(int speed, int milliseconds = 0);
+    void turnHardLeftReverse(int speed, int milliseconds = 0);
+    void turnHardRightReverse(int speed, int milliseconds = 0);
     void remote();
     void party();
     //bool checkNum(char num[]);
