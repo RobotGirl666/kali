@@ -18,7 +18,7 @@
 #include "RightWheels.h"
 
 #define TURN_FACTOR 10
-#define TURN_HARD_FACTOR 30
+#define TURN_HARD_FACTOR 20
 
 class Wheels {
 public:
