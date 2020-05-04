@@ -17,6 +17,9 @@
 #include "LeftWheels.h"
 #include "RightWheels.h"
 
+#define TURN_FACTOR 10
+#define TURN_HARD_FACTOR 30
+
 class Wheels {
 public:
     Wheels();
@@ -35,6 +38,10 @@ public:
     void turnRight(int speed, int milliseconds = 0);
     void turnHardLeft(int speed, int milliseconds = 0);
     void turnHardRight(int speed, int milliseconds = 0);
+    void turnLeftReverse(int speed, int milliseconds = 0);
+    void turnRightReverse(int speed, int milliseconds = 0);
+    void turnHardLeftReverse(int speed, int milliseconds = 0);
+    void turnHardRightReverse(int speed, int milliseconds = 0);
     
 protected:
     LeftWheels leftWheels;
@@ -46,6 +53,8 @@ protected:
     void forwardRampDown(int speed);
     void reverseRampUp(int speed);
     void reverseRampDown(int speed);
+    void turn(int speedLeft, int speedRight, int milliseconds = 0);
+    void turnReverse(int speedLeft, int speedRight, int milliseconds = 0);
     
 private:
 };

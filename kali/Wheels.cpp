@@ -339,27 +339,8 @@ void Wheels::turnLeft(int speed, int milliseconds)
     
     string message = "Turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    message = "Left wheel speed is " + to_string(speed / 5) + " and right wheel speed is " + to_string(speed);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-
-    // twirl according to the given wheel speed
-    leftWheels.setForwardMotion(speed / 10);
-    rightWheels.setForwardMotion(speed);
-    currentSpeed = speed;
-
-    if (milliseconds > 0)
-    {
-        // continue turning for the specified time
-        message = "Holding the turn for " + to_string(milliseconds) + " milliseconds.";
-        delay(milliseconds);
-
-        // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-        leftWheels.stop();
-        rightWheels.stop();
-
-        currentSpeed = 0;
-    }
+    
+    turn((speed / TURN_FACTOR), speed, milliseconds);
 }
 
 /*
@@ -374,27 +355,8 @@ void Wheels::turnRight(int speed, int milliseconds)
     
     string message = "Turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    message = "Left wheel speed is " + to_string(speed) + " and right wheel speed is " + to_string(speed / 5);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-
-    // twirl according to the given wheel speed
-    rightWheels.setForwardMotion(speed / 10);
-    leftWheels.setForwardMotion(speed);
-    currentSpeed = speed;
-
-    if (milliseconds > 0)
-    {
-        // continue turning for the specified time
-        message = "Holding the turn for " + to_string(milliseconds) + " milliseconds.";
-        delay(milliseconds);
-
-        // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-        leftWheels.stop();
-        rightWheels.stop();
-
-        currentSpeed = 0;
-    }
+    
+    turn(speed, (speed / TURN_FACTOR), milliseconds);
 }
 
 /*
@@ -409,13 +371,115 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
     
     string message = "Turning hard left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    message = "Left wheel speed is " + to_string(speed / 15) + " and right wheel speed is " + to_string(speed);
+    
+    turn((speed / TURN_HARD_FACTOR), speed, milliseconds);
+}
+
+/*
+    Turns Kali Robot aggressively right.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void Wheels::turnHardRight(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning hard right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    
+    turn(speed, (speed / TURN_HARD_FACTOR), milliseconds);
+}
+
+/*
+    Turns Kali Robot gently left.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void Wheels::turnLeftReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Reverse turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    
+    turnReverse((speed / TURN_FACTOR), speed, milliseconds);
+}
+
+/*
+    Turns Kali Robot gently right.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void Wheels::turnRightReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Reverse turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    
+    turnReverse(speed, (speed / TURN_FACTOR), milliseconds);
+}
+
+/*
+    Turns Kali Robot aggressively left.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void Wheels::turnHardLeftReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Reverse turning hard left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    
+    turnReverse((speed / TURN_HARD_FACTOR), speed, milliseconds);
+}
+
+/*
+    Turns Kali Robot aggressively right.
+
+    @param speed - A speed from 0-100.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void Wheels::turnHardRightReverse(int speed, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Reverse turning hard right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    
+    turnReverse(speed, (speed / TURN_HARD_FACTOR), milliseconds);
+}
+
+/*
+    Internal (protected) method to turn kali left/right
+
+    @param speedLeft - A speed from 0-100 for the left wheels.
+    @param speedRight - A speed from 0-100 for the left wheels.
+    @param milliseconds - How many milliseconds to turn for.
+*/
+void Wheels::turn(int speedLeft, int speedRight, int milliseconds)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Turning left wheels with left wheels speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-    // twirl according to the given wheel speed
-    leftWheels.setReverseMotion(speed / 30);
-    rightWheels.setForwardMotion(speed);
-    currentSpeed = speed;
+    // turn according to the given wheel speeds
+    leftWheels.setForwardMotion(speedLeft);
+    rightWheels.setForwardMotion(speedRight);
+    if (speedLeft >= speedRight)
+    {
+        currentSpeed = speedLeft;
+    }
+    else
+    {
+        currentSpeed = speedRight;
+    }
 
     if (milliseconds > 0)
     {
@@ -433,24 +497,30 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
 }
 
 /*
-    Turns Kali Robot aggressively right.
+    Internal (protected) method to turn kali left/right
 
-    @param speed - A speed from 0-100.
+    @param speedLeft - A speed from 0-100 for the left wheels.
+    @param speedRight - A speed from 0-100 for the left wheels.
     @param milliseconds - How many milliseconds to turn for.
 */
-void Wheels::turnHardRight(int speed, int milliseconds)
+void Wheels::turnReverse(int speedLeft, int speedRight, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
     
-    string message = "Turning hard right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    message = "Left wheel speed is " + to_string(speed) + " and right wheel speed is " + to_string(speed / 15);
+    string message = "Reverse turning left wheels with left wheels speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-    // twirl according to the given wheel speed
-    rightWheels.setForwardMotion(speed / 30);
-    leftWheels.setForwardMotion(speed);
-    currentSpeed = speed;
+    // turn according to the given wheel speeds
+    leftWheels.setReverseMotion(speedLeft);
+    rightWheels.setReverseMotion(speedRight);
+    if (speedLeft >= speedRight)
+    {
+        currentSpeed = speedLeft;
+    }
+    else
+    {
+        currentSpeed = speedRight;
+    }
 
     if (milliseconds > 0)
     {
