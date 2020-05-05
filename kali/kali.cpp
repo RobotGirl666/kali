@@ -35,7 +35,6 @@ int main(int argc, char** argv) {
 
         // do stuff here (BE MORE SPECIFIC PLSSS DAD)
         KaliRobot kali;  // create the container class - overall robot
-        kali.initialise(); // initialise all the Kali components - must do this before anything else!
 
         // switch statement 
         for(int i = 1; i < argc; i++)

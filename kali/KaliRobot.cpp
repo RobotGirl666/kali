@@ -22,6 +22,7 @@
 using namespace std;
 
 KaliRobot::KaliRobot() {
+    initialise(); // initialise all the Kali components - must do this before anything else!
 }
 
 KaliRobot::KaliRobot(const KaliRobot& orig) {
@@ -36,8 +37,9 @@ KaliRobot::~KaliRobot() {
 */
 void KaliRobot::initialise()
 {
-    wiringPiSetup(); // Initalize WiringPi
+    wiringPiSetup(); // Initialise WiringPi
 
+    // initialise all the different components
     wheels.initialise();
     
     // give it a couple of seconds to work its way through
