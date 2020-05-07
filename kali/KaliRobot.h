@@ -27,7 +27,10 @@ public:
     virtual ~KaliRobot();
     
     // Kali's behaviours
+    // initialisation
     void initialise();
+    
+    // movement
     void moveForward(int speed, int seconds = 0);
     void moveReverse(int speed, int seconds = 0);
     void brakeSoft();
@@ -42,6 +45,12 @@ public:
     void turnRightReverse(int speed, int milliseconds = 0);
     void turnHardLeftReverse(int speed, int milliseconds = 0);
     void turnHardRightReverse(int speed, int milliseconds = 0);
+    
+    // camera
+    void startCameraStream();
+    void stopCameraStream();
+    
+    // other
     void remote();
     void party();
     //bool checkNum(char num[]);

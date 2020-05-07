@@ -266,6 +266,16 @@ void KaliRobot::turnHardRightReverse(int speed, int milliseconds)
     wheels.turnHardRightReverse(speed, milliseconds);
 }
 
+void KaliRobot::startCameraStream()
+{
+    camera.startStreaming();
+}
+
+void KaliRobot::stopCameraStream()
+{
+    camera.stopStreaming();
+}
+
 void KaliRobot::remote()
 {
     

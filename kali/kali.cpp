@@ -334,6 +334,16 @@ int main(int argc, char** argv) {
                 kali.turnHardRightReverse(speed, time);
             }
 
+            else if (input.compare("startcamerastream") == 0)
+            {
+                kali.startCameraStream();
+            }
+
+            else if (input.compare("stopamerastream") == 0)
+            {
+                kali.stopCameraStream();
+            }
+
         }
       // goodbye
         kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");

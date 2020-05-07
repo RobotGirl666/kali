@@ -11,6 +11,28 @@
  * Created on 26 April 2020, 7:40 pm
  */
 
+/*
+ * MJPEG-Streamer Install & Setup
+ * 
+ * # Update & Install Tools
+ * sudo apt-get update -y
+ * sudo apt-get upgrade -y
+ * sudo apt-get install build-essential imagemagick libv4l-dev libjpeg-dev cmake -y
+ * 
+ * # Clone Repo in /tmp
+ * cd /tmp
+ * git clone https://github.com/jacksonliam/mjpg-streamer.git
+ * cd mjpg-streamer/mjpg-streamer-experimental
+ * 
+ * # Make
+ * make
+ * sudo make install
+ * 
+ * # Run
+ * /usr/local/bin/mjpg_streamer -i "input_uvc.so -r 1280x720 -d /dev/video0 -f 30" -o "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
+ * 
+ */
+
 #include <cstdlib>
 #include <sys/types.h>
 #include <unistd.h>
@@ -52,9 +74,9 @@ void Camera::startStreaming()
         char param2[] = "input_uvc.so -r 1280x720 -d /dev/video0 -f 30";
         char param3[] = "-o";
         char param4[] = "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www";
-        char *argV[] = {appName, param1, param2, param3, param4};
+        char *argv[] = {appName, param1, param2, param3, param4};
         int status = -1;
-        status = posix_spawnp(&pid, appName, NULL, NULL, argV, environ);
+        status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
         if (status == 0)
         {
             streaming = true;
