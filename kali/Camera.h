@@ -19,6 +19,16 @@ public:
     Camera();
     Camera(const Camera& orig);
     virtual ~Camera();
+    
+    // Wheel behaviours
+    void initialise();
+    void startStreaming();
+    void stopStreaming();
+
+protected:
+    pid_t pid;
+    bool streaming;
+    
 private:
 
 };
