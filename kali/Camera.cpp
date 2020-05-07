@@ -47,9 +47,14 @@ void Camera::startStreaming()
     if (!streaming)
     {
         //system("mjpg_streamer -i \"input_uvc.so -r 1280x720 -d /dev/video0 -f 30\" -o \"output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www\" >> ${MJPG_STREAMER_LOG_FILE} 2>&1 &");
-        char *argV[] = {"mjpg_streamer", "-i", "input_uvc.so -r 1280x720 -d /dev/video0 -f 30", "-o", "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"};
+        char appName[] = "mjpg_streamer";
+        char param1[] = "-i";
+        char param2[] = "input_uvc.so -r 1280x720 -d /dev/video0 -f 30";
+        char param3[] = "-o";
+        char param4[] = "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www";
+        char *argV[] = {appName, param1, param2, param3, param4};
         int status = -1;
-        status = posix_spawnp(&pid, "mjpg_streamer", NULL, NULL, argV, environ);
+        status = posix_spawnp(&pid, appName, NULL, NULL, argV, environ);
         if (status == 0)
         {
             streaming = true;
@@ -72,9 +77,11 @@ void Camera::stopStreaming()
 
     if (streaming)
     {
+        char appName[] = "sh";
+        char param1[] = "-c";
         char cmd[200];
         sprintf(cmd, "%s%i%s", "ps aux | grep mjpg_streamer | grep /dev/video0 | tr -s ' ' | cut -d ' ' -f 2 | grep -v ", pid, " | xargs -r kill");
-        char *argv[] = {"sh", "-c", cmd, NULL};
+        char *argv[] = {appName, param1, cmd, NULL};
         int status;
         printf("Run command: %s\n", cmd);
         status = posix_spawn(&pid, "/bin/sh", NULL, NULL, argv, environ);
