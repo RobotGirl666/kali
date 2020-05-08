@@ -109,7 +109,7 @@ void Camera::stopStreaming()
     char param2[] = "mjpg_streamer";
     char *argv[] = {appName, param1, param2, NULL};
     int status;
-    status = posix_spawn(&pid, appName, NULL, NULL, argv, environ);
+    status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
     if (status == 0)
     {
         streaming = false;
