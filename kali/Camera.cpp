@@ -102,7 +102,7 @@ void Camera::stopStreaming()
     Logging* kaliLog = Logging::Instance();
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
 
-    char appName[] = "killall";
+    char appName[] = "pkill";
     char param1[] = "-q";
     char param2[] = "mjpg_streamer";
     char *argv[] = {appName, param1, param2, NULL};
