@@ -14,6 +14,8 @@
 /*
  * MJPEG-Streamer Install & Setup
  * 
+ * https://github.com/cncjs/cncjs/wiki/Setup-Guide:-Raspberry-Pi-%7C-MJPEG-Streamer-Install-&-Setup-&-FFMpeg-Recording
+ * 
  * # Update & Install Tools
  * sudo apt-get update -y
  * sudo apt-get upgrade -y
@@ -73,10 +75,10 @@ void Camera::startStreaming()
         //system("mjpg_streamer -i \"input_uvc.so -r 1280x720 -d /dev/video0 -f 30\" -o \"output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www\" >> ${MJPG_STREAMER_LOG_FILE} 2>&1 &");
         char appName[] = "mjpg_streamer";
         char param1[] = "-i";
-        char param2[] = "input_uvc.so -r 1280x720 -d /dev/video0 -f 30";
+        char param2[] = "input_uvc.so -r 1280x960 -d /dev/video0 -f 30";
         char param3[] = "-o";
         char param4[] = "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www";
-        char *argv[] = {appName, param1, param2, param3, param4};
+        char *argv[] = {appName, param1, param2, param3, param4, NULL};
         int status = -1;
         status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
         if (status == 0)
@@ -98,25 +100,21 @@ void Camera::startStreaming()
 void Camera::stopStreaming()
 {
     Logging* kaliLog = Logging::Instance();
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
 
-    if (streaming)
+    char appName[] = "killall";
+    char param1[] = "-q";
+    char param2[] = "mjpg_streamer";
+    char *argv[] = {appName, param1, param2, NULL};
+    int status;
+    status = posix_spawn(&pid, appName, NULL, NULL, argv, environ);
+    if (status == 0)
     {
-        char appName[] = "sh";
-        char param1[] = "-c";
-        char cmd[200];
-        sprintf(cmd, "%s%i%s", "ps aux | grep mjpg_streamer | grep /dev/video0 | tr -s ' ' | cut -d ' ' -f 2 | grep -v ", pid, " | xargs -r kill");
-        char *argv[] = {appName, param1, cmd, NULL};
-        int status;
-        printf("Run command: %s\n", cmd);
-        status = posix_spawn(&pid, "/bin/sh", NULL, NULL, argv, environ);
-        if (status == 0)
-        {
-            streaming = false;
-            kaliLog->log(typeid(this).name(), __FUNCTION__, "Video streaming has stopped!");
-        }
-        else
-        {
-            kaliLog->log(typeid(this).name(), __FUNCTION__, "Failed to stop video streaming!");
-        }
+        streaming = false;
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Video streaming has stopped!");
+    }
+    else
+    {
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Failed to stop video streaming!");
     }
 }
