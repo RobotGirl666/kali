@@ -368,7 +368,7 @@ int main(int argc, char** argv) {
                 kali.panCamera(angle);
             }
 
-            else
+            else if (input.compare("help") == 0)
             {
                 cout << "You can control Kali with the following commands:" << endl;
                 cout << "kali forward [speed] [seconds]" << endl;
