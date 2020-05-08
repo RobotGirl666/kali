@@ -12,7 +12,7 @@
  */
 
 /*
- * MJPEG-Streamer Install & Setup
+ * MJPEG-Streamer Install & Setup - this streams video to http
  * 
  * https://github.com/cncjs/cncjs/wiki/Setup-Guide:-Raspberry-Pi-%7C-MJPEG-Streamer-Install-&-Setup-&-FFMpeg-Recording
  * 
@@ -33,6 +33,12 @@
  * # Run
  * /usr/local/bin/mjpg_streamer -i "input_uvc.so -r 1280x720 -d /dev/video0 -f 30" -o "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
  * 
+ * To record the video stream, you will need to install ffmpeg
+ * 
+ * # Install FFMpeg from Package Manager
+ * sudo apt-get update  
+ * sudo apt-get install ffmpeg -y
+ * 
  */
 
 #include <cstdlib>
@@ -50,6 +56,8 @@ using namespace std;
 Camera::Camera() {
     // initialise our variables
     streaming = false;
+    
+    initialise();
 }
 
 Camera::Camera(const Camera& orig) {
@@ -59,11 +67,13 @@ Camera::~Camera() {
 }
 
 /*
-    Initialises the Wiring Pi library for each set of wheels.
+    Initialises the Wiring Pi library for this servo.
 
 */
 void Camera::initialise()
 {
+    horizontalServo.initialise(14);
+    verticalServo.initialise(13);
 }
 
 void Camera::startStreaming()
@@ -120,4 +130,14 @@ void Camera::stopStreaming()
         string message = "Failed to stop video streaming! Error: " + to_string(status);
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     }
+}
+
+void Camera::tilt(int angle)
+{
+    verticalServo.setPos(angle);
+}
+
+void Camera::pan(int angle)
+{
+    horizontalServo.setPos(angle);
 }

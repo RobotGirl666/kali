@@ -14,19 +14,25 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include "Servo.h"
+
 class Camera {
 public:
     Camera();
     Camera(const Camera& orig);
     virtual ~Camera();
     
-    // Wheel behaviours
+    // Camera behaviours
     void initialise();
     void startStreaming();
     void stopStreaming();
+    void tilt(int angle);
+    void pan(int angle);
 
 protected:
     bool streaming;
+    Servo horizontalServo;
+    Servo verticalServo;
     
 private:
 

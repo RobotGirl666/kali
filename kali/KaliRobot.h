@@ -49,6 +49,8 @@ public:
     // camera
     void startCameraStream();
     void stopCameraStream();
+    void tiltCamera(int angle);
+    void panCamera(int angle);
     
     // other
     void remote();

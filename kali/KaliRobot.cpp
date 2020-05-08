@@ -276,6 +276,16 @@ void KaliRobot::stopCameraStream()
     camera.stopStreaming();
 }
 
+void KaliRobot::tiltCamera(int angle)
+{
+    camera.tilt(angle);
+}
+
+void KaliRobot::panCamera(int angle)
+{
+    camera.pan(angle);
+}
+
 void KaliRobot::remote()
 {
     

@@ -344,6 +344,51 @@ int main(int argc, char** argv) {
                 kali.stopCameraStream();
             }
 
+            else if (input.compare("tiltcamera") == 0)
+            {
+                int angle = 90;
+                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                    angle = atoi(argv[i+1]);
+                    if (!Validation::RangeCheck(angle, 0, 180)) {
+                        angle = 90;
+                    }
+                }
+                kali.tiltCamera(angle);
+            }
+
+            else if (input.compare("pancamera") == 0)
+            {
+                int angle = 90;
+                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
+                    angle = atoi(argv[i+1]);
+                    if (!Validation::RangeCheck(angle, 0, 180)) {
+                        angle = 90;
+                    }
+                }
+                kali.panCamera(angle);
+            }
+
+            else
+            {
+                cout << "You can control Kali with the following commands:" << endl;
+                cout << "kali forward [speed] [seconds]" << endl;
+                cout << "kali reverse [speed] [seconds]" << endl;
+                cout << "kali twirlleft [speed] [milliseconds]" << endl;
+                cout << "kali twirlright [speed] [milliseconds]" << endl;
+                cout << "kali turnleft [speed] [milliseconds]" << endl;
+                cout << "kali turnright [speed] [milliseconds]" << endl;
+                cout << "kali turnhardleft [speed] [milliseconds]" << endl;
+                cout << "kali turnhardright [speed] [milliseconds]" << endl;
+                cout << "kali turnleftreverse [speed] [milliseconds]" << endl;
+                cout << "kali turnrightreverse [speed] [milliseconds]" << endl;
+                cout << "kali turnhardleftreverse [speed] [milliseconds]" << endl;
+                cout << "kali turnhardrightreverse [speed] [milliseconds]" << endl;
+                cout << "kali startcamerastream" << endl;
+                cout << "kali stopcamerastream" << endl;
+                cout << "kali tiltcamera [angle]" << endl;
+                cout << "kali pancamera [angle]" << endl;
+            }
+
         }
       // goodbye
         kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");

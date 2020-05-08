@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Logging.o \
 	${OBJECTDIR}/RightWheels.o \
 	${OBJECTDIR}/Sensors.o \
+	${OBJECTDIR}/Servo.o \
 	${OBJECTDIR}/UltrasonicSensor.o \
 	${OBJECTDIR}/Wheel.o \
 	${OBJECTDIR}/Wheels.o \
@@ -115,6 +116,11 @@ ${OBJECTDIR}/Sensors.o: Sensors.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensors.o Sensors.cpp
+
+${OBJECTDIR}/Servo.o: Servo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Servo.o Servo.cpp
 
 ${OBJECTDIR}/UltrasonicSensor.o: UltrasonicSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
