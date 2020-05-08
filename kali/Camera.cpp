@@ -46,6 +46,8 @@ extern char **environ;
 using namespace std;
 
 Camera::Camera() {
+    // initialise our variables
+    streaming = false;
 }
 
 Camera::Camera(const Camera& orig) {
