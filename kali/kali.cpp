@@ -339,7 +339,7 @@ int main(int argc, char** argv) {
                 kali.startCameraStream();
             }
 
-            else if (input.compare("stopamerastream") == 0)
+            else if (input.compare("stopcamerastream") == 0)
             {
                 kali.stopCameraStream();
             }
