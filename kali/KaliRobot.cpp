@@ -41,6 +41,7 @@ void KaliRobot::initialise()
 
     // initialise all the different components
     wheels.initialise();
+    camera.initialise();
     
     // give it a couple of seconds to work its way through
     delay(2000);

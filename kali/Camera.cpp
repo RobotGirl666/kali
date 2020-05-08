@@ -56,8 +56,6 @@ using namespace std;
 Camera::Camera() {
     // initialise our variables
     streaming = false;
-    
-    initialise();
 }
 
 Camera::Camera(const Camera& orig) {
