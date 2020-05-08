@@ -29,7 +29,7 @@ public:
 protected:
     Logging();
     Logging(const Logging& orig);
-    const std::string currentDateTime();
+    const string currentDateTime();
 
 private:
     static Logging* _instance;

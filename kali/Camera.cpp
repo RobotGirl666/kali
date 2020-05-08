@@ -33,11 +33,26 @@
  * # Run
  * /usr/local/bin/mjpg_streamer -i "input_uvc.so -r 1280x720 -d /dev/video0 -f 30" -o "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
  * 
+ * Go here to watch the stream: http://10.1.1.100:8080/?action=stream
+ * where 10.1.1.100 is the ip address of the raspberry pi
+ * and from the raspberry pi itself use: http://localhost:8080/?action=stream
+ * 
  * To record the video stream, you will need to install ffmpeg
  * 
  * # Install FFMpeg from Package Manager
  * sudo apt-get update  
  * sudo apt-get install ffmpeg -y
+ * 
+ * 
+ * Recored Stream w/ ffmpeg
+ * 
+ * # [Varables]
+ * source_stram="http://localhost:8080/?action=stream"
+ * destination_directory="/home/pi/Videos"
+ * destination_file="cncjs-recording_$(date +'%Y%m%d_%H%M%S').mpeg"
+ * 
+ * # Recored Stream w/ ffmpeg
+ * ffmpeg -f mjpeg -re -i "${source_stream}" -q:v 10 "${destination_directory}/${destination_file}"
  * 
  */
 
@@ -45,6 +60,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <spawn.h>
+#include <time.h>
+#include <iostream>
+#include <sys/time.h>
+#include <tgmath.h>
 
 #include "Camera.h"
 #include "Logging.h"
@@ -56,6 +75,7 @@ using namespace std;
 Camera::Camera() {
     // initialise our variables
     streaming = false;
+    recording = false;
 }
 
 Camera::Camera(const Camera& orig) {
@@ -80,7 +100,6 @@ void Camera::startStreaming()
 
     if (!streaming)
     {
-        //system("mjpg_streamer -i \"input_uvc.so -r 1280x720 -d /dev/video0 -f 30\" -o \"output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www\" >> ${MJPG_STREAMER_LOG_FILE} 2>&1 &");
         pid_t pid;
         char appName[] = "mjpg_streamer";
         char param1[] = "-i";
@@ -129,6 +148,72 @@ void Camera::stopStreaming()
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     }
 }
+/*
+  * source_stram="http://localhost:8080/?action=stream"
+ * destination_directory="/home/pi/Videos"
+ * destination_file="cncjs-recording_$(date +'%Y%m%d_%H%M%S').mpeg"
+ * 
+ * # Recored Stream w/ ffmpeg
+ * ffmpeg -f mjpeg -re -i "${source_stream}" -q:v 10 "${destination_directory}/${destination_file}"
+ */
+void Camera::startRecording()
+{
+    Logging* kaliLog = Logging::Instance();
+
+    if (!recording)
+    {
+        char outputFilename[200];
+        sprintf(outputFilename, "/home/pi/Videos/kali_recording_%s.mpeg", fileDateTime());
+        pid_t pid;
+        char appName[] = "ffmpeg";
+        char param1[] = "-f";
+        char param2[] = "mjpeg";
+        char param3[] = "-i";
+        char param4[] = "http://localhost:8080/?action=stream";
+        char param5[] = "-q:v";
+        char param6[] = "10";
+        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, outputFilename, NULL};
+        int status = -1;
+        status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
+        if (status == 0)
+        {
+            streaming = true;
+            kaliLog->log(typeid(this).name(), __FUNCTION__, "Video streaming has commenced!");
+        }
+        else
+        {
+            string message = "Failed to stop video streaming! Error: " + to_string(status);
+            kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        }
+    }
+    else
+    {
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Already recording video!");
+    }
+}
+
+void Camera::stopRecording()
+{
+    Logging* kaliLog = Logging::Instance();
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
+
+    pid_t pid;
+    char appName[] = "pkill";
+    char param1[] = "ffmpeg";
+    char *argv[] = {appName, param1, NULL};
+    int status;
+    status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
+    if (status == 0)
+    {
+        streaming = false;
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Video recording has stopped!");
+    }
+    else
+    {
+        string message = "Failed to stop video recording! Error: " + to_string(status);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    }
+}
 
 void Camera::tilt(int angle)
 {
@@ -138,4 +223,28 @@ void Camera::tilt(int angle)
 void Camera::pan(int angle)
 {
     horizontalServo.setPos(angle);
+}
+
+char* Camera::fileDateTime()
+{
+    char buffer[26];
+    char timestring[80];
+    int millisec;
+    struct tm* tm_info;
+    struct timeval tv;
+
+    gettimeofday(&tv, NULL);
+
+    millisec = lrint(tv.tv_usec/1000.0); // Round to nearest millisec
+    if (millisec>=1000) { // Allow for rounding up to nearest second
+      millisec -=1000;
+      tv.tv_sec++;
+    }
+
+    tm_info = localtime(&tv.tv_sec);
+
+    strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
+    sprintf(timestring, "%s.%03d", buffer, millisec);
+
+    return timestring;
 }

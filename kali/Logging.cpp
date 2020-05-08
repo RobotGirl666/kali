@@ -55,7 +55,7 @@ void Logging::log(string class_name, string method_name, string message, bool ou
 }
 
 // shit code but a copy/paste from the interwebs
-const std::string Logging::currentDateTime() {
+const string Logging::currentDateTime() {
     char buffer[26];
     char timestring[80];
     int millisec;

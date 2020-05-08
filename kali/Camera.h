@@ -26,13 +26,18 @@ public:
     void initialise();
     void startStreaming();
     void stopStreaming();
+    void startRecording();
+    void stopRecording();
     void tilt(int angle);
     void pan(int angle);
 
 protected:
     bool streaming;
+    bool recording;
     Servo horizontalServo;
     Servo verticalServo;
+    
+    char* fileDateTime();
     
 private:
 
