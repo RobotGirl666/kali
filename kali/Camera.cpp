@@ -105,9 +105,8 @@ void Camera::stopStreaming()
 
     pid_t pid;
     char appName[] = "pkill";
-    char param1[] = "-q";
-    char param2[] = "mjpg_streamer";
-    char *argv[] = {appName, param1, param2, NULL};
+    char param1[] = "mjpg_streamer";
+    char *argv[] = {appName, param1, NULL};
     int status;
     status = posix_spawn(&pid, appName, NULL, NULL, argv, environ);
     if (status == 0)
