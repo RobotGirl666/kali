@@ -32,7 +32,6 @@ void Servo::initialise(int sp)
 {
     servoPin = sp;
     pinMode(servoPin, OUTPUT);
-    setPos(90);
 }
 
 /**
