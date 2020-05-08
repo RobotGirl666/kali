@@ -73,6 +73,7 @@ void Camera::startStreaming()
     if (!streaming)
     {
         //system("mjpg_streamer -i \"input_uvc.so -r 1280x720 -d /dev/video0 -f 30\" -o \"output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www\" >> ${MJPG_STREAMER_LOG_FILE} 2>&1 &");
+        pid_t pid;
         char appName[] = "mjpg_streamer";
         char param1[] = "-i";
         char param2[] = "input_uvc.so -r 1280x960 -d /dev/video0 -f 30";
@@ -102,6 +103,7 @@ void Camera::stopStreaming()
     Logging* kaliLog = Logging::Instance();
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
 
+    pid_t pid;
     char appName[] = "pkill";
     char param1[] = "-q";
     char param2[] = "mjpg_streamer";

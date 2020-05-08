@@ -26,7 +26,6 @@ public:
     void stopStreaming();
 
 protected:
-    pid_t pid;
     bool streaming;
     
 private:
