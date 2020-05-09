@@ -170,11 +170,12 @@ void Camera::startRecording()
         char appName[] = "ffmpeg";
         char param1[] = "-f";
         char param2[] = "mjpeg";
-        char param3[] = "-i";
-        char param4[] = "http://localhost:8080/?action=stream";
-        char param5[] = "-q:v";
-        char param6[] = "10";
-        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, outputFilename, NULL};
+        char param3[] = "-re";
+        char param4[] = "-i";
+        char param5[] = "http://localhost:8080/?action=stream";
+        char param6[] = "-q:v";
+        char param7[] = "10";
+        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, param7, outputFilename, NULL};
         int status = -1;
         status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
         if (status == 0)
