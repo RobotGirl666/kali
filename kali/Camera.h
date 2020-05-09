@@ -37,7 +37,7 @@ protected:
     Servo horizontalServo;
     Servo verticalServo;
     
-    void fileDateTime(char* timestring);
+    void generateUniqueFilename(char* timestring, char* baseName);
     
 private:
 

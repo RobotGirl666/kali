@@ -45,8 +45,13 @@ void Servo::setPos(int angle)
 {
     int pulseWidth;                   //Define the pulse width variable
     pulseWidth = (angle * 11) + 500;  //Convert the Angle to 500-2480 pulse width
-    digitalWrite(servoPin, HIGH);      
-    delayMicroseconds(pulseWidth);     
-    digitalWrite(servoPin, LOW);       
-    delay(20 - pulseWidth / 1000);     //Delay remaining time 
+    
+    // send 16 pulses to make sure angle is set correctly by servo motor
+    for (int i = 0; i < 16; i++)
+    {
+        digitalWrite(servoPin, HIGH);
+        delayMicroseconds(pulseWidth);
+        digitalWrite(servoPin, LOW);
+        delay(20 - pulseWidth / 1000);     //Delay remaining time
+    }
 }

@@ -64,6 +64,9 @@
 #include <iostream>
 #include <sys/time.h>
 #include <tgmath.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 #include "Camera.h"
 #include "Logging.h"
@@ -100,6 +103,7 @@ void Camera::startStreaming()
 
     if (!streaming)
     {
+        // set all the paramebers that need to be parsed to ffmpeg
         pid_t pid;
         char appName[] = "mjpg_streamer";
         char param1[] = "-i";
@@ -107,8 +111,14 @@ void Camera::startStreaming()
         char param3[] = "-o";
         char param4[] = "output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www";
         char *argv[] = {appName, param1, param2, param3, param4, NULL};
+
+        // set output to null so it doesn't go to the screen - very annoying!
+        posix_spawn_file_actions_t action;
+        posix_spawn_file_actions_init(&action);
+        posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+
         int status = -1;
-        status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
+        status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
         if (status == 0)
         {
             streaming = true;
@@ -131,12 +141,19 @@ void Camera::stopStreaming()
     Logging* kaliLog = Logging::Instance();
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
 
+    // set all the paramebers that need to be parsed to pkill
     pid_t pid;
     char appName[] = "pkill";
     char param1[] = "mjpg_streamer";
     char *argv[] = {appName, param1, NULL};
+
+    // set output to null so it doesn't go to the screen - very annoying!
+    posix_spawn_file_actions_t action;
+    posix_spawn_file_actions_init(&action);
+    posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+
     int status;
-    status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
+    status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
     if (status == 0)
     {
         streaming = false;
@@ -162,10 +179,10 @@ void Camera::startRecording()
 
     if (!recording)
     {
-        char outputFilename[200];
-        char timestring[80];
-        fileDateTime(timestring);
-        sprintf(outputFilename, "/home/pi/Videos/kali_recording_%s.mpeg", timestring);
+        // set all the paramebers that need to be parsed to ffmpeg
+        char uniqueFilename[200];
+        char baseFilename[] = "/home/pi/Videos/kali_recording";
+        generateUniqueFilename(uniqueFilename, baseFilename);
         pid_t pid;
         char appName[] = "ffmpeg";
         char param1[] = "-f";
@@ -175,9 +192,15 @@ void Camera::startRecording()
         char param5[] = "http://localhost:8080/?action=stream";
         char param6[] = "-q:v";
         char param7[] = "10";
-        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, param7, outputFilename, NULL};
+        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, param7, uniqueFilename, NULL};
+
+        // set output to null so it doesn't go to the screen - very annoying!
+        posix_spawn_file_actions_t action;
+        posix_spawn_file_actions_init(&action);
+        posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+
         int status = -1;
-        status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
+        status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
         if (status == 0)
         {
             recording = true;
@@ -200,12 +223,19 @@ void Camera::stopRecording()
     Logging* kaliLog = Logging::Instance();
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
 
+    // set all the paramebers that need to be parsed to pkill
     pid_t pid;
     char appName[] = "pkill";
     char param1[] = "ffmpeg";
     char *argv[] = {appName, param1, NULL};
+
+    // set output to null so it doesn't go to the screen - very annoying!
+    posix_spawn_file_actions_t action;
+    posix_spawn_file_actions_init(&action);
+    posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+
     int status;
-    status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
+    status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
     if (status == 0)
     {
         recording = false;
@@ -228,9 +258,9 @@ void Camera::pan(int angle)
     horizontalServo.setPos(angle);
 }
 
-void Camera::fileDateTime(char* timestring)
+void Camera::generateUniqueFilename(char* timestring, char* baseName)
 {
-    char buffer[26];
+    char datetime_buffer[26];
     int millisec;
     struct tm* tm_info;
     struct timeval tv;
@@ -245,6 +275,6 @@ void Camera::fileDateTime(char* timestring)
 
     tm_info = localtime(&tv.tv_sec);
 
-    strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
-    sprintf(timestring, "%s.%03d", buffer, millisec);
+    strftime(datetime_buffer, 26, "%Y_%m_%d_%H_%M_%S", tm_info);
+    sprintf(timestring, "%s_%s_%03d.mpeg", baseName, datetime_buffer, millisec);
 }
