@@ -14,6 +14,7 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
+#include "Logging.h"
 #include "Servo.h"
 
 Servo::Servo() {
@@ -43,6 +44,20 @@ void Servo::initialise(int sp)
 */
 void Servo::setPos(int angle)
 {
+    Logging* kaliLog = Logging::Instance();
+
+    // clip the angle to the allowed upper and lower limits
+    if (angle < 0)
+    {
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Servo position exceeds lower limit. Clipping to 0.");
+        angle = 0;
+    }
+    else if (angle > 180)
+    {
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Servo position exceede upper limit. Clipping to 180.");
+        angle = 180;
+    }
+    
     int pulseWidth;                   //Define the pulse width variable
     pulseWidth = (angle * 11) + 500;  //Convert the Angle to 500-2480 pulse width
     

@@ -115,10 +115,11 @@ void Camera::startStreaming()
         // set output to null so it doesn't go to the screen - very annoying!
         posix_spawn_file_actions_t action;
         posix_spawn_file_actions_init(&action);
-        posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+        posix_spawn_file_actions_addopen (&action, STDERR_FILENO, "/dev/null", O_RDONLY, 0);
 
         int status = -1;
         status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
+        posix_spawn_file_actions_destroy(&action);
         if (status == 0)
         {
             streaming = true;
@@ -150,10 +151,11 @@ void Camera::stopStreaming()
     // set output to null so it doesn't go to the screen - very annoying!
     posix_spawn_file_actions_t action;
     posix_spawn_file_actions_init(&action);
-    posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+    posix_spawn_file_actions_addopen (&action, STDERR_FILENO, "/dev/null", O_RDONLY, 0);
 
     int status;
     status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
+    posix_spawn_file_actions_destroy(&action);
     if (status == 0)
     {
         streaming = false;
@@ -197,10 +199,11 @@ void Camera::startRecording()
         // set output to null so it doesn't go to the screen - very annoying!
         posix_spawn_file_actions_t action;
         posix_spawn_file_actions_init(&action);
-        posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+        posix_spawn_file_actions_addopen(&action, STDERR_FILENO, "/dev/null", O_RDONLY, 0);
 
         int status = -1;
         status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
+        posix_spawn_file_actions_destroy(&action);
         if (status == 0)
         {
             recording = true;
@@ -232,10 +235,11 @@ void Camera::stopRecording()
     // set output to null so it doesn't go to the screen - very annoying!
     posix_spawn_file_actions_t action;
     posix_spawn_file_actions_init(&action);
-    posix_spawn_file_actions_addopen (&action, STDOUT_FILENO, "/dev/null", O_RDONLY, 0);
+    posix_spawn_file_actions_addopen (&action, STDERR_FILENO, "/dev/null", O_RDONLY, 0);
 
     int status;
     status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
+    posix_spawn_file_actions_destroy(&action);
     if (status == 0)
     {
         recording = false;
