@@ -149,7 +149,7 @@ void Camera::stopStreaming()
     }
 }
 /*
-  * source_stram="http://localhost:8080/?action=stream"
+ * source_stram="http://localhost:8080/?action=stream"
  * destination_directory="/home/pi/Videos"
  * destination_file="cncjs-recording_$(date +'%Y%m%d_%H%M%S').mpeg"
  * 
@@ -163,7 +163,9 @@ void Camera::startRecording()
     if (!recording)
     {
         char outputFilename[200];
-        sprintf(outputFilename, "/home/pi/Videos/kali_recording_%s.mpeg", fileDateTime());
+        char timestring[80];
+        fileDateTime(timestring);
+        sprintf(outputFilename, "/home/pi/Videos/kali_recording_%s.mpeg", timestring);
         pid_t pid;
         char appName[] = "ffmpeg";
         char param1[] = "-f";
@@ -177,7 +179,7 @@ void Camera::startRecording()
         status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
         if (status == 0)
         {
-            streaming = true;
+            recording = true;
             kaliLog->log(typeid(this).name(), __FUNCTION__, "Video streaming has commenced!");
         }
         else
@@ -205,7 +207,7 @@ void Camera::stopRecording()
     status = posix_spawnp(&pid, appName, NULL, NULL, argv, environ);
     if (status == 0)
     {
-        streaming = false;
+        recording = false;
         kaliLog->log(typeid(this).name(), __FUNCTION__, "Video recording has stopped!");
     }
     else
@@ -225,10 +227,9 @@ void Camera::pan(int angle)
     horizontalServo.setPos(angle);
 }
 
-char* Camera::fileDateTime()
+void Camera::fileDateTime(char* timestring)
 {
     char buffer[26];
-    char timestring[80];
     int millisec;
     struct tm* tm_info;
     struct timeval tv;
@@ -245,6 +246,4 @@ char* Camera::fileDateTime()
 
     strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
     sprintf(timestring, "%s.%03d", buffer, millisec);
-
-    return timestring;
 }

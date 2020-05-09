@@ -269,21 +269,57 @@ void KaliRobot::turnHardRightReverse(int speed, int milliseconds)
 
 void KaliRobot::startCameraStream()
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Start camera stream.");
+
     camera.startStreaming();
 }
 
 void KaliRobot::stopCameraStream()
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop camera stream.");
+
     camera.stopStreaming();
+}
+
+void KaliRobot::startCameraRecording()
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Start camera recording.");
+
+    camera.startRecording();
+}
+
+void KaliRobot::stopCameraRecording()
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop camera recording.");
+
+    camera.stopRecording();
 }
 
 void KaliRobot::tiltCamera(int angle)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Tilt camera to angle " + to_string(angle);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     camera.tilt(angle);
 }
 
 void KaliRobot::panCamera(int angle)
 {
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Pan camera to angle " + to_string(angle);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
     camera.pan(angle);
 }
 

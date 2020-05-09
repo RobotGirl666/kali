@@ -344,6 +344,16 @@ int main(int argc, char** argv) {
                 kali.stopCameraStream();
             }
 
+            else if (input.compare("startcamerarecording") == 0)
+            {
+                kali.startCameraRecording();
+            }
+
+            else if (input.compare("stopcamerarecording") == 0)
+            {
+                kali.stopCameraRecording();
+            }
+
             else if (input.compare("tiltcamera") == 0)
             {
                 int angle = 90;
@@ -385,6 +395,8 @@ int main(int argc, char** argv) {
                 cout << "kali turnhardrightreverse [speed] [milliseconds]" << endl;
                 cout << "kali startcamerastream" << endl;
                 cout << "kali stopcamerastream" << endl;
+                cout << "kali startcamerarecording" << endl;
+                cout << "kali stopcamerarecording" << endl;
                 cout << "kali tiltcamera [angle]" << endl;
                 cout << "kali pancamera [angle]" << endl;
             }
