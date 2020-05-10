@@ -87,16 +87,24 @@ Camera::Camera(const Camera& orig) {
 Camera::~Camera() {
 }
 
-/*
-    Initialises the Wiring Pi library for this servo.
-
-*/
+/**
+ * 
+ * Initialises the camera servos.
+ *
+ */
 void Camera::initialise()
 {
     horizontalServo.initialise(14);
     verticalServo.initialise(13);
 }
 
+/**
+ * 
+ * Starts streaming from the camera into a http stream.
+ * The stream can be viewed at http://localhost:8080/?action=stream from the local machine.
+ * From any other machine, localhost shold be replaced with the ip address of the machine doing the streaming.
+ *
+ */
 void Camera::startStreaming()
 {
     Logging* kaliLog = Logging::Instance();
@@ -137,6 +145,11 @@ void Camera::startStreaming()
     }
 }
 
+/**
+ * 
+ * Stops streaming from the camera into a http stream (just kills the process using pkill).
+ *
+ */
 void Camera::stopStreaming()
 {
     Logging* kaliLog = Logging::Instance();
@@ -167,13 +180,17 @@ void Camera::stopStreaming()
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     }
 }
-/*
- * source_stram="http://localhost:8080/?action=stream"
+
+/**
+ * 
+ * Starts recording from the stream (startStreaming should be called before calling this method)
+ * source_stream="http://localhost:8080/?action=stream"
  * destination_directory="/home/pi/Videos"
- * destination_file="cncjs-recording_$(date +'%Y%m%d_%H%M%S').mpeg"
+ * destination_file="kali_recording_$(date_time_milliseconds).mpeg"
  * 
  * # Recored Stream w/ ffmpeg
- * ffmpeg -f mjpeg -re -i "${source_stream}" -q:v 10 "${destination_directory}/${destination_file}"
+ * ffmpeg -f mjpeg -i "${source_stream}" -q:v 10 "${destination_directory}/${destination_file}"
+ * 
  */
 void Camera::startRecording()
 {
@@ -189,12 +206,11 @@ void Camera::startRecording()
         char appName[] = "ffmpeg";
         char param1[] = "-f";
         char param2[] = "mjpeg";
-        char param3[] = "-re";
-        char param4[] = "-i";
-        char param5[] = "http://localhost:8080/?action=stream";
-        char param6[] = "-q:v";
-        char param7[] = "10";
-        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, param7, uniqueFilename, NULL};
+        char param3[] = "-i";
+        char param4[] = "http://localhost:8080/?action=stream";
+        char param5[] = "-q:v";
+        char param6[] = "10";
+        char *argv[] = {appName, param1, param2, param3, param4, param5, param6, uniqueFilename, NULL};
 
         // set output to null so it doesn't go to the screen - very annoying!
         posix_spawn_file_actions_t action;
@@ -221,12 +237,17 @@ void Camera::startRecording()
     }
 }
 
+/**
+ * 
+ * Stops recording from the http stream (just kills the process using pkill).
+ *
+ */
 void Camera::stopRecording()
 {
     Logging* kaliLog = Logging::Instance();
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
 
-    // set all the paramebers that need to be parsed to pkill
+    // set all the parameters that need to be parsed to pkill
     pid_t pid;
     char appName[] = "pkill";
     char param1[] = "ffmpeg";
@@ -252,17 +273,39 @@ void Camera::stopRecording()
     }
 }
 
+/**
+ * 
+ * Tilt camera to the specified angle - sets the position of the relevant servo.
+ *
+ * @param angle - the angle to tilt to (0-180)
+ *  
+ */
 void Camera::tilt(int angle)
 {
     verticalServo.setPos(angle);
 }
 
+/**
+ * 
+ * Pan camera to the specified angle - sets the position of the relevant servo.
+ *
+ * @param angle - the angle to pan to (0-180)
+ * 
+ */
 void Camera::pan(int angle)
 {
     horizontalServo.setPos(angle);
 }
 
-void Camera::generateUniqueFilename(char* timestring, char* baseName)
+/**
+ * 
+ * Generate a unique filename for recording the stream.
+ *
+ * @param uniqueFilename - character string to store the generated filename
+ * @param baseName - the base name for the filename eg "recording_"
+ * 
+ */
+void Camera::generateUniqueFilename(char* uniqueFilename, char* baseName)
 {
     char datetime_buffer[26];
     int millisec;
@@ -280,5 +323,5 @@ void Camera::generateUniqueFilename(char* timestring, char* baseName)
     tm_info = localtime(&tv.tv_sec);
 
     strftime(datetime_buffer, 26, "%Y_%m_%d_%H_%M_%S", tm_info);
-    sprintf(timestring, "%s_%s_%03d.mpeg", baseName, datetime_buffer, millisec);
+    sprintf(uniqueFilename, "%s_%s_%03d.mpeg", baseName, datetime_buffer, millisec);
 }

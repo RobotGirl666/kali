@@ -28,7 +28,12 @@ Servo::Servo(const Servo& orig) {
 Servo::~Servo() {
 }
 
-    
+
+/**
+ * 
+ *   Initialises the Wiring Pi library for each set of pins relating to the motor that drives these wheels (could be left or right set of wheels).
+ *
+ */
 void Servo::initialise(int sp)
 {
     servoPin = sp;
@@ -36,12 +41,12 @@ void Servo::initialise(int sp)
 }
 
 /**
-* Function       setPos
-* @brief         Define a pulse function to generate the PWM value in the analog mode. 
-*                The base pulse is 20ms, 
-*                and the high level of the pulse is controlled at 0-180 degrees in 0.5-2.5ms.
-* @param         angle
-*/
+ * 
+ * @brief         Set the position of the servo to the given angle. This will generate a series of pulses to the servo from 1-2 ms and a period of 20 ms as per servo specs.
+ * 
+ * @param         angle 0 - 180 degrees
+ * 
+ */
 void Servo::setPos(int angle)
 {
     Logging* kaliLog = Logging::Instance();
@@ -59,10 +64,12 @@ void Servo::setPos(int angle)
     }
     
     int pulseWidth;                   //Define the pulse width variable
-    pulseWidth = (angle * 11) + 500;  //Convert the Angle to 500-2480 pulse width
+    pulseWidth = angle * 1000 / 180 + 1000;  //Convert the Angle to 1000-2000 microseconds pulse width as per servo specs
+    // The following line of code came with the Yahboom robot. The specs on the servo (which I looked up on the web) contradict the settings in the code below
+//    pulseWidth = (angle * 11) + 500;  //Convert the Angle to 500-2480 pulse width
     
-    // send 16 pulses to make sure angle is set correctly by servo motor
-    for (int i = 0; i < 16; i++)
+    // send 5 pulses to make sure angle is set correctly by servo motor
+    for (int i = 0; i < 5; i++)
     {
         digitalWrite(servoPin, HIGH);
         delayMicroseconds(pulseWidth);

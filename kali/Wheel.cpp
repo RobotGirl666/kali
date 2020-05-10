@@ -55,9 +55,16 @@ void Wheel::setForwardMotion(int speed)
     string message = "Motors moving forward with speed " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-    digitalWrite(pinForwardMotors, HIGH);
-    digitalWrite(pinReverseMotors, LOW);
-    softPwmWrite(pinMotorSpeed, speed);
+    if (speed > 0)
+    {
+        digitalWrite(pinForwardMotors, HIGH);
+        digitalWrite(pinReverseMotors, LOW);
+        softPwmWrite(pinMotorSpeed, speed);
+    }
+    else
+    {
+        stop();
+    }
 }
 
 /*
@@ -74,9 +81,16 @@ void Wheel::setReverseMotion(int speed)
     string message = "Motors reversing with speed " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-    digitalWrite(pinForwardMotors, LOW);
-    digitalWrite(pinReverseMotors, HIGH);
-    softPwmWrite(pinMotorSpeed, speed);
+    if (speed > 0)
+    {
+        digitalWrite(pinForwardMotors, LOW);
+        digitalWrite(pinReverseMotors, HIGH);
+        softPwmWrite(pinMotorSpeed, speed);
+    }
+    else
+    {
+        stop();
+    }
 }
 
 /*
