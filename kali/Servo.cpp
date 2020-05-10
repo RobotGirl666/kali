@@ -64,12 +64,12 @@ void Servo::setPos(int angle)
     }
     
     int pulseWidth;                   //Define the pulse width variable
-    pulseWidth = angle * 1000 / 180 + 1000;  //Convert the Angle to 1000-2000 microseconds pulse width as per servo specs
+//    pulseWidth = angle * 1000 / 180 + 1000;  //Convert the Angle to 1000-2000 microseconds pulse width as per servo specs
     // The following line of code came with the Yahboom robot. The specs on the servo (which I looked up on the web) contradict the settings in the code below
-//    pulseWidth = (angle * 11) + 500;  //Convert the Angle to 500-2480 pulse width
+    pulseWidth = (angle * 11) + 500;  //Convert the Angle to 500-2480 pulse width
     
-    // send 5 pulses to make sure angle is set correctly by servo motor
-    for (int i = 0; i < 5; i++)
+    // send 16 pulses to make sure angle is set correctly by servo motor
+    for (int i = 0; i < 16; i++)
     {
         digitalWrite(servoPin, HIGH);
         delayMicroseconds(pulseWidth);
