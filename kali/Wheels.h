@@ -30,8 +30,10 @@ public:
     void initialise();
     void moveForward(int speed, int seconds = 0);
     void moveReverse(int speed, int seconds = 0);
+    void setForwardSpeed(int speed);
+    void setReverseSpeed(int speed);
     void brakeSoft();
-    void brakeHard();
+    void stop();
     void twirlLeft(int speed, int milliseconds = 0);
     void twirlRight(int speed, int milliseconds = 0);
     void turnLeft(int speed, int milliseconds = 0);

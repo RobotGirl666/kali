@@ -7,18 +7,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Wheels.cpp</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Servo.h</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/validation.h</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/kali.cpp</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/Camera.cpp</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/KaliRobot.h</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/Camera.h</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Wheels.h</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Logging.h</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Servo.cpp</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Logging.cpp</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Wheel.cpp</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/kali.cpp</file>
-            <file>file:/home/vangelis/Documents/Projects/kali/kali/Wheel.h</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/validation.cpp</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/KaliRobot.cpp</file>
         </group>
     </open-files>

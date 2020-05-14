@@ -101,6 +101,22 @@ void Wheels::moveReverse(int speed, int seconds)
     }
 }
 
+void Wheels::setForwardSpeed(int speed)
+{
+    leftWheels.setForwardMotion(speed);
+    rightWheels.setForwardMotion(speed);
+    
+    currentSpeed = speed;
+}
+
+void Wheels::setReverseSpeed(int speed)
+{
+    leftWheels.setReverseMotion(speed);
+    rightWheels.setReverseMotion(speed);
+    
+    currentSpeed = -speed;
+}
+
 /*
     Ramps up the speed to the specified value.
 
@@ -117,8 +133,7 @@ void Wheels::forwardRampUp(int speed)
     // ramp up the speed in increments of 10% of the total speed
     for (int i = (speed / 10); i < speed; i += (speed / 10))
     {
-        leftWheels.setForwardMotion(i);
-        rightWheels.setForwardMotion(i);
+        setForwardSpeed(i);
 
         delay(rampIncrement);
     }
@@ -126,10 +141,7 @@ void Wheels::forwardRampUp(int speed)
     // set the final speed accurately
     message = "Set the speed of both wheels to " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    leftWheels.setForwardMotion(speed);
-    rightWheels.setForwardMotion(speed);
-    
-    currentSpeed = speed;
+    setForwardSpeed(speed);
 }
 
 /*
@@ -148,18 +160,14 @@ void Wheels::forwardRampDown(int speed)
     // ramp down the speed in increments of 10% of the total speed
     for (int i = speed; i > 0; i -= (speed / 10))
     {
-        leftWheels.setForwardMotion(i);
-        rightWheels.setForwardMotion(i);
+        setForwardSpeed(i);
 
         delay(rampIncrement);
     }
     
     // set the final speed accurately
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-    leftWheels.stop();
-    rightWheels.stop();
-    
-    currentSpeed = 0;
+    stop();
 }
 
 /*
@@ -178,8 +186,7 @@ void Wheels::reverseRampUp(int speed)
     // ramp up the speed in increments of 10% of the total speed
     for (int i = (speed / 10); i < speed; i += (speed / 10))
     {
-        leftWheels.setReverseMotion(i);
-        rightWheels.setReverseMotion(i);
+        setReverseSpeed(i);
 
         delay(rampIncrement);
     }
@@ -187,10 +194,7 @@ void Wheels::reverseRampUp(int speed)
     // set the final speed accurately
     message = "Set the speed of both wheels to " + to_string(speed);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
-    leftWheels.setReverseMotion(speed);
-    rightWheels.setReverseMotion(speed);
-    
-    currentSpeed = -speed;
+    setReverseSpeed(speed);
 }
 
 /*
@@ -209,18 +213,14 @@ void Wheels::reverseRampDown(int speed)
     // ramp down the speed in increments of 10% of the total speed
     for (int i = speed; i > 0; i -= (speed / 10))
     {
-        leftWheels.setReverseMotion(i);
-        rightWheels.setReverseMotion(i);
+        setReverseSpeed(i);
 
         delay(rampIncrement);
     }
     
     // set the final speed accurately
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-    leftWheels.stop();
-    rightWheels.stop();
-    
-    currentSpeed = 0;
+    stop();
 }
 
 /*
@@ -245,10 +245,10 @@ void Wheels::brakeSoft()
 }
 
 /*
-    Brakes abruptly - sets the forward or reverse direction motion to 0.
+    Stops abruptly - sets the forward or reverse direction motion to 0.
 
 */
-void Wheels::brakeHard()
+void Wheels::stop()
 {
     Logging* kaliLog = Logging::Instance();
 
@@ -286,10 +286,7 @@ void Wheels::twirlLeft(int speed, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-        leftWheels.stop();
-        rightWheels.stop();
-
-        currentSpeed = 0;
+        stop();
     }
 }
 
@@ -320,10 +317,7 @@ void Wheels::twirlRight(int speed, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-        leftWheels.stop();
-        rightWheels.stop();
-
-        currentSpeed = 0;
+        stop();
     }
 }
 
@@ -489,10 +483,7 @@ void Wheels::turn(int speedLeft, int speedRight, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-        leftWheels.stop();
-        rightWheels.stop();
-
-        currentSpeed = 0;
+        stop();
     }
 }
 
@@ -530,9 +521,6 @@ void Wheels::turnReverse(int speedLeft, int speedRight, int milliseconds)
 
         // stop twirling (wheel speed = 0)
         kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
-        leftWheels.stop();
-        rightWheels.stop();
-
-        currentSpeed = 0;
+        stop();
     }
 }
