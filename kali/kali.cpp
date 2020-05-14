@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2;
                 }
-                kali.moveForward(speed, time);
+                kali.wheels.moveForward(speed, time);
             }
 
             else if (input.compare("reverse") == 0)
@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2;
                 }
-                kali.moveReverse(speed, time);
+                kali.wheels.moveReverse(speed, time);
             }
 
             else if (input.compare("twirlleft") == 0)
@@ -115,7 +115,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.twirlLeft(speed, time);
+                kali.wheels.twirlLeft(speed, time);
             }
 
             else if (input.compare("twirlright") == 0)
@@ -139,7 +139,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.twirlRight(speed, time);  //add in time
+                kali.wheels.twirlRight(speed, time);  //add in time
             }
 
             else if (input.compare("turnleft") == 0)
@@ -163,7 +163,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnLeft(speed, time);
+                kali.wheels.turnLeft(speed, time);
             }
 
             else if (input.compare("turnright") == 0)
@@ -187,7 +187,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnRight(speed, time);
+                kali.wheels.turnRight(speed, time);
             }
 
             else if (input.compare("turnhardleft") == 0)
@@ -211,7 +211,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnHardLeft(speed, time);
+                kali.wheels.turnHardLeft(speed, time);
             }
 
             else if (input.compare("turnhardright") == 0)
@@ -235,7 +235,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnHardRight(speed, time);
+                kali.wheels.turnHardRight(speed, time);
             }
 
             else if (input.compare("turnleftreverse") == 0)
@@ -259,7 +259,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnLeftReverse(speed, time);
+                kali.wheels.turnLeftReverse(speed, time);
             }
 
             else if (input.compare("turnrightreverse") == 0)
@@ -283,7 +283,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnRightReverse(speed, time);
+                kali.wheels.turnRightReverse(speed, time);
             }
 
             else if (input.compare("turnhardleftreverse") == 0)
@@ -307,7 +307,7 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnHardLeftReverse(speed, time);
+                kali.wheels.turnHardLeftReverse(speed, time);
             }
 
             else if (input.compare("turnhardrightreverse") == 0)
@@ -331,27 +331,27 @@ int main(int argc, char** argv) {
                     speed = 30;
                     time = 2000;
                 }
-                kali.turnHardRightReverse(speed, time);
+                kali.wheels.turnHardRightReverse(speed, time);
             }
 
             else if (input.compare("startcamerastream") == 0)
             {
-                kali.startCameraStream();
+                kali.camera.startStreaming();
             }
 
             else if (input.compare("stopcamerastream") == 0)
             {
-                kali.stopCameraStream();
+                kali.camera.stopStreaming();
             }
 
             else if (input.compare("startcamerarecording") == 0)
             {
-                kali.startCameraRecording();
+                kali.camera.startRecording();
             }
 
             else if (input.compare("stopcamerarecording") == 0)
             {
-                kali.stopCameraRecording();
+                kali.camera.stopRecording();
             }
 
             else if (input.compare("tiltcamera") == 0)
@@ -363,7 +363,7 @@ int main(int argc, char** argv) {
                         angle = 90;
                     }
                 }
-                kali.tiltCamera(angle);
+                kali.camera.tilt(angle);
             }
 
             else if (input.compare("pancamera") == 0)
@@ -375,7 +375,7 @@ int main(int argc, char** argv) {
                         angle = 90;
                     }
                 }
-                kali.panCamera(angle);
+                kali.camera.pan(angle);
             }
 
             else if (input.compare("help") == 0)

@@ -59,7 +59,7 @@ void Servo::setPos(int angle)
     }
     else if (angle > 180)
     {
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Servo position exceede upper limit. Clipping to 180.");
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Servo position exceeds upper limit. Clipping to 180.");
         angle = 180;
     }
     

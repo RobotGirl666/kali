@@ -30,36 +30,10 @@ public:
     // initialisation
     void initialise();
     
-    // movement
-    void moveForward(int speed, int seconds = 0);
-    void moveReverse(int speed, int seconds = 0);
-    void brakeSoft();
-    void brakeHard();
-    void twirlLeft(int speed, int milliseconds = 0);
-    void twirlRight(int speed, int milliseconds = 0);
-    void turnLeft(int speed, int milliseconds = 0);
-    void turnRight(int speed, int milliseconds = 0);
-    void turnHardLeft(int speed, int milliseconds = 0);
-    void turnHardRight(int speed, int milliseconds = 0);
-    void turnLeftReverse(int speed, int milliseconds = 0);
-    void turnRightReverse(int speed, int milliseconds = 0);
-    void turnHardLeftReverse(int speed, int milliseconds = 0);
-    void turnHardRightReverse(int speed, int milliseconds = 0);
-    
-    // camera
-    void startCameraStream();
-    void stopCameraStream();
-    void startCameraRecording();
-    void stopCameraRecording();
-    void tiltCamera(int angle);
-    void panCamera(int angle);
-    
-    // other
     void remote();
     void party();
-    //bool checkNum(char num[]);
     
-protected:
+    // components of the robot
     Wheels wheels;
     Sensors sensors;
     Buzzer buzzer;
