@@ -19,9 +19,12 @@ public:
     Validation();
     Validation(const Validation& orig);
     virtual ~Validation();
+    
     //validation functions
     static bool RangeCheck(int val,int lowerBound, int upperBound);
     static bool checkNum(char num[]);
+    static int parseSpeedTime(int argc, char** argv, int i, int& speed, int& time, bool msec = false);
+    static int parseAngle(int argc, char** argv, int i, int& angle);
 
 
 private:

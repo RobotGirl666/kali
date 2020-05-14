@@ -48,289 +48,121 @@ int main(int argc, char** argv) {
             }
             else if (input.compare("forward") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time);
+
                 kali.wheels.moveForward(speed, time);
             }
 
             else if (input.compare("reverse") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time);
+
                 kali.wheels.moveReverse(speed, time);
             }
 
             else if (input.compare("twirlleft") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 1000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.twirlLeft(speed, time);
             }
 
             else if (input.compare("twirlright") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 1000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.twirlRight(speed, time);  //add in time
             }
 
             else if (input.compare("turnleft") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnLeft(speed, time);
             }
 
             else if (input.compare("turnright") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnRight(speed, time);
             }
 
             else if (input.compare("turnhardleft") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnHardLeft(speed, time);
             }
 
             else if (input.compare("turnhardright") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnHardRight(speed, time);
             }
 
             else if (input.compare("turnleftreverse") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnLeftReverse(speed, time);
             }
 
             else if (input.compare("turnrightreverse") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnRightReverse(speed, time);
             }
 
             else if (input.compare("turnhardleftreverse") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnHardLeftReverse(speed, time);
             }
 
             else if (input.compare("turnhardrightreverse") == 0)
             {
-                int speed = 0;
-                int time = 0;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    speed = atoi(argv[i+1]);
-                    if (Validation::RangeCheck(speed, 0, 100)) {
-                        if (Validation::checkNum(argv[i+2])){
-                            time = atoi(argv[i+2]);
-                            if (Validation::RangeCheck(time,0,10000)){
-                            }
-                        }
-                        else {
-                            time = 2000;
-                        }
-                    }
-                }
-                else {
-                    speed = 30;
-                    time = 2000;
-                }
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
+
                 kali.wheels.turnHardRightReverse(speed, time);
             }
 
@@ -356,29 +188,23 @@ int main(int argc, char** argv) {
 
             else if (input.compare("tiltcamera") == 0)
             {
-                int angle = 90;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    angle = atoi(argv[i+1]);
-                    if (!Validation::RangeCheck(angle, 0, 180)) {
-                        angle = 90;
-                    }
-                }
+                int angle;
+                
+                i += Validation::parseAngle(argc, argv, i, angle);
+
                 kali.camera.tilt(angle);
             }
 
             else if (input.compare("pancamera") == 0)
             {
-                int angle = 90;
-                if ((i+1<argc)&&(Validation::checkNum(argv[i+1]))) {
-                    angle = atoi(argv[i+1]);
-                    if (!Validation::RangeCheck(angle, 0, 180)) {
-                        angle = 90;
-                    }
-                }
+                int angle;
+                
+                i += Validation::parseAngle(argc, argv, i, angle);
+
                 kali.camera.pan(angle);
             }
 
-            else if (input.compare("help") == 0)
+            else
             {
                 cout << "You can control Kali with the following commands:" << endl;
                 cout << "kali forward [speed] [seconds]" << endl;

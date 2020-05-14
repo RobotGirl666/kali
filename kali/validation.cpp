@@ -33,9 +33,8 @@ Validation::~Validation() {
 // Check if user input is within desired range. Return true if within range. 
 bool Validation::RangeCheck(int val,int lowerBound, int upperBound) 
 {
-    if (val < lowerBound || val > upperBound) 
+    if (val < lowerBound || val > upperBound)
     {
-        cout << "Value is out of bounds. Lol";
         return false;
     }
     else
@@ -56,4 +55,57 @@ bool Validation::checkNum(char num[]) {
         }
     }
     return true;
+}
+
+int Validation::parseSpeedTime(int argc, char** argv, int i, int& speed, int& time, bool msec)
+{
+    int incr = 0;
+
+    speed = 0;
+    time = 0;
+    int timeFactor = 1;
+    if (msec)
+    {
+        timeFactor = 1000;
+    }
+    if ((i+1 < argc) && (Validation::checkNum(argv[i+1]))) {
+        incr++;
+        i++;
+        speed = atoi(argv[i]);
+        if (Validation::RangeCheck(speed, 0, 100)) {
+            if (Validation::checkNum(argv[i+1])){
+                incr++;
+                i++;
+                time = atoi(argv[i]);
+                if (Validation::RangeCheck(time,0,10000)){
+                }
+            }
+            else {
+                time = 2 * timeFactor;
+            }
+        }
+    }
+    else {
+        speed = 30;
+        time = 2 * timeFactor;
+    }
+    
+    return incr;
+}
+
+int Validation::parseAngle(int argc, char** argv, int i, int& angle)
+{
+    int incr = 0;
+    
+    angle = 90;
+    if ((i+1 < argc) && (Validation::checkNum(argv[i+1]))) {
+        incr++;
+        i++;
+        angle = atoi(argv[i]);
+        if (!Validation::RangeCheck(angle, 0, 180)) {
+            angle = 90;
+        }
+    }
+    
+    return incr;
 }
