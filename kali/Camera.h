@@ -14,7 +14,17 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include <string>
+
+// Include required header files from OpenCV directory
+#include <opencv2/objdetect.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
 #include "Servo.h"
+
+using namespace std;
+using namespace cv;
 
 class Camera {
 public:
@@ -30,6 +40,8 @@ public:
     void stopRecording();
     void tilt(int angle);
     void pan(int angle);
+    void detectFaces();
+    void recogniseFaces();
 
 protected:
     bool streaming;
@@ -37,6 +49,7 @@ protected:
     Servo horizontalServo;
     Servo verticalServo;
     
+    void detectAndDraw(Mat& img, CascadeClassifier& cascade, CascadeClassifier& nestedCascade, double scale);
     void generateUniqueFilename(char* timestring, char* baseName);
     
 private:

@@ -103,16 +103,30 @@ void Wheels::moveReverse(int speed, int seconds)
 
 void Wheels::setForwardSpeed(int speed)
 {
-    leftWheels.setForwardMotion(speed);
-    rightWheels.setForwardMotion(speed);
+    if (speed == 0)
+    {
+        stop();
+    }
+    else
+    {
+        leftWheels.setForwardMotion(speed);
+        rightWheels.setForwardMotion(speed);
+    }
     
     currentSpeed = speed;
 }
 
 void Wheels::setReverseSpeed(int speed)
 {
-    leftWheels.setReverseMotion(speed);
-    rightWheels.setReverseMotion(speed);
+    if (speed == 0)
+    {
+        stop();
+    }
+    else
+    {
+        leftWheels.setReverseMotion(speed);
+        rightWheels.setReverseMotion(speed);
+    }
     
     currentSpeed = -speed;
 }

@@ -64,13 +64,25 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so
+LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so /lib/x86_64-linux-gnu/libopencv_core.so /lib/x86_64-linux-gnu/libopencv_highgui.so /lib/x86_64-linux-gnu/libopencv_imgproc.so /lib/x86_64-linux-gnu/libopencv_objdetect.so /lib/x86_64-linux-gnu/libopencv_video.so /lib/x86_64-linux-gnu/libopencv_videoio.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libwiringPi.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_core.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_highgui.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_imgproc.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_objdetect.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_video.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_videoio.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -79,67 +91,67 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 ${OBJECTDIR}/Buzzer.o: Buzzer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Buzzer.o Buzzer.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Buzzer.o Buzzer.cpp
 
 ${OBJECTDIR}/Camera.o: Camera.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camera.o Camera.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camera.o Camera.cpp
 
 ${OBJECTDIR}/InfraredSensor.o: InfraredSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfraredSensor.o InfraredSensor.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfraredSensor.o InfraredSensor.cpp
 
 ${OBJECTDIR}/KaliRobot.o: KaliRobot.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/KaliRobot.o KaliRobot.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/KaliRobot.o KaliRobot.cpp
 
 ${OBJECTDIR}/LeftWheels.o: LeftWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LeftWheels.o LeftWheels.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LeftWheels.o LeftWheels.cpp
 
 ${OBJECTDIR}/Logging.o: Logging.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
 
 ${OBJECTDIR}/RightWheels.o: RightWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RightWheels.o RightWheels.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RightWheels.o RightWheels.cpp
 
 ${OBJECTDIR}/Sensors.o: Sensors.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensors.o Sensors.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensors.o Sensors.cpp
 
 ${OBJECTDIR}/Servo.o: Servo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Servo.o Servo.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Servo.o Servo.cpp
 
 ${OBJECTDIR}/UltrasonicSensor.o: UltrasonicSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UltrasonicSensor.o UltrasonicSensor.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UltrasonicSensor.o UltrasonicSensor.cpp
 
 ${OBJECTDIR}/Wheel.o: Wheel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheel.o Wheel.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheel.o Wheel.cpp
 
 ${OBJECTDIR}/Wheels.o: Wheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheels.o Wheels.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheels.o Wheels.cpp
 
 ${OBJECTDIR}/kali.o: kali.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kali.o kali.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kali.o kali.cpp
 
 # Subprojects
 .build-subprojects:
@@ -147,7 +159,7 @@ ${OBJECTDIR}/kali.o: kali.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwiringPi.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwiringPi.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali
 
 # Subprojects
