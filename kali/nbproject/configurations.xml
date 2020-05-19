@@ -232,7 +232,7 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>/usr/include/opencv4</pElem>
+            <pElem>/usr/include</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
