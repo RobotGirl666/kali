@@ -65,7 +65,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/libwiringPi.so /lib/x86_64-linux-gnu/libopencv_core.so /lib/x86_64-linux-gnu/libopencv_highgui.so /lib/x86_64-linux-gnu/libopencv_imgproc.so /lib/x86_64-linux-gnu/libopencv_objdetect.so /lib/x86_64-linux-gnu/libopencv_video.so /lib/x86_64-linux-gnu/libopencv_videoio.so
+LDLIBSOPTIONS=/usr/lib/libwiringPi.so /usr/lib/arm-linux-gnueabihf/libopencv_core.so /usr/lib/arm-linux-gnueabihf/libopencv_highgui.so /usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so /usr/lib/arm-linux-gnueabihf/libopencv_objdetect.so /usr/lib/arm-linux-gnueabihf/libopencv_video.so /usr/lib/arm-linux-gnueabihf/libopencv_videoio.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -73,17 +73,17 @@ LDLIBSOPTIONS=/usr/lib/libwiringPi.so /lib/x86_64-linux-gnu/libopencv_core.so /l
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/libwiringPi.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_core.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libopencv_core.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_highgui.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libopencv_highgui.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_imgproc.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_objdetect.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libopencv_objdetect.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_video.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libopencv_video.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_videoio.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libopencv_videoio.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}

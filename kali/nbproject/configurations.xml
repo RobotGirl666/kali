@@ -244,12 +244,12 @@
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>/usr/lib/libwiringPi.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_core.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_highgui.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgproc.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_objdetect.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_video.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libopencv_core.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libopencv_highgui.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libopencv_objdetect.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libopencv_video.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libopencv_videoio.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
