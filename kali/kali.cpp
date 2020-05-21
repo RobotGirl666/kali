@@ -204,6 +204,11 @@ int main(int argc, char** argv) {
                 kali.camera.pan(angle);
             }
 
+            else if (input.compare("detectfaces") == 0)
+            {
+                kali.camera.detectFaces();
+            }
+
             else
             {
                 cout << "You can control Kali with the following commands:" << endl;
