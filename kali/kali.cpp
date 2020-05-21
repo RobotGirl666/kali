@@ -29,10 +29,11 @@ using namespace std;
 int main(int argc, char** argv) {
     Logging* kaliLog = Logging::Instance();
     // try catch everything - this will make kali a little more robust
-    try {
-        //start
-        kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
 
+    //start
+    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
+
+    try {
         // do stuff here (BE MORE SPECIFIC PLSSS DAD)
         KaliRobot kali;  // create the container class - overall robot
 
@@ -233,8 +234,6 @@ int main(int argc, char** argv) {
             }
 
         }
-      // goodbye
-        kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
     }
     catch (const std::exception& ex) {
         kaliLog->log("", __FUNCTION__, ex.what());
@@ -243,6 +242,9 @@ int main(int argc, char** argv) {
         // Just log that there was an issue
         kaliLog->log("", __FUNCTION__, "Unknow exception thrown!");
     }
+
+    // goodbye
+    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
     
     return 0;
 }
