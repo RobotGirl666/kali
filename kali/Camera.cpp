@@ -61,7 +61,8 @@
  * 
  * Face recognition using OpenCV - https://opencv.org/
  * Install the dependencies: sudo apt install build-essential cmake git pkg-config libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev gfortran openexr libatlas-base-dev python3-dev python3-numpy libtbb2 libtbb-dev libdc1394-22-dev
- * Then install libopencv-dev and libopencv-contrib-dev
+ * 
+ * Installing on Raspbian: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
  * 
  * Need to keep a database of face images which is built up from video image captures
  * For this we use SQLite - https://www.sqlite.org/index.html
