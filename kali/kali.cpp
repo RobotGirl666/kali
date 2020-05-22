@@ -231,6 +231,7 @@ int main(int argc, char** argv) {
                 cout << "kali stopcamerarecording" << endl;
                 cout << "kali tiltcamera [angle]" << endl;
                 cout << "kali pancamera [angle]" << endl;
+                cout << "kali detectfaces" << endl;
             }
 
         }

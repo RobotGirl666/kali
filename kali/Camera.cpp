@@ -64,12 +64,14 @@
  * 
  * Installing on Raspbian: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
  * 
+ * Upon further investigation, I don't think it's necessary to install fswebcam but I'll leave it here because it's a good way to check your webcam is working
  * Also need to install a usb camera: sudo apt install fswebcam
  * check that it works: fswebcam image.jpg
  * 
  * Need to keep a database of face images which is built up from video image captures
  * For this we use SQLite - https://www.sqlite.org/index.html
- * Install by running sudo apt install sqlite3
+ * Install by running sudo apt install sqlite3 libsqlite3-dev
+ * copy faces.sqlite into ~/Pictures and rename it ".faces.sqlite"
  * 
  */
 
@@ -362,7 +364,7 @@ void Camera::recogniseFaces()
 
 void Camera::detectAndDraw(Mat& img, CascadeClassifier& cascade, CascadeClassifier& nestedCascade, double scale)
 {
-    vector<Rect> faces, faces2;
+    vector<Rect> faces;
     Mat gray, smallImg;
 
     cvtColor( img, gray, COLOR_BGR2GRAY ); // Convert to Gray Scale
@@ -385,7 +387,7 @@ void Camera::detectAndDraw(Mat& img, CascadeClassifier& cascade, CascadeClassifi
         Scalar color = Scalar(255, 0, 0); // Color for Drawing tool
         int radius;
 
-        double aspect_ratio = (double)r.width/r.height;
+        double aspect_ratio = (double)r.width / r.height;
         if( 0.75 < aspect_ratio && aspect_ratio < 1.3 )
         {
             center.x = cvRound((r.x + r.width*0.5)*scale);
@@ -394,9 +396,11 @@ void Camera::detectAndDraw(Mat& img, CascadeClassifier& cascade, CascadeClassifi
             circle( img, center, radius, color, 3, 8, 0 );
         }
         else
+        {
             rectangle( img, cvPoint(cvRound(r.x*scale), cvRound(r.y*scale)),
                             cvPoint(cvRound((r.x + r.width-1)*scale),
                             cvRound((r.y + r.height-1)*scale)), color, 3, 8, 0);
+        }
         if( nestedCascade.empty() )
             continue;
         smallImgROI = smallImg( r );
