@@ -76,6 +76,9 @@
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_objdetect.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_video.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
+            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -165,6 +168,9 @@
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_objdetect.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_video.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
+            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -250,6 +256,9 @@
             <linkerLibFileItem>/usr/local/lib/libopencv_objdetect.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/local/lib/libopencv_video.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/local/lib/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_imgcodecs.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_face.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libsqlite3.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
