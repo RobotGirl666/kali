@@ -518,7 +518,7 @@ bool Camera::loadKnownFaces(vector<Mat>& images, vector<string>& labels, vector<
         }
         
         // log total number of face images loaded
-        string message = "Loaded " + to_string(face_pic_count) + "known face images";
+        string message = "Loaded " + to_string(face_pic_count) + " known face images";
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
         
         // close the prepared statement
