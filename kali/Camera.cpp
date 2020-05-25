@@ -448,11 +448,14 @@ void Camera::recogniseFaces()
                 
                 // Now perform the prediction, see how easy that is:
                 int prediction = model->predict(face_resized);
+
+                string message = "Face recognition predition is: " + to_string(prediction);
+                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+                message = "Recognised the following face: " + labels[prediction];
+                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
                 
                 string response = "Hello there, " + labels[prediction];
                 cout << response << endl;
-                string message = "Recognised the following face: " + labels[prediction];
-                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
             }
         }
     }
