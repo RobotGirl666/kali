@@ -485,7 +485,7 @@ bool Camera::loadKnownFaces(vector<Mat>& images, vector<string>& labels, vector<
     int rc;
 
     // open the faces database
-    rc = sqlite3_open("~/Pictures/.faces.sqlite", &db);
+    rc = sqlite3_open("/home/pi/Pictures/.faces.sqlite", &db);
 
     if( rc ) {
         success = false;
