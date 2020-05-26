@@ -15,6 +15,7 @@
 #define CAMERA_H
 
 #include <string>
+#include <map>
 
 // Include required header files from OpenCV directory
 #include <opencv2/objdetect.hpp>
@@ -49,7 +50,7 @@ protected:
     Servo horizontalServo;
     Servo verticalServo;
     
-    bool loadKnownFaces(vector<Mat>& images, vector<string>& labels, vector<int>& labels_index);
+    bool loadKnownFaces(vector<Mat>& images, map<int, string>& labels, vector<int>& labels_index);
     void detectAndDraw(Mat& img, CascadeClassifier& cascade, CascadeClassifier& nestedCascade, double scale);
     void generateUniqueFilename(char* timestring, char* baseName);
     

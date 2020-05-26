@@ -384,7 +384,7 @@ void Camera::recogniseFaces()
     
     // These vectors hold the images and corresponding labels (names)
     vector<Mat> images;
-    vector<string> labels;
+    map<int, string> labels;
     vector<int> labels_index;
 
     if (loadKnownFaces(images, labels, labels_index))
@@ -472,11 +472,11 @@ void Camera::recogniseFaces()
  * Load known faces from the database in ~/Pictures/.faces.sqlite
  *
  * @param images - a vector of opencv Mat images
- * @param labels - a vector of strings representing what the images are (ie names of people)
+ * @param labels - a map of strings representing what the images are (ie names of people)
  * @return bool - success/fail indicator
  * 
  */
-bool Camera::loadKnownFaces(vector<Mat>& images, vector<string>& labels, vector<int>& labels_index)
+bool Camera::loadKnownFaces(vector<Mat>& images, map<int, string>& labels, vector<int>& labels_index)
 {
     Logging* kaliLog = Logging::Instance();
     kaliLog->log(typeid(this).name(), __FUNCTION__, "Loading known faces from database.");
@@ -512,7 +512,7 @@ bool Camera::loadKnownFaces(vector<Mat>& images, vector<string>& labels, vector<
             
             // add to opencv images
             images.push_back(imread(filename, 0));
-            labels.push_back(face_name);
+            labels[face_index] = face_name;
             labels_index.push_back(face_index);
             
             face_pic_count++;
