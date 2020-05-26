@@ -506,13 +506,14 @@ bool Camera::loadKnownFaces(vector<Mat>& images, vector<string>& labels, vector<
         int face_pic_count = 0;
         while ( sqlite3_step( stmt ) == SQLITE_ROW ) {
             //  get the details from the row
-            string filename = string((const char*)sqlite3_column_text( stmt, 0 ));
-            string face_name = string((const char*)sqlite3_column_text( stmt, 1 ));
+            string filename = string((const char*)sqlite3_column_text(stmt, 0));
+            string face_name = string((const char*)sqlite3_column_text(stmt, 1));
+            int face_index = sqlite3_column_int(stmt, 2);
             
             // add to opencv images
             images.push_back(imread(filename, 0));
             labels.push_back(face_name);
-            labels_index.push_back(face_pic_count);
+            labels_index.push_back(face_index);
             
             face_pic_count++;
         }
