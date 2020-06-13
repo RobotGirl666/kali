@@ -109,3 +109,17 @@ int Validation::parseAngle(int argc, char** argv, int i, int& angle)
     
     return incr;
 }
+
+int Validation::parseString(int argc, char** argv, int i, string& text)
+{
+    int incr = 0;
+    
+    text = string("");
+    if (i + 1 < argc) {
+        incr++;
+        i++;
+        text = string(argv[i]);
+    }
+    
+    return incr;
+}

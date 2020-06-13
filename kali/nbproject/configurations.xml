@@ -13,6 +13,7 @@
       <itemPath>RightWheels.h</itemPath>
       <itemPath>Sensors.h</itemPath>
       <itemPath>Servo.h</itemPath>
+      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Speaker.h</itemPath>
       <itemPath>UltrasonicSensor.h</itemPath>
       <itemPath>Wheel.h</itemPath>
       <itemPath>Wheels.h</itemPath>
@@ -34,6 +35,7 @@
       <itemPath>RightWheels.cpp</itemPath>
       <itemPath>Sensors.cpp</itemPath>
       <itemPath>Servo.cpp</itemPath>
+      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp</itemPath>
       <itemPath>UltrasonicSensor.cpp</itemPath>
       <itemPath>Wheel.cpp</itemPath>
       <itemPath>Wheels.cpp</itemPath>
@@ -79,9 +81,20 @@
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
@@ -171,9 +184,20 @@
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
@@ -259,9 +283,20 @@
             <linkerLibFileItem>/usr/local/lib/libopencv_imgcodecs.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/local/lib/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libsqlite3.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libespeak.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">

@@ -18,7 +18,7 @@
 #include "Sensors.h"
 #include "Buzzer.h"
 #include "Camera.h"
-
+#include "Speaker.h"
 
 class KaliRobot {
 public:
@@ -38,6 +38,7 @@ public:
     Sensors sensors;
     Buzzer buzzer;
     Camera camera;
+    Speaker speaker;
     
 private:
 };

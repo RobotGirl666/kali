@@ -25,6 +25,7 @@ public:
     static bool checkNum(char num[]);
     static int parseSpeedTime(int argc, char** argv, int i, int& speed, int& time, bool msec = false);
     static int parseAngle(int argc, char** argv, int i, int& angle);
+    static int parseString(int argc, char** argv, int i, string& text);
 
 
 private:

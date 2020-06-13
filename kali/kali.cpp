@@ -215,6 +215,15 @@ int main(int argc, char** argv) {
                 kali.camera.recogniseFaces();
             }
 
+            else if (input.compare("say") == 0)
+            {
+                string text;
+                
+                i += Validation::parseString(argc, argv, i, text);
+
+                kali.speaker.say(text);
+            }
+
             else
             {
                 cout << "You can control Kali with the following commands:" << endl;
