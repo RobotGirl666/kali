@@ -18,7 +18,7 @@ using namespace std;
 
 #include <wiringPi.h>
 #include <softPwm.h>
-#include "validation.h"
+#include "Validation.h"
 
 
 Validation::Validation() {

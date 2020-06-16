@@ -15,9 +15,9 @@
       <itemPath>Servo.h</itemPath>
       <itemPath>/home/vangelis/Documents/Projects/kali/kali/Speaker.h</itemPath>
       <itemPath>UltrasonicSensor.h</itemPath>
+      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Validation.h</itemPath>
       <itemPath>Wheel.h</itemPath>
       <itemPath>Wheels.h</itemPath>
-      <itemPath>validation.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -37,10 +37,10 @@
       <itemPath>Servo.cpp</itemPath>
       <itemPath>/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp</itemPath>
       <itemPath>UltrasonicSensor.cpp</itemPath>
+      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Validation.cpp</itemPath>
       <itemPath>Wheel.cpp</itemPath>
       <itemPath>Wheels.cpp</itemPath>
       <itemPath>kali.cpp</itemPath>
-      <itemPath>validation.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -54,6 +54,9 @@
       <itemPath>makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>/home/vangelis/Documents/Projects/kali/kali</Elem>
+  </sourceRootList>
   <projectmakefile>makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -91,6 +94,16 @@
             flavor2="0">
       </item>
       <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -145,10 +158,6 @@
       </item>
       <item path="kali.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="validation.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="validation.h" ex="false" tool="3" flavor2="0">
-      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -194,6 +203,16 @@
             flavor2="0">
       </item>
       <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -297,6 +316,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
@@ -346,10 +375,6 @@
       <item path="Wheels.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kali.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="validation.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="validation.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/ec48de8a/Speaker.o \
+	${OBJECTDIR}/_ext/ec48de8a/Validation.o \
 	${OBJECTDIR}/Buzzer.o \
 	${OBJECTDIR}/Camera.o \
 	${OBJECTDIR}/InfraredSensor.o \
@@ -101,6 +102,11 @@ ${OBJECTDIR}/_ext/ec48de8a/Speaker.o: /home/vangelis/Documents/Projects/kali/kal
 	${MKDIR} -p ${OBJECTDIR}/_ext/ec48de8a
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ec48de8a/Speaker.o /home/vangelis/Documents/Projects/kali/kali/Speaker.cpp
+
+${OBJECTDIR}/_ext/ec48de8a/Validation.o: /home/vangelis/Documents/Projects/kali/kali/Validation.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/ec48de8a
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ec48de8a/Validation.o /home/vangelis/Documents/Projects/kali/kali/Validation.cpp
 
 ${OBJECTDIR}/Buzzer.o: Buzzer.cpp
 	${MKDIR} -p ${OBJECTDIR}
