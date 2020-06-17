@@ -13,9 +13,9 @@
       <itemPath>RightWheels.h</itemPath>
       <itemPath>Sensors.h</itemPath>
       <itemPath>Servo.h</itemPath>
-      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Speaker.h</itemPath>
+      <itemPath>Speaker.h</itemPath>
       <itemPath>UltrasonicSensor.h</itemPath>
-      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Validation.h</itemPath>
+      <itemPath>Validation.h</itemPath>
       <itemPath>Wheel.h</itemPath>
       <itemPath>Wheels.h</itemPath>
     </logicalFolder>
@@ -35,9 +35,9 @@
       <itemPath>RightWheels.cpp</itemPath>
       <itemPath>Sensors.cpp</itemPath>
       <itemPath>Servo.cpp</itemPath>
-      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp</itemPath>
+      <itemPath>Speaker.cpp</itemPath>
       <itemPath>UltrasonicSensor.cpp</itemPath>
-      <itemPath>/home/vangelis/Documents/Projects/kali/kali/Validation.cpp</itemPath>
+      <itemPath>Validation.cpp</itemPath>
       <itemPath>Wheel.cpp</itemPath>
       <itemPath>Wheels.cpp</itemPath>
       <itemPath>kali.cpp</itemPath>
@@ -88,26 +88,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
@@ -144,9 +124,17 @@
       </item>
       <item path="Servo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Speaker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speaker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="UltrasonicSensor.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="UltrasonicSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Validation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Validation.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wheel.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -197,26 +185,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
@@ -253,9 +221,17 @@
       </item>
       <item path="Servo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Speaker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speaker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="UltrasonicSensor.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="UltrasonicSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Validation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Validation.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wheel.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -306,26 +282,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Speaker.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/vangelis/Documents/Projects/kali/kali/Validation.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="Buzzer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buzzer.h" ex="false" tool="3" flavor2="0">
@@ -362,9 +318,17 @@
       </item>
       <item path="Servo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Speaker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speaker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="UltrasonicSensor.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="UltrasonicSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Validation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Validation.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wheel.cpp" ex="false" tool="1" flavor2="0">
       </item>

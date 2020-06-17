@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/ec48de8a/Speaker.o \
-	${OBJECTDIR}/_ext/ec48de8a/Validation.o \
 	${OBJECTDIR}/Buzzer.o \
 	${OBJECTDIR}/Camera.o \
 	${OBJECTDIR}/InfraredSensor.o \
@@ -46,7 +44,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/RightWheels.o \
 	${OBJECTDIR}/Sensors.o \
 	${OBJECTDIR}/Servo.o \
+	${OBJECTDIR}/Speaker.o \
 	${OBJECTDIR}/UltrasonicSensor.o \
+	${OBJECTDIR}/Validation.o \
 	${OBJECTDIR}/Wheel.o \
 	${OBJECTDIR}/Wheels.o \
 	${OBJECTDIR}/kali.o
@@ -98,16 +98,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/ec48de8a/Speaker.o: /home/vangelis/Documents/Projects/kali/kali/Speaker.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/ec48de8a
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ec48de8a/Speaker.o /home/vangelis/Documents/Projects/kali/kali/Speaker.cpp
-
-${OBJECTDIR}/_ext/ec48de8a/Validation.o: /home/vangelis/Documents/Projects/kali/kali/Validation.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/ec48de8a
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ec48de8a/Validation.o /home/vangelis/Documents/Projects/kali/kali/Validation.cpp
-
 ${OBJECTDIR}/Buzzer.o: Buzzer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -153,10 +143,20 @@ ${OBJECTDIR}/Servo.o: Servo.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Servo.o Servo.cpp
 
+${OBJECTDIR}/Speaker.o: Speaker.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Speaker.o Speaker.cpp
+
 ${OBJECTDIR}/UltrasonicSensor.o: UltrasonicSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UltrasonicSensor.o UltrasonicSensor.cpp
+
+${OBJECTDIR}/Validation.o: Validation.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validation.o Validation.cpp
 
 ${OBJECTDIR}/Wheel.o: Wheel.cpp
 	${MKDIR} -p ${OBJECTDIR}
