@@ -17,6 +17,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <espeak-ng/speak_lib.h>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
     Speaker(const Speaker& orig);
     virtual ~Speaker();
     
+    static int SynthCallback(short *wav, int numsamples, espeak_EVENT *events);
     void say(string& text_to_say);
     
 private:
@@ -33,4 +35,3 @@ private:
 };
 
 #endif /* SPEAKER_H */
-

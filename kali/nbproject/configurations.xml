@@ -84,7 +84,7 @@
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
             <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak-ng.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
