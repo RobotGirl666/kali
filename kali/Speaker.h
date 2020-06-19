@@ -17,7 +17,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <espeak/speak_lib.h>
+#include <espeak-ng/speak_lib.h>
 
 using namespace std;
 
