@@ -163,7 +163,7 @@ void Camera::startStreaming()
         }
         else
         {
-            string message = "Failed to stop video streaming! Error: " + to_string(status);
+            string message = "Failed to start video streaming! Error: " + to_string(status);
             kaliLog->log(typeid(this).name(), __FUNCTION__, message);
         }
     }
