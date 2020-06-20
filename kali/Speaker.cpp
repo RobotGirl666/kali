@@ -52,7 +52,7 @@ int Speaker::SynthCallback(short* wav, int numsamples, espeak_EVENT* events)
     return 0;
 }
 
-void Speaker::say(string& text_to_say, int volume)
+void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int range)
 {
     espeak_ERROR speakErr;
 
@@ -65,17 +65,22 @@ void Speaker::say(string& text_to_say, int volume)
     {
         espeak_SetSynthCallback(Speaker::SynthCallback);
         
-        // set some parameters
+        // set some properties
         espeak_VOICE voice = {
             "Kali", // name
             "en-uk", // language
             NULL, // identifier
             2, // gender - female
-            80, // age
+            70, // age
             0 // variant
         };
         espeak_SetVoiceByProperties(&voice);
+
+        // set some parameters
         espeak_SetParameter(espeakVOLUME, volume, 0);
+        espeak_SetParameter(espeakRATE, rate, 0);
+        espeak_SetParameter(espeakPITCH, pitch, 0);
+        espeak_SetParameter(espeakRANGE, range, 0);
 
         if ((speakErr = espeak_Synth(text_to_say.c_str(), text_to_say.size(), 0, POS_SENTENCE, 0, espeakCHARS_AUTO, NULL, NULL)) != EE_OK)
         {
