@@ -28,7 +28,7 @@ public:
     virtual ~Speaker();
     
     static int SynthCallback(short *wav, int numsamples, espeak_EVENT *events);
-    void say(string& text_to_say);
+    void say(string& text_to_say, int volume = 90);
     
 private:
 

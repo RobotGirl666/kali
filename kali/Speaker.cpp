@@ -13,6 +13,9 @@
  * How to install espeak for the text to speech conversion
  * sudo apt-get install espeak libespeak1 libespeak-dev espeak-data
  * 
+ * ok, so I have found out that espeak has been broken on raspberry pi
+ * need to use espeak-ng instead
+ * 
  */
 
 #include <cstring>
@@ -49,7 +52,7 @@ int Speaker::SynthCallback(short* wav, int numsamples, espeak_EVENT* events)
     return 0;
 }
 
-void Speaker::say(string& text_to_say)
+void Speaker::say(string& text_to_say, int volume)
 {
     espeak_ERROR speakErr;
 
@@ -61,6 +64,18 @@ void Speaker::say(string& text_to_say)
     if (espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, espeakINITIALIZE_PHONEME_EVENTS) >= 0)
     {
         espeak_SetSynthCallback(Speaker::SynthCallback);
+        
+        // set some parameters
+        espeak_VOICE voice = {
+            "Kali", // name
+            "en-uk", // language
+            NULL, // identifier
+            2, // gender - female
+            80, // age
+            0 // variant
+        };
+        espeak_SetVoiceByProperties(&voice);
+        espeak_SetParameter(espeakVOLUME, volume, 0);
 
         if ((speakErr = espeak_Synth(text_to_say.c_str(), text_to_say.size(), 0, POS_SENTENCE, 0, espeakCHARS_AUTO, NULL, NULL)) != EE_OK)
         {
