@@ -57,11 +57,13 @@ void Remote::KeyboardControl(KaliRobot* kali)
         {
             //call turn right
             kali->wheels.twirlRight(30,0);
+            delay(100);
         }
         else if (key == 80) // down arrow
         {
             //call reverse?? or brake??
             kali->wheels.moveReverse(30,0);
+            delay(100);
         }
     }
 }
