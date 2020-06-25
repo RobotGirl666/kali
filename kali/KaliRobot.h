@@ -19,6 +19,7 @@
 #include "Buzzer.h"
 #include "Camera.h"
 #include "Speaker.h"
+#include "Remote.h"
 
 class KaliRobot {
 public:
@@ -30,15 +31,13 @@ public:
     // initialisation
     void initialise();
     
-    void remote();
-    void party();
-    
     // components of the robot
     Wheels wheels;
     Sensors sensors;
     Buzzer buzzer;
     Camera camera;
     Speaker speaker;
+    Remote remote;
     
 private:
 };

@@ -46,13 +46,3 @@ void KaliRobot::initialise()
     // give it a couple of seconds to work its way through
     delay(2000);
 }
-
-void KaliRobot::remote()
-{
-    
-}
-
-void KaliRobot::party()
-{
-    
-}

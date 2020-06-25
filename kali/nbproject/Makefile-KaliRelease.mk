@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/KaliRobot.o \
 	${OBJECTDIR}/LeftWheels.o \
 	${OBJECTDIR}/Logging.o \
+	${OBJECTDIR}/Remote.o \
 	${OBJECTDIR}/RightWheels.o \
 	${OBJECTDIR}/Sensors.o \
 	${OBJECTDIR}/Servo.o \
@@ -127,6 +128,11 @@ ${OBJECTDIR}/Logging.o: Logging.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
+
+${OBJECTDIR}/Remote.o: Remote.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Remote.o Remote.cpp
 
 ${OBJECTDIR}/RightWheels.o: RightWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}

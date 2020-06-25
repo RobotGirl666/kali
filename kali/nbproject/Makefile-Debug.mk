@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/KaliRobot.o \
 	${OBJECTDIR}/LeftWheels.o \
 	${OBJECTDIR}/Logging.o \
+	${OBJECTDIR}/Remote.o \
 	${OBJECTDIR}/RightWheels.o \
 	${OBJECTDIR}/Sensors.o \
 	${OBJECTDIR}/Servo.o \
@@ -66,7 +67,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so /lib/x86_64-linux-gnu/libopencv_core.so /lib/x86_64-linux-gnu/libopencv_highgui.so /lib/x86_64-linux-gnu/libopencv_imgproc.so /lib/x86_64-linux-gnu/libopencv_objdetect.so /lib/x86_64-linux-gnu/libopencv_video.so /lib/x86_64-linux-gnu/libopencv_videoio.so /lib/x86_64-linux-gnu/libopencv_imgcodecs.so /lib/x86_64-linux-gnu/libopencv_face.so /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libespeak.so
+LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so /lib/x86_64-linux-gnu/libopencv_core.so /lib/x86_64-linux-gnu/libopencv_highgui.so /lib/x86_64-linux-gnu/libopencv_imgproc.so /lib/x86_64-linux-gnu/libopencv_objdetect.so /lib/x86_64-linux-gnu/libopencv_video.so /lib/x86_64-linux-gnu/libopencv_videoio.so /lib/x86_64-linux-gnu/libopencv_imgcodecs.so /lib/x86_64-linux-gnu/libopencv_face.so /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libespeak.so /usr/lib/x86_64-linux-gnu/libncurses.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -93,6 +94,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libespeak.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libncurses.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -127,6 +130,11 @@ ${OBJECTDIR}/Logging.o: Logging.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
+
+${OBJECTDIR}/Remote.o: Remote.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Remote.o Remote.cpp
 
 ${OBJECTDIR}/RightWheels.o: RightWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -179,7 +187,7 @@ ${OBJECTDIR}/kali.o: kali.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwiringPi.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgcodecs.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_face.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsqlite3.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libespeak.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwiringPi.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgcodecs.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_face.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsqlite3.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libespeak.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libncurses.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali
 
 # Subprojects
