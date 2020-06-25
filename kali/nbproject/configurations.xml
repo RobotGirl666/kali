@@ -291,6 +291,7 @@
             <linkerLibFileItem>/usr/local/lib/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libsqlite3.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libespeak-ng.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libncurses.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
