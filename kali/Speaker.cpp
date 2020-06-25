@@ -13,16 +13,11 @@
  * How to install espeak for the text to speech conversion
  * sudo apt-get install espeak libespeak1 libespeak-dev espeak-data
  * 
+ * ok, so I have found out that espeak has been broken on raspberry pi
+ * need to use espeak-ng instead
+ * 
  */
 
-#include <cstdlib>
-#include <sys/types.h>
-#include <unistd.h>
-#include <spawn.h>
-#include <iostream>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <cstring>
 
 #include "Speaker.h"
@@ -37,27 +32,65 @@ Speaker::Speaker(const Speaker& orig) {
 Speaker::~Speaker() {
 }
 
-void Speaker::say(string& text_to_say)
+/** Must be called before any synthesis functions are called.
+   This specifies a function in the calling program which is called when a buffer of
+   speech sound data has been produced.
+   The callback function is of the form:
+int SynthCallback(short *wav, int numsamples, espeak_EVENT *events);
+   @param wav:  is the speech sound data which has been produced.
+      NULL indicates that the synthesis has been completed.
+   @param numsamples: is the number of entries in wav.  This number may vary, may be less than
+      the value implied by the buflength parameter given in espeak_Initialize, and may
+      sometimes be zero (which does NOT indicate end of synthesis).
+   @param events: an array of espeak_EVENT items which indicate word and sentence events, and
+      also the occurance if <mark> and <audio> elements within the text.  The list of
+      events is terminated by an event of type = 0.
+   Callback returns: 0=continue synthesis,  1=abort synthesis.
+*/
+int Speaker::SynthCallback(short* wav, int numsamples, espeak_EVENT* events)
 {
+    return 0;
+}
+
+void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int range)
+{
+    espeak_ERROR speakErr;
+
     Logging* kaliLog = Logging::Instance();
-    string message = "Saying: " + text_to_say;
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    // try catch everything - this will make kali a little more robust
 
-    // set all the paramebers that need to be parsed to pkill
-    pid_t pid;
-    char appName[] = "espeak-ng";
-    char *argv[] = {appName, (char*)text_to_say.c_str(), NULL};
-
-    // set output to null so it doesn't go to the screen - very annoying!
-    posix_spawn_file_actions_t action;
-    posix_spawn_file_actions_init(&action);
-    posix_spawn_file_actions_addopen (&action, STDERR_FILENO, "/dev/null", O_RDONLY, 0);
-
-    int status;
-    status = posix_spawnp(&pid, appName, &action, NULL, argv, environ);
-    posix_spawn_file_actions_destroy(&action);
-    if (status != 0)
+    //must be called before any other functions
+    //espeak initialize
+    if (espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, espeakINITIALIZE_PHONEME_EVENTS) >= 0)
     {
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Failed to speak");
+        espeak_SetSynthCallback(Speaker::SynthCallback);
+        
+        // set some properties
+        espeak_VOICE voice = {
+            "Kali", // name
+            "en-uk", // language
+            NULL, // identifier
+            2, // gender - female
+            70, // age
+            0 // variant
+        };
+        espeak_SetVoiceByProperties(&voice);
+
+        // set some parameters
+        espeak_SetParameter(espeakVOLUME, volume, 0);
+        espeak_SetParameter(espeakRATE, rate, 0);
+        espeak_SetParameter(espeakPITCH, pitch, 0);
+        espeak_SetParameter(espeakRANGE, range, 0);
+
+        if ((speakErr = espeak_Synth(text_to_say.c_str(), text_to_say.size(), 0, POS_SENTENCE, 0, espeakCHARS_AUTO, NULL, NULL)) != EE_OK)
+        {
+            // failed
+            kaliLog->log("", __FUNCTION__, "Error on synth creation - cannot convert text to speech.");
+        }
+    }
+    else
+    {
+        // failed
+        kaliLog->log("", __FUNCTION__, "Failed to initialize espeak.");
     }
 }

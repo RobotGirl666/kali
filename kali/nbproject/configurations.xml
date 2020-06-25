@@ -290,7 +290,7 @@
             <linkerLibFileItem>/usr/local/lib/libopencv_imgcodecs.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/local/lib/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libsqlite3.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libespeak.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libespeak-ng.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
