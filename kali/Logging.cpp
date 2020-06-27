@@ -17,8 +17,9 @@
 #include <tgmath.h>
 
 #include "Logging.h"
+#include "KaliRobot.h"
 
-Logging* Logging::_instance = 0;
+Logging* Logging::_instance = NULL;
 string Logging::logFileName = string("kali.log");
 
 Logging::Logging() {
@@ -33,7 +34,7 @@ Logging::~Logging() {
 }
 
 Logging* Logging::Instance() {
-    if (_instance == 0)
+    if (_instance == NULL)
     {
         _instance = new Logging;
     }
@@ -41,14 +42,24 @@ Logging* Logging::Instance() {
     return _instance;
 }
 
-void Logging::log(string class_name, string method_name, string message, bool output_to_screen)
+void Logging::log(string class_name, string method_name, string message, bool output_to_speaker, bool output_to_screen)
 {
     string logMessage = Logging::Instance()->currentDateTime() + " : " + class_name + "::" + method_name + " : " + message;
     
+    // output to screen
     if (output_to_screen)
     {
         cout << logMessage << endl;
     }
+    
+    // output to speaker
+    if (output_to_speaker)
+    {
+        KaliRobot* kali = KaliRobot::Instance();
+        kali->speaker.say(message);
+    }
+    
+    // output to log file
     logFile << logMessage << endl;
     
     logFile.flush();

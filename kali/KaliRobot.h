@@ -27,6 +27,9 @@ public:
     KaliRobot(const KaliRobot& orig);
     virtual ~KaliRobot();
     
+    // singleton pattern
+    static KaliRobot* Instance();
+    
     // Kali's behaviours
     // initialisation
     void initialise();
@@ -40,6 +43,7 @@ public:
     Remote remote;
     
 private:
+    static KaliRobot* _instance;
 };
 
 #endif /* KALIROBOT_H */

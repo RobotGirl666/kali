@@ -21,6 +21,8 @@
 
 using namespace std;
 
+KaliRobot* KaliRobot::_instance = NULL;
+
 KaliRobot::KaliRobot() {
     initialise(); // initialise all the Kali components - must do this before anything else!
 }
@@ -29,6 +31,16 @@ KaliRobot::KaliRobot(const KaliRobot& orig) {
 }
 
 KaliRobot::~KaliRobot() {
+}
+
+KaliRobot* KaliRobot::Instance()
+{
+    if (_instance == NULL)
+    {
+        _instance = new KaliRobot;
+    }
+    
+    return _instance;
 }
 
 /*

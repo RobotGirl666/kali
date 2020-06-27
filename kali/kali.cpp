@@ -5,7 +5,7 @@
  */
 
 /* 
- * File:   kali.cpp
+ * File:   kali->cpp
  * Author: vangelis
  *
  * Created on 26 April 2020, 7:52 am
@@ -30,11 +30,11 @@ int main(int argc, char** argv) {
     // try catch everything - this will make kali a little more robust
 
     //start
-    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
+    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!", true);
 
     try {
         // do stuff here (BE MORE SPECIFIC PLSSS DAD)
-        KaliRobot kali;  // create the container class - overall robot
+        KaliRobot* kali = KaliRobot::Instance();  // create the container class - overall robot
 
         // switch statement 
         for(int i = 1; i < argc; i++)
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
                 [](unsigned char c){ return std::tolower(c); });  //wtf is this?
             if (input.compare("remote") == 0)
             {
-                kali.remote.KeyboardControl(&kali);
+                kali->remote.KeyboardControl(kali);
             }
             else if (input.compare("forward") == 0)
             {
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time);
 
-                kali.wheels.moveForward(speed, time);
+                kali->wheels.moveForward(speed, time);
             }
 
             else if (input.compare("reverse") == 0)
@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time);
 
-                kali.wheels.moveReverse(speed, time);
+                kali->wheels.moveReverse(speed, time);
             }
 
             else if (input.compare("twirlleft") == 0)
@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.twirlLeft(speed, time);
+                kali->wheels.twirlLeft(speed, time);
             }
 
             else if (input.compare("twirlright") == 0)
@@ -83,7 +83,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.twirlRight(speed, time);  //add in time
+                kali->wheels.twirlRight(speed, time);  //add in time
             }
 
             else if (input.compare("turnleft") == 0)
@@ -93,7 +93,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnLeft(speed, time);
+                kali->wheels.turnLeft(speed, time);
             }
 
             else if (input.compare("turnright") == 0)
@@ -103,7 +103,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnRight(speed, time);
+                kali->wheels.turnRight(speed, time);
             }
 
             else if (input.compare("turnhardleft") == 0)
@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnHardLeft(speed, time);
+                kali->wheels.turnHardLeft(speed, time);
             }
 
             else if (input.compare("turnhardright") == 0)
@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnHardRight(speed, time);
+                kali->wheels.turnHardRight(speed, time);
             }
 
             else if (input.compare("turnleftreverse") == 0)
@@ -133,7 +133,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnLeftReverse(speed, time);
+                kali->wheels.turnLeftReverse(speed, time);
             }
 
             else if (input.compare("turnrightreverse") == 0)
@@ -143,7 +143,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnRightReverse(speed, time);
+                kali->wheels.turnRightReverse(speed, time);
             }
 
             else if (input.compare("turnhardleftreverse") == 0)
@@ -153,7 +153,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnHardLeftReverse(speed, time);
+                kali->wheels.turnHardLeftReverse(speed, time);
             }
 
             else if (input.compare("turnhardrightreverse") == 0)
@@ -163,27 +163,27 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseSpeedTime(argc, argv, i, speed, time, true);
 
-                kali.wheels.turnHardRightReverse(speed, time);
+                kali->wheels.turnHardRightReverse(speed, time);
             }
 
             else if (input.compare("startcamerastream") == 0)
             {
-                kali.camera.startStreaming();
+                kali->camera.startStreaming();
             }
 
             else if (input.compare("stopcamerastream") == 0)
             {
-                kali.camera.stopStreaming();
+                kali->camera.stopStreaming();
             }
 
             else if (input.compare("startcamerarecording") == 0)
             {
-                kali.camera.startRecording();
+                kali->camera.startRecording();
             }
 
             else if (input.compare("stopcamerarecording") == 0)
             {
-                kali.camera.stopRecording();
+                kali->camera.stopRecording();
             }
 
             else if (input.compare("tiltcamera") == 0)
@@ -192,7 +192,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseAngle(argc, argv, i, angle);
 
-                kali.camera.tilt(angle);
+                kali->camera.tilt(angle);
             }
 
             else if (input.compare("pancamera") == 0)
@@ -201,17 +201,17 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseAngle(argc, argv, i, angle);
 
-                kali.camera.pan(angle);
+                kali->camera.pan(angle);
             }
 
             else if (input.compare("detectfaces") == 0)
             {
-                kali.camera.detectFaces();
+                kali->camera.detectFaces();
             }
 
             else if (input.compare("recognisefaces") == 0)
             {
-                kali.camera.recogniseFaces();
+                kali->camera.recogniseFaces();
             }
 
             else if (input.compare("say") == 0)
@@ -220,7 +220,7 @@ int main(int argc, char** argv) {
                 
                 i += Validation::parseString(argc, argv, i, text);
 
-                kali.speaker.say(text);
+                kali->speaker.say(text);
             }
 
             else
@@ -246,6 +246,7 @@ int main(int argc, char** argv) {
                 cout << "kali pancamera [angle]" << endl;
                 cout << "kali detectfaces" << endl;
                 cout << "kali recognisefaces" << endl;
+                cout << "kali remote" << endl;
             }
 
         }
@@ -259,7 +260,7 @@ int main(int argc, char** argv) {
     }
 
     // goodbye
-    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
+    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!", true);
     
     return 0;
 }
