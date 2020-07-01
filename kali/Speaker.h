@@ -28,10 +28,10 @@ public:
     virtual ~Speaker();
     
     static int SynthCallback(short *wav, int numsamples, espeak_EVENT *events);
-    void say(string& text_to_say, int volume = 100, int rate = 130, int pitch = 40, int range = 50);
+    void say(string& text_to_say, int volume = 150, int rate = 130, int pitch = 40, int range = 50);
     
 private:
-
+    bool espeakInitialised;
 };
 
 #endif /* SPEAKER_H */

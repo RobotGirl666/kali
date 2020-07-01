@@ -24,6 +24,20 @@
 #include "Logging.h"
 
 Speaker::Speaker() {
+    Logging* kaliLog = Logging::Instance();
+    
+        //espeak initialize
+    if (espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, espeakINITIALIZE_PHONEME_EVENTS) >= 0)
+    {
+        espeak_SetSynthCallback(Speaker::SynthCallback);
+        espeakInitialised = true;
+    }
+    else
+    {
+        // failed
+        kaliLog->log("", __FUNCTION__, "Failed to initialize espeak.");
+        espeakInitialised = false;
+    }
 }
 
 Speaker::Speaker(const Speaker& orig) {
@@ -61,9 +75,9 @@ void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int rang
 
     //must be called before any other functions
     //espeak initialize
-    if (espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, espeakINITIALIZE_PHONEME_EVENTS) >= 0)
+    if (espeakInitialised)
     {
-        //espeak_SetSynthCallback(Speaker::SynthCallback);
+        espeak_SetSynthCallback(Speaker::SynthCallback);
         
         // set some properties
         espeak_VOICE voice = {
@@ -87,10 +101,5 @@ void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int rang
             // failed
             kaliLog->log("", __FUNCTION__, "Error on synth creation - cannot convert text to speech.");
         }
-    }
-    else
-    {
-        // failed
-        kaliLog->log("", __FUNCTION__, "Failed to initialize espeak.");
     }
 }
