@@ -30,6 +30,18 @@ Speaker::Speaker() {
     if (espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, espeakINITIALIZE_PHONEME_EVENTS) >= 0)
     {
         espeak_SetSynthCallback(Speaker::SynthCallback);
+
+        // set some properties
+        espeak_VOICE voice = {
+            "Kali", // name
+            "en-uk", // language
+            NULL, // identifier
+            2, // gender - female
+            70, // age
+            0 // variant
+        };
+        espeak_SetVoiceByProperties(&voice);
+
         espeakInitialised = true;
     }
     else
@@ -77,20 +89,7 @@ void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int rang
     //espeak initialize
     if (espeakInitialised)
     {
-        espeak_SetSynthCallback(Speaker::SynthCallback);
-        
-        // set some properties
-        espeak_VOICE voice = {
-            "Kali", // name
-            "en-uk", // language
-            NULL, // identifier
-            2, // gender - female
-            70, // age
-            0 // variant
-        };
-        espeak_SetVoiceByProperties(&voice);
-
-        // set some parameters
+        // set the given parameters
         espeak_SetParameter(espeakVOLUME, volume, 0); // volume in range 0-200 or more. 0=silence, 100=normal full volume, greater values may produce amplitude compression or distortion
         espeak_SetParameter(espeakRATE, rate, 0); // speaking speed in word per minute.  Values 80 to 450.
         espeak_SetParameter(espeakPITCH, pitch, 0); // base pitch, range 0-100.  50=normal
