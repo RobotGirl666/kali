@@ -63,7 +63,7 @@ void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int rang
     //espeak initialize
     if (espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, espeakINITIALIZE_PHONEME_EVENTS) >= 0)
     {
-        espeak_SetSynthCallback(Speaker::SynthCallback);
+        //espeak_SetSynthCallback(Speaker::SynthCallback);
         
         // set some properties
         espeak_VOICE voice = {
@@ -77,10 +77,10 @@ void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int rang
         espeak_SetVoiceByProperties(&voice);
 
         // set some parameters
-        espeak_SetParameter(espeakVOLUME, volume, 0);
-        espeak_SetParameter(espeakRATE, rate, 0);
-        espeak_SetParameter(espeakPITCH, pitch, 0);
-        espeak_SetParameter(espeakRANGE, range, 0);
+        espeak_SetParameter(espeakVOLUME, volume, 0); // volume in range 0-200 or more. 0=silence, 100=normal full volume, greater values may produce amplitude compression or distortion
+        espeak_SetParameter(espeakRATE, rate, 0); // speaking speed in word per minute.  Values 80 to 450.
+        espeak_SetParameter(espeakPITCH, pitch, 0); // base pitch, range 0-100.  50=normal
+        espeak_SetParameter(espeakRANGE, range, 0); // pitch range, range 0-100. 0-monotone, 50=normal
 
         if ((speakErr = espeak_Synth(text_to_say.c_str(), text_to_say.size(), 0, POS_SENTENCE, 0, espeakCHARS_AUTO, NULL, NULL)) != EE_OK)
         {
