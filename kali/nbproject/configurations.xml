@@ -12,7 +12,6 @@
       <itemPath>Logging.h</itemPath>
       <itemPath>Remote.h</itemPath>
       <itemPath>RightWheels.h</itemPath>
-      <itemPath>Sensors.h</itemPath>
       <itemPath>Servo.h</itemPath>
       <itemPath>Speaker.h</itemPath>
       <itemPath>UltrasonicSensor.h</itemPath>
@@ -35,7 +34,6 @@
       <itemPath>Logging.cpp</itemPath>
       <itemPath>Remote.cpp</itemPath>
       <itemPath>RightWheels.cpp</itemPath>
-      <itemPath>Sensors.cpp</itemPath>
       <itemPath>Servo.cpp</itemPath>
       <itemPath>Speaker.cpp</itemPath>
       <itemPath>UltrasonicSensor.cpp</itemPath>
@@ -122,10 +120,6 @@
       <item path="RightWheels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="RightWheels.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Sensors.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Servo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -225,10 +219,6 @@
       </item>
       <item path="RightWheels.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Sensors.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Servo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Servo.h" ex="false" tool="3" flavor2="0">
@@ -326,10 +316,6 @@
       <item path="RightWheels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="RightWheels.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sensors.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Sensors.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Servo.cpp" ex="false" tool="1" flavor2="0">
       </item>

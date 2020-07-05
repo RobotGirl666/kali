@@ -43,7 +43,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Logging.o \
 	${OBJECTDIR}/Remote.o \
 	${OBJECTDIR}/RightWheels.o \
-	${OBJECTDIR}/Sensors.o \
 	${OBJECTDIR}/Servo.o \
 	${OBJECTDIR}/Speaker.o \
 	${OBJECTDIR}/UltrasonicSensor.o \
@@ -140,11 +139,6 @@ ${OBJECTDIR}/RightWheels.o: RightWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RightWheels.o RightWheels.cpp
-
-${OBJECTDIR}/Sensors.o: Sensors.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sensors.o Sensors.cpp
 
 ${OBJECTDIR}/Servo.o: Servo.cpp
 	${MKDIR} -p ${OBJECTDIR}
