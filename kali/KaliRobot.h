@@ -15,11 +15,12 @@
 #define KALIROBOT_H
 
 #include "Wheels.h"
-#include "Sensors.h"
 #include "Buzzer.h"
 #include "Camera.h"
 #include "Speaker.h"
 #include "Remote.h"
+#include "InfraredSensor.h"
+#include "UltrasonicSensor.h"
 
 class KaliRobot {
 public:
@@ -36,11 +37,12 @@ public:
     
     // components of the robot
     Wheels wheels;
-    Sensors sensors;
     Buzzer buzzer;
     Camera camera;
     Speaker speaker;
     Remote remote;
+    InfraredSensor infraredSensor;
+    UltrasonicSensor ultrasonicSensor;
     
 private:
     static KaliRobot* _instance;
