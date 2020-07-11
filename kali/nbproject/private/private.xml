@@ -11,8 +11,12 @@
             <file>file:/home/vangelis/Documents/Projects/kali/kali/kali.cpp</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/Camera.cpp</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/KaliRobot.h</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/MicroTimer.h</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/UltrasonicSensor.h</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/Logging.h</file>
             <file>file:/home/vangelis/Documents/Projects/kali/kali/KaliRobot.cpp</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/MicroTimer.cpp</file>
+            <file>file:/home/vangelis/Documents/Projects/kali/kali/Logging.cpp</file>
         </group>
     </open-files>
 </project-private>

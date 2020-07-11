@@ -20,12 +20,15 @@
 
 using namespace std;
 
+enum LoggingLevel { LogOff, LogInfo, LogDebug };
+
 class Logging {
 public:
     static Logging* Instance();
     virtual ~Logging();
     
-    void log(string class_name, string method_name, string message, bool output_to_speaker = false, bool output_to_screen = true);
+    void log(string class_name, string method_name, string message, LoggingLevel level = LogInfo, bool output_to_speaker = false, bool output_to_screen = true);
+    void setLogLevel(LoggingLevel level);
     
 protected:
     Logging();
@@ -36,6 +39,7 @@ private:
     static Logging* _instance;
     static string logFileName;
     ofstream logFile;
+    static LoggingLevel logLevel;
 };
 
 #endif /* LOGGING_H */

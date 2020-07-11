@@ -21,6 +21,7 @@
 
 Logging* Logging::_instance = NULL;
 string Logging::logFileName = string("kali.log");
+LoggingLevel Logging::logLevel = LogInfo;
 
 Logging::Logging() {
     logFile.open(logFileName, ios::out | ios::app);
@@ -42,27 +43,30 @@ Logging* Logging::Instance() {
     return _instance;
 }
 
-void Logging::log(string class_name, string method_name, string message, bool output_to_speaker, bool output_to_screen)
+void Logging::log(string class_name, string method_name, string message, LoggingLevel level, bool output_to_speaker, bool output_to_screen)
 {
-    string logMessage = Logging::Instance()->currentDateTime() + " : " + class_name + "::" + method_name + " : " + message;
-    
-    // output to screen
-    if (output_to_screen)
+    if (level != LogOff && level <= logLevel)
     {
-        cout << logMessage << endl;
+        string logMessage = Logging::Instance()->currentDateTime() + " : " + class_name + "::" + method_name + " : " + message;
+
+        // output to screen
+        if (output_to_screen)
+        {
+            cout << logMessage << endl;
+        }
+
+        // output to speaker
+        if (output_to_speaker)
+        {
+            KaliRobot* kali = KaliRobot::Instance();
+            kali->speaker.say(message);
+        }
+
+        // output to log file
+        logFile << logMessage << endl;
+
+        logFile.flush();
     }
-    
-    // output to speaker
-    if (output_to_speaker)
-    {
-        KaliRobot* kali = KaliRobot::Instance();
-        kali->speaker.say(message);
-    }
-    
-    // output to log file
-    logFile << logMessage << endl;
-    
-    logFile.flush();
 }
 
 // shit code but a copy/paste from the interwebs

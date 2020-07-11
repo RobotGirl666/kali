@@ -62,8 +62,7 @@ int MicroTimer::check()
 int MicroTimer::checkLast()
 {
     int prevCheckTime = checkTime;
-    gettimeofday(&timeValue, NULL); // get the current time
-    checkTime = timeValue.tv_sec * 1000000 + timeValue.tv_usec;
+    check();
     
     return (checkTime - prevCheckTime);
 }
