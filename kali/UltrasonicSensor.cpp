@@ -39,6 +39,11 @@ UltrasonicSensor::~UltrasonicSensor() {
  */
 void UltrasonicSensor::initialise()
 {
+    // initialise ultrasonic pins
+    pinMode(pinTrigger, OUTPUT);
+    pinMode(pinEcho, INPUT);
+    
+    // initialise servo
     horizontalServo.initialise(4);
 }
 
@@ -85,17 +90,11 @@ void UltrasonicSensor::fullSweep()
  */
 int UltrasonicSensor::getDistance(int limit)
 {
-    Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Commencing ultrsonic distance processing.");
-
     int distance = limit;
     MicroTimer mt;
     
     // time to get a pulse back from the limit distance in microseconds
     int limitTime = (limit * 2) * 1000 / 343;
-
-    string message = "Limit: " + to_string(limit) + " limit time: " + to_string(limitTime);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
     // send a pulse of at least 15 microseconds
     digitalWrite(pinTrigger, LOW);
@@ -119,9 +118,6 @@ int UltrasonicSensor::getDistance(int limit)
     {
         distance = limit;
     }
-    
-    message = "Time for pulse to return: " + to_string(mt.getCheck()) + " distance: " + to_string(distance);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
     return distance;
 }
