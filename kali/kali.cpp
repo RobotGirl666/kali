@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
             {
                 kali->remote.KeyboardControl(kali);
             }
+
             else if (input.compare("forward") == 0)
             {
                 int speed;
@@ -223,6 +224,16 @@ int main(int argc, char** argv) {
                 kali->speaker.say(text);
             }
 
+            else if (input.compare("roam") == 0)
+            {
+                int speed;
+                int time;
+                
+                i += Validation::parseSpeedTime(argc, argv, i, speed, time);
+
+                kali->ultrasonicSensor.roam(speed, time);
+            }
+
             else
             {
                 cout << "You can control Kali with the following commands:" << endl;
@@ -247,6 +258,7 @@ int main(int argc, char** argv) {
                 cout << "kali detectfaces" << endl;
                 cout << "kali recognisefaces" << endl;
                 cout << "kali remote" << endl;
+                cout << "kali roam" << endl;
             }
 
         }
