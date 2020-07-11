@@ -86,7 +86,7 @@ void UltrasonicSensor::fullSweep()
 int UltrasonicSensor::getDistance(int limit)
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Commencing ultrsonic distance processing.", LogDebug);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Commencing ultrsonic distance processing.");
 
     int distance = limit;
     MicroTimer mt;
@@ -95,7 +95,7 @@ int UltrasonicSensor::getDistance(int limit)
     int limitTime = (limit * 2) * 1000 / 343;
 
     string message = "Limit: " + to_string(limit) + " limit time: " + to_string(limitTime);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
     // send a pulse of at least 15 microseconds
     digitalWrite(pinTrigger, LOW);
@@ -121,7 +121,7 @@ int UltrasonicSensor::getDistance(int limit)
     }
     
     message = "Time for pulse to return: " + to_string(mt.getCheck()) + " distance: " + to_string(distance);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
     return distance;
 }

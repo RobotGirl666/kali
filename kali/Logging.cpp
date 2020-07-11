@@ -21,7 +21,7 @@
 
 Logging* Logging::_instance = NULL;
 string Logging::logFileName = string("kali.log");
-LoggingLevel Logging::logLevel = LogDebug;
+LoggingLevel Logging::logLevel = LogInfo;
 
 Logging::Logging() {
     logFile.open(logFileName, ios::out | ios::app);
