@@ -105,7 +105,7 @@ int UltrasonicSensor::getDistance(int limit)
     digitalWrite(pinTrigger, LOW);
     
     // wait for pulse to come back
-    while(!digitalRead(pinEcho) == 0)
+    while(!digitalRead(pinEcho) == 1)
     {
         if (mt.check() > limitTime)  // stop if exceeds maximum value
         {
