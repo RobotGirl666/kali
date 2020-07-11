@@ -14,6 +14,7 @@
 #include <stdio.h>
 
 #include "MicroTimer.h"
+#include "Logging.h"
 
 MicroTimer::MicroTimer() {
     start();
@@ -32,9 +33,14 @@ MicroTimer::~MicroTimer() {
  */
 void MicroTimer::start()
 {
+    Logging* kaliLog = Logging::Instance();
     gettimeofday(&timeValue, NULL); // get the current time
     startTime = timeValue.tv_sec * 1000000 + timeValue.tv_usec;
     checkTime = startTime;
+    string message = "sec: " + to_string(timeValue.tv_sec) + " usec: " + to_string(timeValue.tv_usec);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
+    message = "startTime: " + to_string(startTime) + " checkTime: " + to_string(checkTime);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
 }
 
 /**
@@ -46,8 +52,13 @@ void MicroTimer::start()
  */
 int MicroTimer::check()
 {
+    Logging* kaliLog = Logging::Instance();
     gettimeofday(&timeValue, NULL); // get the current time
     checkTime = timeValue.tv_sec * 1000000 + timeValue.tv_usec;
+    string message = "sec: " + to_string(timeValue.tv_sec) + " usec: " + to_string(timeValue.tv_usec);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
+    message = "startTime: " + to_string(startTime) + " checkTime: " + to_string(checkTime) + " diff: " + to_string(checkTime - startTime);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
     
     return (checkTime - startTime);
 }

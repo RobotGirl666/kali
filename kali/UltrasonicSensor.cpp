@@ -120,7 +120,7 @@ int UltrasonicSensor::getDistance(int limit)
         distance = limit;
     }
     
-    message = "Time for pulst to return: " + to_string(mt.getCheck()) + " distance: " + to_string(distance);
+    message = "Time for pulse to return: " + to_string(mt.getCheck()) + " distance: " + to_string(distance);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
     
     return distance;
