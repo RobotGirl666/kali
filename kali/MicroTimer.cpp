@@ -47,7 +47,7 @@ void MicroTimer::start()
 int MicroTimer::check()
 {
     gettimeofday(&timeValue, NULL); // get the current time
-    checkTime = startTime;
+    checkTime = timeValue.tv_sec * 1000000 + timeValue.tv_usec;
     
     return (checkTime - startTime);
 }
@@ -63,7 +63,7 @@ int MicroTimer::checkLast()
 {
     int prevCheckTime = checkTime;
     gettimeofday(&timeValue, NULL); // get the current time
-    checkTime = startTime;
+    checkTime = timeValue.tv_sec * 1000000 + timeValue.tv_usec;
     
     return (checkTime - prevCheckTime);
 }

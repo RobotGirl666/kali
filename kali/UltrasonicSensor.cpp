@@ -64,7 +64,7 @@ void UltrasonicSensor::fullSweep()
         // measure the distance and store in the array
         dists[angle / 10] = getDistance();
 
-        string message = "Angle: " + to_string(angle) + "distance: " + to_string(dists[angle / 10]);
+        string message = "Angle: " + to_string(angle) + " distance: " + to_string(dists[angle / 10]);
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     }
     

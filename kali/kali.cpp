@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     // try catch everything - this will make kali a little more robust
 
     //start
-    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!", true);
+    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
 
     try {
         // do stuff here (BE MORE SPECIFIC PLSSS DAD)
@@ -272,7 +272,7 @@ int main(int argc, char** argv) {
     }
 
     // goodbye
-    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!", true);
+    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
     
     return 0;
 }
