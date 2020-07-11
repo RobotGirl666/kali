@@ -14,11 +14,36 @@
 #ifndef ULTRASONICSENSOR_H
 #define ULTRASONICSENSOR_H
 
+#include "Servo.h"
+
+enum SweepDir { Up, Down };
+
 class UltrasonicSensor {
 public:
     UltrasonicSensor();
     UltrasonicSensor(const UltrasonicSensor& orig);
     virtual ~UltrasonicSensor();
+
+    void initialise();
+    void roam(int speed = 20, int seconds = 30);
+
+protected:
+    // Pin assignments for the ultrasonic sensors
+    int pinTrigger;
+    int pinEcho;
+    
+    // servo that drives the ultrasonic sensor direction
+    Servo horizontalServo;
+    
+    // servo direction
+    SweepDir dir;
+    
+    // distances
+    int dists[19];
+    
+    void fullSweep(); // Do a full sweep of the forward area
+    int getDistance(int limit = 10000); // get the distance to the object the sensor is pointing to
+
 private:
 
 };

@@ -10,6 +10,7 @@
       <itemPath>KaliRobot.h</itemPath>
       <itemPath>LeftWheels.h</itemPath>
       <itemPath>Logging.h</itemPath>
+      <itemPath>MicroTimer.h</itemPath>
       <itemPath>Remote.h</itemPath>
       <itemPath>RightWheels.h</itemPath>
       <itemPath>Servo.h</itemPath>
@@ -32,6 +33,7 @@
       <itemPath>KaliRobot.cpp</itemPath>
       <itemPath>LeftWheels.cpp</itemPath>
       <itemPath>Logging.cpp</itemPath>
+      <itemPath>MicroTimer.cpp</itemPath>
       <itemPath>Remote.cpp</itemPath>
       <itemPath>RightWheels.cpp</itemPath>
       <itemPath>Servo.cpp</itemPath>
@@ -112,6 +114,10 @@
       <item path="Logging.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MicroTimer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MicroTimer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Remote.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -211,6 +217,10 @@
       </item>
       <item path="Logging.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="MicroTimer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MicroTimer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Remote.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Remote.h" ex="false" tool="3" flavor2="0">
@@ -308,6 +318,10 @@
       <item path="Logging.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MicroTimer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MicroTimer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Remote.cpp" ex="false" tool="1" flavor2="0">
       </item>

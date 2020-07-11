@@ -22,9 +22,12 @@ public:
     
     void initialise(int sp);
     void setPos(int angle);
+    int getPos();
     
 protected:
     int servoPin;
+    int angle;
+    
 private:
 
 };

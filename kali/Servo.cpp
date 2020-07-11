@@ -20,6 +20,7 @@
 Servo::Servo() {
     // initialise variables
     servoPin = 0;
+    angle = 0;
 }
 
 Servo::Servo(const Servo& orig) {
@@ -27,7 +28,6 @@ Servo::Servo(const Servo& orig) {
 
 Servo::~Servo() {
 }
-
 
 /**
  * 
@@ -76,4 +76,18 @@ void Servo::setPos(int angle)
         digitalWrite(servoPin, LOW);
         delay(20 - pulseWidth / 1000);     //Delay remaining time
     }
+    
+    this->angle = angle;
+}
+
+/**
+ * 
+ * @brief         Get the position of the servo.
+ * 
+ * @return        angle 0 - 180 degrees
+ * 
+ */
+int Servo::getPos()
+{
+    return angle;
 }

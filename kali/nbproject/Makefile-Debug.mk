@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/KaliRobot.o \
 	${OBJECTDIR}/LeftWheels.o \
 	${OBJECTDIR}/Logging.o \
+	${OBJECTDIR}/MicroTimer.o \
 	${OBJECTDIR}/Remote.o \
 	${OBJECTDIR}/RightWheels.o \
 	${OBJECTDIR}/Servo.o \
@@ -129,6 +130,11 @@ ${OBJECTDIR}/Logging.o: Logging.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
+
+${OBJECTDIR}/MicroTimer.o: MicroTimer.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MicroTimer.o MicroTimer.cpp
 
 ${OBJECTDIR}/Remote.o: Remote.cpp
 	${MKDIR} -p ${OBJECTDIR}
