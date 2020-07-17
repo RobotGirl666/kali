@@ -26,6 +26,11 @@ public:
 
     void initialise();
     void roam(int speed = 20, int seconds = 30);
+    
+    // junk code from yahboom
+    float Distance_test();
+    float Distance();
+    void bubble(unsigned long *a, int n);
 
 protected:
     // Pin assignments for the ultrasonic sensors
