@@ -98,7 +98,6 @@ void UltrasonicSensor::fullSweep()
  */
 int UltrasonicSensor::getDistance(int limit)
 {
-    Logging* kaliLog = Logging::Instance();
     int distance = limit;
     MicroTimer mt;
     
@@ -121,7 +120,7 @@ int UltrasonicSensor::getDistance(int limit)
             mt.start(); // start timing the length of the echo pulse which will be the distance in microsectonds
             
             // now wait for the pulse to finish and time it
-            while(!digitalRead(pinEcho) == 1)
+            while(!digitalRead(pinEcho) == 0)
             {
                 if (mt.check() > limitTime)  // stop if exceeds maximum value
                 {
@@ -129,8 +128,6 @@ int UltrasonicSensor::getDistance(int limit)
                 }
             }
             distance = mt.getCheck() * 343 / 2 / 1000; // distance in mm
-            string message = "Time(usec): " + to_string(mt.getCheck()) + " distance(mm): " + to_string(distance);
-            kaliLog->log(typeid(this).name(), __FUNCTION__, message);
             
             // clean it up in case it is a few microseconds over
             if (distance > limit)
