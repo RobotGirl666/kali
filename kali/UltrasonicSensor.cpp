@@ -115,25 +115,30 @@ int UltrasonicSensor::getDistance(int limit)
     // wait for pulse to come back
     while(!digitalRead(pinEcho) == 1)
     {
-        if (mt.check() < limitTime)  // stop if exceeds maximum value
+        if (mt.check() >= limitTime)  // stop if exceeds maximum value
         {
-            mt.start(); // start timing the length of the echo pulse which will be the distance in microsectonds
-            
-            // now wait for the pulse to finish and time it
-            while(!digitalRead(pinEcho) == 0)
+            break;
+        }
+    }
+    
+    if (mt.getCheck() < limitTime)
+    {
+        mt.start(); // start timing the length of the echo pulse which will be the distance in microsectonds
+
+        // now wait for the pulse to finish and time it
+        while(!digitalRead(pinEcho) == 0)
+        {
+            if (mt.check() >= limitTime)  // stop if exceeds maximum value
             {
-                if (mt.check() > limitTime)  // stop if exceeds maximum value
-                {
-                    break;
-                }
+                break;
             }
-            distance = mt.getCheck() * 343 / 2 / 1000; // distance in mm
-            
-            // clean it up in case it is a few microseconds over
-            if (distance > limit)
-            {
-                distance = limit;
-            }
+        }
+        distance = mt.getCheck() * 343 / 2 / 1000; // distance in mm
+
+        // clean it up in case it is a few microseconds over
+        if (distance > limit)
+        {
+            distance = limit;
         }
     }
 
