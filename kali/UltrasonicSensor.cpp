@@ -51,13 +51,14 @@ void UltrasonicSensor::roam(int speed, int seconds)
 {
     Logging* kaliLog = Logging::Instance();
     // first do a full sweep so we get a lay of the land
-    //fullSweep();
-    
+    fullSweep();
+    /*
     // let's use the dodgy yaboom code
     horizontalServo.setPos(90);
     float dist = Distance_test();
     string message = "Distance: " + to_string(dist);
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    */
 }
 
 void UltrasonicSensor::fullSweep()
@@ -101,7 +102,7 @@ int UltrasonicSensor::getDistance(int limit)
     MicroTimer mt;
     
     // time to get a pulse back from the limit distance in microseconds
-    int limitTime = (limit * 2) * 1000 / 343;
+    long limitTime = (limit * 2) * 1000 / 343;
     
     // send a pulse of at least 15 microseconds
     digitalWrite(pinTrigger, LOW);
@@ -114,18 +115,28 @@ int UltrasonicSensor::getDistance(int limit)
     // wait for pulse to come back
     while(!digitalRead(pinEcho) == 1)
     {
-        if (mt.check() > limitTime)  // stop if exceeds maximum value
+        if (mt.check() < limitTime)  // stop if exceeds maximum value
         {
-            break;
+            mt.start(); // start timing the length of the echo pulse which will be the distance in microsectonds
+            
+            // now wait for the pulse to finish and time it
+            while(!digitalRead(pinEcho) == 1)
+            {
+                if (mt.check() > limitTime)  // stop if exceeds maximum value
+                {
+                    break;
+                }
+            }
+            distance = mt.getCheck() * 343 / 2 / 1000; // distance in mm
+            
+            // clean it up in case it is a few microseconds over
+            if (distance > limit)
+            {
+                distance = limit;
+            }
         }
     }
-    
-    distance = mt.getCheck() * 343 / 2 / 1000; // distance in mm
-    if (distance > limit)
-    {
-        distance = limit;
-    }
-    
+
     return distance;
 }
 
