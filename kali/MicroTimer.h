@@ -27,8 +27,8 @@ public:
     int getCheck();
 protected:
     struct timeval timeValue;
-    long startTime;
-    long checkTime;
+    long long startTime;
+    long long checkTime;
 private:
 
 };
