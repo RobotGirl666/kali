@@ -341,14 +341,14 @@ void Wheels::twirlRight(int speed, int milliseconds)
     @param speed - A speed from 0-100.
     @param milliseconds - How many milliseconds to turn for.
 */
-void Wheels::turnLeft(int speed, int milliseconds)
+void Wheels::turnLeft(int speed, int milliseconds, float turnAdjustment)
 {
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
-    turn((speed / TURN_FACTOR), speed, milliseconds);
+    turn((speed * turnAdjustment / TURN_FACTOR), speed, milliseconds);
 }
 
 /*
@@ -357,14 +357,14 @@ void Wheels::turnLeft(int speed, int milliseconds)
     @param speed - A speed from 0-100.
     @param milliseconds - How many milliseconds to turn for.
 */
-void Wheels::turnRight(int speed, int milliseconds)
+void Wheels::turnRight(int speed, int milliseconds, float turnAdjustment)
 {
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
-    turn(speed, (speed / TURN_FACTOR), milliseconds);
+    turn(speed, (speed * turnAdjustment / TURN_FACTOR), milliseconds);
 }
 
 /*

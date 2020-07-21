@@ -26,6 +26,8 @@ public:
 
     void initialise();
     void roam(int speed = 20, int seconds = 30);
+    void setSweepRange(int min, int max);
+    int calcBestDirection();
 
 protected:
     // Pin assignments for the ultrasonic sensors
@@ -37,6 +39,13 @@ protected:
     
     // servo direction
     SweepDir dir;
+
+    // sweep range
+    int sweepMin;
+    int sweepMax;
+    
+    // don't go closer than this to an object
+    int distMin;
     
     // distances
     int dists[19];
