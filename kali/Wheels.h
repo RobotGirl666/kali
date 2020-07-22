@@ -45,11 +45,6 @@ public:
     void turnHardLeftReverse(int speed, int milliseconds = 0);
     void turnHardRightReverse(int speed, int milliseconds = 0);
     
-protected:
-    LeftWheels leftWheels;
-    RightWheels rightWheels;
-    int currentSpeed;
-    
     // Wheel behaviour helpers
     void forwardRampUp(int speed);
     void forwardRampDown(int speed);
@@ -57,6 +52,11 @@ protected:
     void reverseRampDown(int speed);
     void turn(int speedLeft, int speedRight, int milliseconds = 0);
     void turnReverse(int speedLeft, int speedRight, int milliseconds = 0);
+    
+protected:
+    LeftWheels leftWheels;
+    RightWheels rightWheels;
+    int currentSpeed;
     
 private:
 };

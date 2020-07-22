@@ -63,7 +63,8 @@ void UltrasonicSensor::roam(int speed, int seconds)
     // first do a full sweep so we get a lay of the land
     setSweepRange(30, 150); // sweep from 30-150 degrees
     fullSweep();
-
+    return;
+    
     // roam for the specified time (seconds)
     MicroTimer mt;
     mt.start();
@@ -77,7 +78,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
 
         if (heading == 90)
         {
-            kali->wheels.moveForward(speed);
+            kali->wheels.setForwardSpeed(speed);
             sweepNext();
         }
         else if (heading > 0)
@@ -120,6 +121,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
     }
     
     // stop kali at the end of the roam
+    kali->wheels.forwardRampDown(speed);
     kali->wheels.stop();
 }
 
