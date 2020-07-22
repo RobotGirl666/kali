@@ -25,7 +25,7 @@ UltrasonicSensor::UltrasonicSensor() {
     pinEcho = 30; //Define the EchoPin connect to wiringPi port 30 of Raspberry pi
     
     // initialise the pservo direction
-    dir = Up;
+    dirSweep = Up;
     
     // initialise sweep range 0-180 degrees
     setSweepRange(0,180);
@@ -70,23 +70,39 @@ void UltrasonicSensor::roam(int speed, int seconds)
     while (mt.check() < seconds * 1000000)
     {
         // work out what the best direction to move kali based on the ultrasonic information we obtained in the sweep
-        int dir = calcBestDirection();
+        int heading = calcBestDirection();
 
-        if (dir >= 0)
+        string message = "Heading: " + to_string(heading);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+        if (heading == 90)
+        {
+            kali->wheels.moveForward(speed);
+            sweepNext();
+        }
+        else if (heading > 0)
         {
             // deviation from the current front face
-            int deviation = (dir - 90) / 10;
+            int deviation = (heading - 90) / 10;
             
             // turn based on deviation from straight
             float turnAdjustment = abs(deviation) / 9;
             if (deviation > 0)
             {
+                message = "Turning right with adjustment: " + to_string(turnAdjustment);
+                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
                 kali->wheels.turnRight(speed, 0, turnAdjustment);
             }
             else if (deviation < 0)
             {
+                message = "Turning left with adjustment: " + to_string(turnAdjustment);
+                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
                 kali->wheels.turnLeft(speed, 0, turnAdjustment);
             }
+            
+            sweepNext();
         }
         else
         {
@@ -102,15 +118,18 @@ void UltrasonicSensor::roam(int speed, int seconds)
             fullSweep();
         }
     }
+    
+    // stop kali at the end of the roam
+    kali->wheels.stop();
 }
 
 void UltrasonicSensor::fullSweep()
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Commencing ultrsonic sweep.");
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Commencing full ultrsonic sweep.");
 
     // re-initialise the position and movement variables
-    dir = Up;
+    dirSweep = Up;
     
     for (int angle = 0; angle <= 180; angle += 10)
     {
@@ -133,7 +152,8 @@ void UltrasonicSensor::fullSweep()
     }
     
     // future distance measurements will sweep the opposite way
-    dir = Down;
+    angleSweep = sweepMax;
+    dirSweep = Down;
 }
 
 /**
@@ -217,4 +237,36 @@ int UltrasonicSensor::calcBestDirection()
     }
     
     return bestDir;
+}
+
+void UltrasonicSensor::sweepNext()
+{
+    Logging* kaliLog = Logging::Instance();
+
+    if (dirSweep == Up)
+    {
+        angleSweep += 10;
+    }
+    else
+    {
+        angleSweep -= 10;
+    }
+
+    // set the servo to the specified angle
+    horizontalServo.setPos(angleSweep);
+
+    // measure the distance and store in the array
+    dists[angleSweep / 10] = getDistance();
+
+    string message = "Angle: " + to_string(angleSweep) + " distance: " + to_string(dists[angleSweep / 10]);
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    
+    if (angleSweep == sweepMin)
+    {
+        dirSweep = Up;
+    }
+    else if (angleSweep == sweepMax)
+    {
+        dirSweep = Down;
+    }
 }

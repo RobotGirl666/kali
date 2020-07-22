@@ -335,12 +335,14 @@ void Wheels::twirlRight(int speed, int milliseconds)
     }
 }
 
-/*
-    Turns Kali Robot gently left.
-
-    @param speed - A speed from 0-100.
-    @param milliseconds - How many milliseconds to turn for.
-*/
+/**
+ * Turns Kali Robot gently left.
+ * 
+ * @param speed - A speed from 0-100.
+ * @param milliseconds - How many milliseconds to turn for.
+ * @param turnAdjustment - how much to adjust the turn. should be a value from 0.0 to 1.0. works to ease the turn.
+ * 
+ */
 void Wheels::turnLeft(int speed, int milliseconds, float turnAdjustment)
 {
     Logging* kaliLog = Logging::Instance();
@@ -348,7 +350,16 @@ void Wheels::turnLeft(int speed, int milliseconds, float turnAdjustment)
     string message = "Turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
-    turn((speed * turnAdjustment / TURN_FACTOR), speed, milliseconds);
+    // limit turnAdjustment in case the wrong values have been sent through
+    // invalid values will be set to the default turn
+    if (turnAdjustment > 1.0 || turnAdjustment < 0.0)
+    {
+        turnAdjustment = 1.0;
+    }
+    int turnSpeedMax = speed / TURN_FACTOR;
+    int turnSpeed = (1 - turnAdjustment) * (speed - turnSpeedMax) + turnSpeedMax;
+    
+    turn(turnSpeed, speed, milliseconds);
 }
 
 /*
@@ -364,7 +375,16 @@ void Wheels::turnRight(int speed, int milliseconds, float turnAdjustment)
     string message = "Turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
     
-    turn(speed, (speed * turnAdjustment / TURN_FACTOR), milliseconds);
+    // limit turnAdjustment in case the wrong values have been sent through
+    // invalid values will be set to the default turn
+    if (turnAdjustment > 1.0 || turnAdjustment < 0.0)
+    {
+        turnAdjustment = 1.0;
+    }
+    int turnSpeedMax = speed / TURN_FACTOR;
+    int turnSpeed = (1 - turnAdjustment) * (speed - turnSpeedMax) + turnSpeedMax;
+    
+    turn(speed, turnSpeed, milliseconds);
 }
 
 /*
