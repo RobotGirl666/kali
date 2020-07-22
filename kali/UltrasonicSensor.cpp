@@ -86,12 +86,14 @@ void UltrasonicSensor::roam(int speed, int seconds)
         else if (heading > 0)
         {
             // deviation from the current front face
-            float deviation = (heading - 90) / 10;
+            float deviation = heading - 90;
             
             // turn based on deviation from straight
-            float turnAdjustment = abs(deviation) / 9;
             if (deviation > 0)
             {
+                // adjust the turn depending on how much we need to deviate
+                float turnAdjustment = deviation / (sweepMax - 90) / 2 + 0.5;
+                
                 message = "Turning right with adjustment: " + to_string(turnAdjustment);
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
@@ -99,6 +101,9 @@ void UltrasonicSensor::roam(int speed, int seconds)
             }
             else if (deviation < 0)
             {
+                // adjust the turn depending on how much we need to deviate
+                float turnAdjustment = deviation / (sweepMin - 90) / 2 + 0.5;
+                
                 message = "Turning left with adjustment: " + to_string(turnAdjustment);
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
