@@ -67,6 +67,8 @@ void UltrasonicSensor::roam(int speed, int seconds)
     // roam for the specified time (seconds)
     MicroTimer mt;
     mt.start();
+    // set the initial movement forward
+    kali->wheels.forwardRampUp(speed);
     while (mt.check() < seconds * 1000000)
     {
         // work out what the best direction to move kali based on the ultrasonic information we obtained in the sweep
@@ -229,12 +231,16 @@ int UltrasonicSensor::calcBestDirection()
     int bestDir = -1;
     int distMax = 0;
     
-    for (int dir = sweepMin; dir <= sweepMax; dir += 10)
+    // the direction kali is heading must be greater than the minimum distance
+    if (dists[9] > distMin)
     {
-        if (dists[dir / 10] > distMax and dists[dir / 10] > distMin)
+        for (int dir = sweepMin; dir <= sweepMax; dir += 10)
         {
-            bestDir = dir;
-            distMax = dists[dir / 10];
+            if (dists[dir / 10] > distMax and dists[dir / 10] > distMin)
+            {
+                bestDir = dir;
+                distMax = dists[dir / 10];
+            }
         }
     }
     

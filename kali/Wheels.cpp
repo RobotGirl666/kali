@@ -356,8 +356,8 @@ void Wheels::turnLeft(int speed, int milliseconds, float turnAdjustment)
     {
         turnAdjustment = 1.0;
     }
-    int turnSpeedMax = speed / TURN_FACTOR;
-    int turnSpeed = (1 - turnAdjustment) * (speed - turnSpeedMax) + turnSpeedMax;
+    int turnSpeedNominal = speed / TURN_FACTOR;
+    int turnSpeed = (1 - turnAdjustment) * (speed - turnSpeedNominal) + turnSpeedNominal;
     
     turn(turnSpeed, speed, milliseconds);
 }
@@ -381,8 +381,8 @@ void Wheels::turnRight(int speed, int milliseconds, float turnAdjustment)
     {
         turnAdjustment = 1.0;
     }
-    int turnSpeedMax = speed / TURN_FACTOR;
-    int turnSpeed = (1 - turnAdjustment) * (speed - turnSpeedMax) + turnSpeedMax;
+    int turnSpeedNominal = speed / TURN_FACTOR;
+    int turnSpeed = (1 - turnAdjustment) * (speed - turnSpeedNominal) + turnSpeedNominal;
     
     turn(speed, turnSpeed, milliseconds);
 }
