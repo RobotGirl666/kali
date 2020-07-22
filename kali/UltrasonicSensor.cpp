@@ -77,13 +77,14 @@ void UltrasonicSensor::roam(int speed, int seconds)
 
         if (heading == 90)
         {
-            kali->wheels.setForwardSpeed(speed);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Moving forward");
+        kali->wheels.setForwardSpeed(speed);
             sweepNext();
         }
         else if (heading > 0)
         {
             // deviation from the current front face
-            int deviation = (heading - 90) / 10;
+            float deviation = (heading - 90) / 10;
             
             // turn based on deviation from straight
             float turnAdjustment = abs(deviation) / 9;

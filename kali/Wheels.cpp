@@ -494,7 +494,7 @@ void Wheels::turn(int speedLeft, int speedRight, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
     
-    string message = "Turning left wheels with left wheels speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
+    string message = "Turning left wheels with speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
     // turn according to the given wheel speeds
@@ -532,7 +532,7 @@ void Wheels::turnReverse(int speedLeft, int speedRight, int milliseconds)
 {
     Logging* kaliLog = Logging::Instance();
     
-    string message = "Reverse turning left wheels with left wheels speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
+    string message = "Reverse turning left wheels with speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
     kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
     // turn according to the given wheel speeds
