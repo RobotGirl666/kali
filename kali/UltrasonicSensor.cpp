@@ -63,7 +63,6 @@ void UltrasonicSensor::roam(int speed, int seconds)
     // first do a full sweep so we get a lay of the land
     setSweepRange(30, 150); // sweep from 30-150 degrees
     fullSweep();
-    return;
     
     // roam for the specified time (seconds)
     MicroTimer mt;
