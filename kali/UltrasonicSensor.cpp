@@ -79,8 +79,9 @@ void UltrasonicSensor::roam(int speed, int seconds)
 
         if (heading == 90)
         {
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Moving forward");
-        kali->wheels.setForwardSpeed(speed);
+            kaliLog->log(typeid(this).name(), __FUNCTION__, "Moving forward");
+            kali->wheels.setForwardSpeed(speed);
+            
             sweepNext();
         }
         else if (heading > 0)
@@ -97,7 +98,8 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 message = "Turning right with adjustment: " + to_string(turnAdjustment);
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-                kali->wheels.turnRight(speed, 0, turnAdjustment);
+                //kali->wheels.turnRight(speed, 0, turnAdjustment);
+                kali->wheels.turnRight(speed);
             }
             else if (deviation < 0)
             {
@@ -107,7 +109,8 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 message = "Turning left with adjustment: " + to_string(turnAdjustment);
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-                kali->wheels.turnLeft(speed, 0, turnAdjustment);
+                //kali->wheels.turnLeft(speed, 0, turnAdjustment);
+                kali->wheels.turnLeft(speed);
             }
             
             sweepNext();
@@ -117,11 +120,11 @@ void UltrasonicSensor::roam(int speed, int seconds)
             // kali has come to a cul-de-sac - she needs to turn around and re-sweep the area
             if (rand() % 2)
             {
-                kali->wheels.twirlLeft(speed, 300);
+                kali->wheels.twirlLeft(speed, 600);
             }
             else
             {
-                kali->wheels.twirlRight(speed, 300);
+                kali->wheels.twirlRight(speed, 600);
             }
             fullSweep();
         }
