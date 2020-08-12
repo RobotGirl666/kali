@@ -98,7 +98,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 message = "Turning right with adjustment: " + to_string(turnAdjustment);
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-                kali->wheels.turnRight(speed, 0, turnAdjustment);
+                kali->wheels.turnLeft(speed, 0, turnAdjustment);
             }
             else if (deviation < 0)
             {
@@ -108,7 +108,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 message = "Turning left with adjustment: " + to_string(turnAdjustment);
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-                kali->wheels.turnLeft(speed, 0, turnAdjustment);
+                kali->wheels.turnRight(speed, 0, turnAdjustment);
             }
             
             sweepNext();
