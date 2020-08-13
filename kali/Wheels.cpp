@@ -368,7 +368,7 @@ void Wheels::twirlLeftPrecise(int speed, int angle)
         currentSpeed = speed;
 
         // continue twirling for the specified time
-        int milliseconds = calcTurnTime(speed, angle);
+        int milliseconds = calcTwirlTime(speed, angle);
         message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
         
@@ -402,7 +402,7 @@ void Wheels::twirlRightPrecise(int speed, int angle)
         currentSpeed = speed;
 
         // continue twirling for the specified time
-        int milliseconds = calcTurnTime(speed, angle);
+        int milliseconds = calcTwirlTime(speed, angle);
         message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
         
@@ -417,12 +417,13 @@ void Wheels::twirlRightPrecise(int speed, int angle)
 
 /**
     Calculates the time in milliseconds it takes to turn Kali at the given speed to the given angle.
+    The time is proportional to 1 / s^2 where s = speed (inverse square law).
 
     @param speed - A speed from 0-100.
     @param angle - How far to turn.
     @return The number of milliseconds it takes to turn Kali at the given speed to the given angle.
 */
-int Wheels::calcTurnTime(int speed, int angle)
+int Wheels::calcTwirlTime(int speed, int angle)
 {
     int milliseconds = (3985714.0 / (speed * speed) + 131.4285714) * angle / 360.0;
     

@@ -59,7 +59,7 @@ protected:
     LeftWheels leftWheels;
     RightWheels rightWheels;
     int currentSpeed;
-    int calcTurnTime(int speed, int angle);
+    int calcTwirlTime(int speed, int angle);
     
 private:
 };
