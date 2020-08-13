@@ -424,7 +424,7 @@ void Wheels::twirlRightPrecise(int speed, int angle)
 */
 int Wheels::calcTurnTime(int speed, int angle)
 {
-    int milliseconds = (3985714.0 / speed + 131.4285714) * angle / 360.0;
+    int milliseconds = (3985714.0 / (speed * speed) + 131.4285714) * angle / 360.0;
     
     return milliseconds;
 }
