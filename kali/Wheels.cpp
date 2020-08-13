@@ -27,7 +27,7 @@ Wheels::Wheels(const Wheels& orig) {
 Wheels::~Wheels() {
 }
 
-/*
+/**
     Initialises the Wiring Pi library for each set of wheels.
 
 */
@@ -37,7 +37,7 @@ void Wheels::initialise()
     rightWheels.initialise();
 }
 
-/*
+/**
     Moves Kali Robot forward.
    
     It ramps up the speed to the specified speed, it holds that speed for the specified number of seconds,
@@ -69,7 +69,7 @@ void Wheels::moveForward(int speed, int seconds)
     }
 }
 
-/*
+/**
     Moves Kali Robot in reverse.
    
     It ramps up the speed to the specified speed, it holds that speed for the specified number of seconds,
@@ -101,6 +101,12 @@ void Wheels::moveReverse(int speed, int seconds)
     }
 }
 
+/**
+    Sets Kali's forward speed to the given speed.
+
+    @param speed - A speed from 0-100.
+
+*/
 void Wheels::setForwardSpeed(int speed)
 {
     if (speed == 0)
@@ -116,6 +122,12 @@ void Wheels::setForwardSpeed(int speed)
     currentSpeed = speed;
 }
 
+/**
+    Sets Kali's reverse speed to the given speed.
+
+    @param speed - A speed from 0-100.
+
+*/
 void Wheels::setReverseSpeed(int speed)
 {
     if (speed == 0)
@@ -131,7 +143,7 @@ void Wheels::setReverseSpeed(int speed)
     currentSpeed = -speed;
 }
 
-/*
+/**
     Ramps up the speed to the specified value.
 
     @param speed - A speed from 0-100.
@@ -158,7 +170,7 @@ void Wheels::forwardRampUp(int speed)
     setForwardSpeed(speed);
 }
 
-/*
+/**
     Ramps down the speed to a halt from the specified value.
 
     @param speed - A speed from 0-100.
@@ -184,7 +196,7 @@ void Wheels::forwardRampDown(int speed)
     stop();
 }
 
-/*
+/**
     Ramps up the reverse speed to the specified value.
 
     @param speed - A speed from 0-100.
@@ -211,7 +223,7 @@ void Wheels::reverseRampUp(int speed)
     setReverseSpeed(speed);
 }
 
-/*
+/**
     Ramps down the speed to a halt from the specified value.
 
     @param speed - A speed from 0-100.
@@ -237,7 +249,7 @@ void Wheels::reverseRampDown(int speed)
     stop();
 }
 
-/*
+/**
     Brakes gently (ramps down in the forward or reverse direction).
 
 */
@@ -258,7 +270,7 @@ void Wheels::brakeSoft()
     }
 }
 
-/*
+/**
     Stops abruptly - sets the forward or reverse direction motion to 0.
 
 */
@@ -273,7 +285,7 @@ void Wheels::stop()
     currentSpeed = 0;
 }
 
-/*
+/**
     Twirls Kali Robot in the left direction (anticlockwise).
 
     @param speed - A speed from 0-100.
@@ -304,7 +316,7 @@ void Wheels::twirlLeft(int speed, int milliseconds)
     }
 }
 
-/*
+/**
     Twirls Kali Robot in the right direction (clockwise).
 
     @param speed - A speed from 0-100.
@@ -336,6 +348,88 @@ void Wheels::twirlRight(int speed, int milliseconds)
 }
 
 /**
+    Twirls Kali Robot in the left direction (anticlockwise).
+
+    @param speed - A speed from 0-100.
+    @param angle - How far to turn.
+*/
+void Wheels::twirlLeftPrecise(int speed, int angle)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Twirling left with speed " + to_string(speed) + " for " + to_string(angle) + " degrees.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+    if (angle > 0 && angle <= 360)
+    {
+        // twirl according to the given wheel speed
+        leftWheels.setReverseMotion(speed);
+        rightWheels.setForwardMotion(speed);
+        currentSpeed = speed;
+
+        // continue twirling for the specified time
+        int milliseconds = calcTurnTime(speed, angle);
+        message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
+        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        
+        // wait for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        stop();
+    }
+}
+
+/**
+    Twirls Kali Robot in the right direction (clockwise).
+
+    @param speed - A speed from 0-100.
+    @param angle - How far to turn.
+*/
+void Wheels::twirlRightPrecise(int speed, int angle)
+{
+    Logging* kaliLog = Logging::Instance();
+    
+    string message = "Twirling right with speed " + to_string(speed) + " for " + to_string(angle) + " degrees.";
+    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+
+    if (angle > 0 && angle <= 360)
+    {
+        // twirl according to the given wheel speed
+        leftWheels.setForwardMotion(speed);
+        rightWheels.setReverseMotion(speed);
+        currentSpeed = speed;
+
+        // continue twirling for the specified time
+        int milliseconds = calcTurnTime(speed, angle);
+        message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
+        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        
+        // wait for the specified time
+        delay(milliseconds);
+
+        // stop twirling (wheel speed = 0)
+        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        stop();
+    }
+}
+
+/**
+    Calculates the time in milliseconds it takes to turn Kali at the given speed to the given angle.
+
+    @param speed - A speed from 0-100.
+    @param angle - How far to turn.
+    @return The number of milliseconds it takes to turn Kali at the given speed to the given angle.
+*/
+int Wheels::calcTurnTime(int speed, int angle)
+{
+    int milliseconds = (3985714.0 / speed + 131.4285714) * angle / 360.0;
+    
+    return milliseconds;
+}
+
+/**
  * Turns Kali Robot gently left.
  * 
  * @param speed - A speed from 0-100.
@@ -362,7 +456,7 @@ void Wheels::turnLeft(int speed, int milliseconds, float turnAdjustment)
     turn(turnSpeed, speed, milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot gently right.
 
     @param speed - A speed from 0-100.
@@ -387,7 +481,7 @@ void Wheels::turnRight(int speed, int milliseconds, float turnAdjustment)
     turn(speed, turnSpeed, milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot aggressively left.
 
     @param speed - A speed from 0-100.
@@ -403,7 +497,7 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
     turn((speed / TURN_HARD_FACTOR), speed, milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot aggressively right.
 
     @param speed - A speed from 0-100.
@@ -419,7 +513,7 @@ void Wheels::turnHardRight(int speed, int milliseconds)
     turn(speed, (speed / TURN_HARD_FACTOR), milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot gently left.
 
     @param speed - A speed from 0-100.
@@ -435,7 +529,7 @@ void Wheels::turnLeftReverse(int speed, int milliseconds)
     turnReverse((speed / TURN_FACTOR), speed, milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot gently right.
 
     @param speed - A speed from 0-100.
@@ -451,7 +545,7 @@ void Wheels::turnRightReverse(int speed, int milliseconds)
     turnReverse(speed, (speed / TURN_FACTOR), milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot aggressively left.
 
     @param speed - A speed from 0-100.
@@ -467,7 +561,7 @@ void Wheels::turnHardLeftReverse(int speed, int milliseconds)
     turnReverse((speed / TURN_HARD_FACTOR), speed, milliseconds);
 }
 
-/*
+/**
     Turns Kali Robot aggressively right.
 
     @param speed - A speed from 0-100.
@@ -483,7 +577,7 @@ void Wheels::turnHardRightReverse(int speed, int milliseconds)
     turnReverse(speed, (speed / TURN_HARD_FACTOR), milliseconds);
 }
 
-/*
+/**
     Internal (protected) method to turn kali left/right
 
     @param speedLeft - A speed from 0-100 for the left wheels.
@@ -521,7 +615,7 @@ void Wheels::turn(int speedLeft, int speedRight, int milliseconds)
     }
 }
 
-/*
+/**
     Internal (protected) method to turn kali left/right
 
     @param speedLeft - A speed from 0-100 for the left wheels.

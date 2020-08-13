@@ -118,11 +118,11 @@ void UltrasonicSensor::roam(int speed, int seconds)
             // kali has come to a cul-de-sac - she needs to turn around and re-sweep the area
             if (rand() % 2)
             {
-                kali->wheels.twirlLeft(speed, 600);
+                kali->wheels.twirlLeftPrecise(speed, 120);
             }
             else
             {
-                kali->wheels.twirlRight(speed, 600);
+                kali->wheels.twirlRightPrecise(speed, 120);
             }
             fullSweep();
         }

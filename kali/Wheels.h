@@ -36,6 +36,8 @@ public:
     void stop();
     void twirlLeft(int speed, int milliseconds = 0);
     void twirlRight(int speed, int milliseconds = 0);
+    void twirlLeftPrecise(int speed, int angle);
+    void twirlRightPrecise(int speed, int angle);
     void turnLeft(int speed, int milliseconds = 0, float turnAdjustment = 1.0);
     void turnRight(int speed, int milliseconds = 0, float turnAdjustment = 1.0);
     void turnHardLeft(int speed, int milliseconds = 0);
@@ -57,6 +59,7 @@ protected:
     LeftWheels leftWheels;
     RightWheels rightWheels;
     int currentSpeed;
+    int calcTurnTime(int speed, int angle);
     
 private:
 };
