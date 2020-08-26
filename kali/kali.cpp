@@ -258,6 +258,7 @@ int main(int argc, char** argv) {
                 cout << "kali detectfaces" << endl;
                 cout << "kali recognisefaces" << endl;
                 cout << "kali remote" << endl;
+                cout << "kali say" << endl;
                 cout << "kali roam" << endl;
             }
 
