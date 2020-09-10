@@ -234,6 +234,11 @@ int main(int argc, char** argv) {
                 kali->ultrasonicSensor.roam(speed, time);
             }
 
+            else if (input.compare("eliza") == 0)
+            {
+                kali->eliza.converse();
+            }
+
             else
             {
                 cout << "You can control Kali with the following commands:" << endl;

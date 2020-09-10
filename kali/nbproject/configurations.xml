@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Buzzer.h</itemPath>
       <itemPath>Camera.h</itemPath>
+      <itemPath>Eliza.h</itemPath>
       <itemPath>InfraredSensor.h</itemPath>
       <itemPath>KaliRobot.h</itemPath>
       <itemPath>LeftWheels.h</itemPath>
@@ -29,6 +30,7 @@
                    projectFiles="true">
       <itemPath>Buzzer.cpp</itemPath>
       <itemPath>Camera.cpp</itemPath>
+      <itemPath>Eliza.cpp</itemPath>
       <itemPath>InfraredSensor.cpp</itemPath>
       <itemPath>KaliRobot.cpp</itemPath>
       <itemPath>LeftWheels.cpp</itemPath>
@@ -88,6 +90,7 @@
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libncurses.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libboost_regex.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -98,6 +101,10 @@
       <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Eliza.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Eliza.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InfraredSensor.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -190,6 +197,7 @@
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libncurses.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libboost_regex.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -200,6 +208,10 @@
       <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Eliza.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Eliza.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InfraredSensor.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -292,6 +304,7 @@
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libsqlite3.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libespeak-ng.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libncurses.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/arm-linux-gnueabihf/libboost_regex.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -302,6 +315,10 @@
       <item path="Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Eliza.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Eliza.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InfraredSensor.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -92,6 +92,8 @@ void UltrasonicSensor::roam(int speed, int seconds)
             // turn based on deviation from straight
             if (deviation > 0)
             {
+                kali->wheels.twirlLeftPrecise(speed, deviation);
+                /*
                 // adjust the turn depending on how much we need to deviate
                 float turnAdjustment = deviation / (sweepMax - 90) / 2 + 0.5;
                 
@@ -99,9 +101,12 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
                 kali->wheels.turnLeft(speed, 0, turnAdjustment);
+                */
             }
             else if (deviation < 0)
             {
+                kali->wheels.twirlRightPrecise(speed, -deviation);
+                /*
                 // adjust the turn depending on how much we need to deviate
                 float turnAdjustment = deviation / (sweepMin - 90) / 2 + 0.5;
                 
@@ -109,6 +114,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
                 kali->wheels.turnRight(speed, 0, turnAdjustment);
+                */
             }
             
             sweepNext();
@@ -240,14 +246,45 @@ int UltrasonicSensor::calcBestDirection()
     // the direction kali is heading must be greater than the minimum distance
     if (dists[9] > distMin)
     {
-        for (int dir = sweepMin; dir <= sweepMax; dir += 10)
+        for (int dir = sweepMin; dir <= sweepMax; dir ++)
         {
-            if (dists[dir / 10] > distMax and dists[dir / 10] > distMin)
+            if (dists[dir] > distMax and dists[dir] > distMin)
             {
-                bestDir = dir;
-                distMax = dists[dir / 10];
+                bestDir = dir * 10;
+                distMax = dists[dir];
             }
         }
+
+        // the direction may be at the edge of a larger opening
+        // if so, let's find the middle of that opening
+        int currBest = bestDir / 10;
+        int minOpening = currBest;
+        int maxOpening = currBest;
+        bool lowerDone = false;
+        bool upperDone = false;
+        for (int gap = 1; gap <= 9 && !(lowerDone && upperDone); gap++)
+        {
+            // check lower opening
+            if (!lowerDone && currBest - gap > 0 && dists[currBest - gap] == distMax)
+            {
+                minOpening = currBest - gap;
+            }
+            else
+            {
+                lowerDone = true;
+            }
+            
+            // check upper opening
+            if (!upperDone && currBest + gap < 180 && dists[currBest + gap] == distMax)
+            {
+                maxOpening = currBest + gap;
+            }
+            else
+            {
+                upperDone = true;
+            }
+        }
+        bestDir = (maxOpening - minOpening) / 2 * 10;
     }
     
     return bestDir;

@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Buzzer.o \
 	${OBJECTDIR}/Camera.o \
+	${OBJECTDIR}/Eliza.o \
 	${OBJECTDIR}/InfraredSensor.o \
 	${OBJECTDIR}/KaliRobot.o \
 	${OBJECTDIR}/LeftWheels.o \
@@ -67,7 +68,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/libwiringPi.so /usr/local/lib//libopencv_core.so /usr/local/lib/libopencv_highgui.so /usr/local/lib/libopencv_imgproc.so /usr/local/lib/libopencv_objdetect.so /usr/local/lib/libopencv_video.so /usr/local/lib/libopencv_videoio.so /usr/local/lib/libopencv_imgcodecs.so /usr/local/lib/libopencv_face.so /usr/lib/arm-linux-gnueabihf/libsqlite3.so /usr/lib/arm-linux-gnueabihf/libespeak-ng.so /usr/lib/arm-linux-gnueabihf/libncurses.so
+LDLIBSOPTIONS=/usr/lib/libwiringPi.so /usr/local/lib//libopencv_core.so /usr/local/lib/libopencv_highgui.so /usr/local/lib/libopencv_imgproc.so /usr/local/lib/libopencv_objdetect.so /usr/local/lib/libopencv_video.so /usr/local/lib/libopencv_videoio.so /usr/local/lib/libopencv_imgcodecs.so /usr/local/lib/libopencv_face.so /usr/lib/arm-linux-gnueabihf/libsqlite3.so /usr/lib/arm-linux-gnueabihf/libespeak-ng.so /usr/lib/arm-linux-gnueabihf/libncurses.so /usr/lib/arm-linux-gnueabihf/libboost_regex.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -97,6 +98,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/li
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libncurses.so
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/arm-linux-gnueabihf/libboost_regex.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali ${OBJECTFILES} ${LDLIBSOPTIONS}
@@ -110,6 +113,11 @@ ${OBJECTDIR}/Camera.o: Camera.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camera.o Camera.cpp
+
+${OBJECTDIR}/Eliza.o: Eliza.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Eliza.o Eliza.cpp
 
 ${OBJECTDIR}/InfraredSensor.o: InfraredSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -187,7 +195,7 @@ ${OBJECTDIR}/kali.o: kali.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwiringPi.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgcodecs.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_face.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsqlite3.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libespeak-ng.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libncurses.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwiringPi.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgcodecs.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_face.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsqlite3.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libespeak-ng.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libncurses.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libboost_regex.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali
 
 # Subprojects

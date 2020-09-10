@@ -21,6 +21,7 @@
 #include "Remote.h"
 #include "InfraredSensor.h"
 #include "UltrasonicSensor.h"
+#include "Eliza.h"
 
 class KaliRobot {
 public:
@@ -43,6 +44,9 @@ public:
     Remote remote;
     InfraredSensor infraredSensor;
     UltrasonicSensor ultrasonicSensor;
+    
+    // abstract robot components
+    MB::Eliza eliza; // psychologist
     
 private:
     static KaliRobot* _instance;

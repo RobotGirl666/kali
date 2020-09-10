@@ -54,7 +54,7 @@ protected:
     int dists[19];
     
     void fullSweep(); // Do a full sweep of the forward area
-    int getDistance(int limit = 10000); // get the distance to the object the sensor is pointing to
+    int getDistance(int limit = 5000); // get the distance to the object the sensor is pointing to
     void sweepNext(); // sweep one step at a time
 
 private:
