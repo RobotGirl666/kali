@@ -116,6 +116,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 kali->wheels.turnRight(speed, 0, turnAdjustment);
                 */
             }
+            kali->wheels.moveForward(speed);
             
             sweepNext();
         }

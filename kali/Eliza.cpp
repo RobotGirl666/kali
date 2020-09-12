@@ -13,6 +13,8 @@
  * Need to install the boost library unfortunately - cbf changing the code instead
  * sudo apt-get install libboost-all-dev
  * 
+ * todo: buy microphone, hook it up and have a proper conversation
+ * 
  */
 
 #include <cstdlib>
