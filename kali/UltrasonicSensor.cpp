@@ -203,13 +203,13 @@ int UltrasonicSensor::getDistance(int limit)
     // wait for pulse to come back
     while(!digitalRead(pinEcho) == 1)
     {
-        if (mt.check() >= limitTime)  // stop if exceeds maximum value
+        if (mt.check() > limitTime)  // stop if exceeds maximum value
         {
             break;
         }
     }
     
-    if (mt.getCheck() < limitTime)
+    if (mt.getCheck() <= limitTime)
     {
         mt.start(); // start timing the length of the echo pulse which will be the distance in microsectonds
 
@@ -247,26 +247,26 @@ int UltrasonicSensor::calcBestDirection()
     // the direction kali is heading must be greater than the minimum distance
     if (dists[9] > distMin)
     {
-        for (int dir = sweepMin; dir <= sweepMax; dir ++)
+        for (int dir = sweepMin; dir <= sweepMax; dir += 10)
         {
-            if (dists[dir] > distMax and dists[dir] > distMin)
+            if (dists[dir / 10] > distMax and dists[dir / 10] > distMin)
             {
-                bestDir = dir * 10;
+                bestDir = dir;
                 distMax = dists[dir];
             }
         }
 
         // the direction may be at the edge of a larger opening
         // if so, let's find the middle of that opening
-        int currBest = bestDir / 10;
+        int currBest = bestDir;
         int minOpening = currBest;
         int maxOpening = currBest;
         bool lowerDone = false;
         bool upperDone = false;
-        for (int gap = 1; gap <= 9 && !(lowerDone && upperDone); gap++)
+        for (int gap = 10; gap <= 180 && !(lowerDone && upperDone); gap += 10)
         {
             // check lower opening
-            if (!lowerDone && currBest - gap > 0 && dists[currBest - gap] == distMax)
+            if (!lowerDone && currBest - gap > 0 && dists[(currBest - gap) / 10] == distMax)
             {
                 minOpening = currBest - gap;
             }
@@ -276,7 +276,7 @@ int UltrasonicSensor::calcBestDirection()
             }
             
             // check upper opening
-            if (!upperDone && currBest + gap < 180 && dists[currBest + gap] == distMax)
+            if (!upperDone && currBest + gap <= 180 && dists[(currBest + gap) / 10] == distMax)
             {
                 maxOpening = currBest + gap;
             }
@@ -285,7 +285,7 @@ int UltrasonicSensor::calcBestDirection()
                 upperDone = true;
             }
         }
-        bestDir = (maxOpening - minOpening) / 2 * 10;
+        bestDir = (maxOpening - minOpening) / 2;
     }
     
     return bestDir;
