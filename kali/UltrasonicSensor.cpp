@@ -264,17 +264,16 @@ int UltrasonicSensor::calcBestDirection()
 
         // the direction may be at the edge of a larger opening
         // if so, let's find the middle of that opening
-        int currBest = bestDir;
-        int minOpening = currBest;
-        int maxOpening = currBest;
+        int minOpening = bestDir;
+        int maxOpening = bestDir;
         bool lowerDone = false;
         bool upperDone = false;
         for (int gap = 10; gap <= 180 && !(lowerDone && upperDone); gap += 10)
         {
             // check lower opening
-            if (!lowerDone && currBest - gap > 0 && dists[(currBest - gap) / 10] == distMax)
+            if (!lowerDone && bestDir - gap > 0 && dists[(bestDir - gap) / 10] == distMax)
             {
-                minOpening = currBest - gap;
+                minOpening = bestDir - gap;
             }
             else
             {
@@ -282,16 +281,16 @@ int UltrasonicSensor::calcBestDirection()
             }
             
             // check upper opening
-            if (!upperDone && currBest + gap <= 180 && dists[(currBest + gap) / 10] == distMax)
+            if (!upperDone && bestDir + gap <= 180 && dists[(bestDir + gap) / 10] == distMax)
             {
-                maxOpening = currBest + gap;
+                maxOpening = bestDir + gap;
             }
             else
             {
                 upperDone = true;
             }
         }
-        bestDir = (maxOpening - minOpening) / 2;
+        bestDir = minOpening + (maxOpening - minOpening) / 2;
         
         message = "Found maximum distance from angle " + to_string(minOpening) + " to angle " + to_string(maxOpening) + " so best direction is " + to_string(bestDir);
         kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
