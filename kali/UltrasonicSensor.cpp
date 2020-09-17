@@ -241,6 +241,9 @@ void UltrasonicSensor::setSweepRange(int min, int max)
 
 int UltrasonicSensor::calcBestDirection()
 {
+    Logging* kaliLog = Logging::Instance();
+    kaliLog->log(typeid(this).name(), __FUNCTION__, "Calculating the best direction.", LogDebug);
+
     int bestDir = -1;
     int distMax = 0;
     
@@ -249,12 +252,15 @@ int UltrasonicSensor::calcBestDirection()
     {
         for (int dir = sweepMin; dir <= sweepMax; dir += 10)
         {
-            if (dists[dir / 10] > distMax and dists[dir / 10] > distMin)
+            int distIndex = dir / 10;
+            if (dists[distIndex] > distMax and dists[distIndex] > distMin)
             {
                 bestDir = dir;
-                distMax = dists[dir];
+                distMax = dists[distIndex];
             }
         }
+        string message = "Found maximum distance of " + to_string(distMax) + " at angle " + to_string(bestDir) + ". Now checking to see what else is around.";
+        kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
 
         // the direction may be at the edge of a larger opening
         // if so, let's find the middle of that opening
@@ -286,6 +292,9 @@ int UltrasonicSensor::calcBestDirection()
             }
         }
         bestDir = (maxOpening - minOpening) / 2;
+        
+        message = "Found maximum distance from angle " + to_string(minOpening) + " to angle " + to_string(maxOpening) + " so best direction is " + to_string(bestDir);
+        kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
     }
     
     return bestDir;
