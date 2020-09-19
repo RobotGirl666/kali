@@ -653,3 +653,14 @@ void Wheels::turnReverse(int speedLeft, int speedRight, int milliseconds)
         stop();
     }
 }
+
+/** Returns the current speed
+ 
+    @return The current wheel speed
+ 
+ */
+
+int Wheels::getCurrentSpeed()
+{
+    return currentSpeed;
+}

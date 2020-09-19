@@ -55,6 +55,14 @@ void UltrasonicSensor::initialise()
     horizontalServo.initialise(4);
 }
 
+/**
+ * 
+ * Roam around the world
+ * 
+ * @param int speed - roam at given speed
+ * @param int seconds - for the given time in seconds
+ * 
+ */
 void UltrasonicSensor::roam(int speed, int seconds)
 {
     Logging* kaliLog = Logging::Instance();
@@ -67,8 +75,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
     // roam for the specified time (seconds)
     MicroTimer mt;
     mt.start();
-    // set the initial movement forward
-    kali->wheels.forwardRampUp(speed);
+
     while (mt.check() < seconds * 1000000)
     {
         // work out what the best direction to move kali based on the ultrasonic information we obtained in the sweep
@@ -77,17 +84,21 @@ void UltrasonicSensor::roam(int speed, int seconds)
         string message = "Heading: " + to_string(heading);
         kaliLog->log(typeid(this).name(), __FUNCTION__, message);
 
-        if (heading == 90)
+        if (heading >= 85 && heading <= 95)
         {
             kaliLog->log(typeid(this).name(), __FUNCTION__, "Moving forward");
-            kali->wheels.setForwardSpeed(speed);
+            
+            if (kali->wheels.getCurrentSpeed() == 0)
+            {
+                kali->wheels.moveForward(speed);
+            }
             
             sweepNext();
         }
         else if (heading > 0)
         {
             // deviation from the current front face
-            float deviation = heading - 90;
+            int deviation = heading - 90;
             
             // turn based on deviation from straight
             if (deviation > 0)
@@ -116,6 +127,10 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 kali->wheels.turnRight(speed, 0, turnAdjustment);
                 */
             }
+            
+            // adjust reading directions - kali has turned so we need to adjust the positions of our readins in the array accordingly
+            
+            // continue moving in the direction kali has turned to
             kali->wheels.moveForward(speed);
             
             sweepNext();
@@ -140,6 +155,11 @@ void UltrasonicSensor::roam(int speed, int seconds)
     kali->wheels.stop();
 }
 
+/**
+ * 
+ * Do a full ultrasonic sweep from sweepMin to sweepMax
+ * 
+ */
 void UltrasonicSensor::fullSweep()
 {
     Logging* kaliLog = Logging::Instance();
@@ -233,12 +253,27 @@ int UltrasonicSensor::getDistance(int limit)
     return distance;
 }
 
+/**
+ * 
+ * Set the full range of the ultrasonic sweep
+ * 
+ * @param int min - the minimum angle of the sweep
+ * @param int max - the maximum angle of the sweep
+ * 
+ */
 void UltrasonicSensor::setSweepRange(int min, int max)
 {
     sweepMin = min;
     sweepMax = max;
 }
 
+/**
+ * 
+ * Calculate the best direction for kali to travel in so she does not bump into any objects
+ * 
+ * @return int - the direction of travel
+ * 
+ */
 int UltrasonicSensor::calcBestDirection()
 {
     Logging* kaliLog = Logging::Instance();
@@ -299,6 +334,11 @@ int UltrasonicSensor::calcBestDirection()
     return bestDir;
 }
 
+/**
+ * 
+ * Sweep the next angle
+ * 
+ */
 void UltrasonicSensor::sweepNext()
 {
     Logging* kaliLog = Logging::Instance();
@@ -328,5 +368,59 @@ void UltrasonicSensor::sweepNext()
     else if (angleSweep == sweepMax)
     {
         dirSweep = Down;
+    }
+}
+
+/**
+ * 
+ * Calculate the best direction for kali to travel in so she does not bump into any objects
+ * 
+ * @return int - the direction of travel
+ * 
+ */
+void UltrasonicSensor::adjustSweep(int deviation)
+{
+    // first adjust the sweep angle
+    angleSweep -= deviation;
+    if (angleSweep <= sweepMin)
+    {
+        angleSweep == sweepMin;
+        dirSweep = Up;
+    }
+    else if (angleSweep >= sweepMax)
+    {
+        angleSweep == sweepMax;
+        dirSweep = Down;
+    }
+
+    deviation /= 10;    
+    if (deviation > 0)
+    {
+        for (int i = 0; i <= 18; i++)
+        {
+            if (i <= 18-deviation)
+            {
+                dists[i] = dists[i + deviation];
+            }
+            else
+            {
+                dists[i] = 0;
+            }
+        }
+    }
+    else
+    {
+        for (int i = 18; i >= 0; i--)
+        {
+            deviation = -deviation;
+            if (i >= deviation)
+            {
+                dists[i] = dists[i - deviation];
+            }
+            else
+            {
+                dists[i] = 0;
+            }
+        }
     }
 }

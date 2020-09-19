@@ -46,6 +46,7 @@ public:
     void turnRightReverse(int speed, int milliseconds = 0);
     void turnHardLeftReverse(int speed, int milliseconds = 0);
     void turnHardRightReverse(int speed, int milliseconds = 0);
+    int getCurrentSpeed();
     
     // Wheel behaviour helpers
     void forwardRampUp(int speed);
