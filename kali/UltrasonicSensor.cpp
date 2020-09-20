@@ -129,6 +129,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
             }
             
             // adjust reading directions - kali has turned so we need to adjust the positions of our readins in the array accordingly
+            adjustSweep(deviation);
             
             // continue moving in the direction kali has turned to
             kali->wheels.moveForward(speed);
