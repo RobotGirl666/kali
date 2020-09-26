@@ -22,6 +22,12 @@ using namespace std;
 
 enum LoggingLevel { LogOff, LogInfo, LogDebug };
 
+#define logp1(a) log(typeid(this).name(),__FUNCTION__,a)
+#define logp2(a,b) log(typeid(this).name(),__FUNCTION__,a,b)
+#define logp3(a,b,c) log(typeid(this).name(),__FUNCTION__,a,b,c)
+#define logp4(a,b,c,d) log(typeid(this).name(),__FUNCTION__,a,b,c,d)
+#define lognp1(a) log("",__FUNCTION__,a)
+
 class Logging {
 public:
     static Logging* Instance();

@@ -82,11 +82,11 @@ void UltrasonicSensor::roam(int speed, int seconds)
         int heading = calcBestDirection();
 
         string message = "Heading: " + to_string(heading);
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
 
         if (heading >= 85 && heading <= 95)
         {
-            kaliLog->log(typeid(this).name(), __FUNCTION__, "Moving forward");
+            kaliLog->logp1("Moving forward");
             
             if (kali->wheels.getCurrentSpeed() == 0)
             {
@@ -109,7 +109,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 float turnAdjustment = deviation / (sweepMax - 90) / 2 + 0.5;
                 
                 message = "Turning right with adjustment: " + to_string(turnAdjustment);
-                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+                kaliLog->logp1(message);
 
                 kali->wheels.turnLeft(speed, 0, turnAdjustment);
                 */
@@ -122,7 +122,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
                 float turnAdjustment = deviation / (sweepMin - 90) / 2 + 0.5;
                 
                 message = "Turning left with adjustment: " + to_string(turnAdjustment);
-                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+                kaliLog->logp1(message);
 
                 kali->wheels.turnRight(speed, 0, turnAdjustment);
                 */
@@ -164,7 +164,7 @@ void UltrasonicSensor::roam(int speed, int seconds)
 void UltrasonicSensor::fullSweep()
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Commencing full ultrsonic sweep.");
+    kaliLog->logp1("Commencing full ultrsonic sweep.");
 
     // re-initialise the position and movement variables
     dirSweep = Up;
@@ -180,7 +180,7 @@ void UltrasonicSensor::fullSweep()
             dists[angle / 10] = getDistance();
 
             string message = "Angle: " + to_string(angle) + " distance: " + to_string(dists[angle / 10]);
-            kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+            kaliLog->logp1(message);
         }
         else
         {
@@ -278,7 +278,7 @@ void UltrasonicSensor::setSweepRange(int min, int max)
 int UltrasonicSensor::calcBestDirection()
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Calculating the best direction.", LogDebug);
+    kaliLog->logp2("Calculating the best direction.", LogDebug);
 
     int bestDir = -1;
     int distMax = 0;
@@ -289,6 +289,8 @@ int UltrasonicSensor::calcBestDirection()
         for (int dir = sweepMin; dir <= sweepMax; dir += 10)
         {
             int distIndex = dir / 10;
+            string message = "Dir = " + to_string(dir) + " Dist = " + to_string(dists[distIndex]);
+            kaliLog->logp2(message, LogDebug);
             if (dists[distIndex] > distMax and dists[distIndex] > distMin)
             {
                 bestDir = dir;
@@ -296,7 +298,7 @@ int UltrasonicSensor::calcBestDirection()
             }
         }
         string message = "Found maximum distance of " + to_string(distMax) + " at angle " + to_string(bestDir) + ". Now checking to see what else is around.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
+        kaliLog->logp2(message, LogDebug);
 
         // the direction may be at the edge of a larger opening
         // if so, let's find the middle of that opening
@@ -329,7 +331,7 @@ int UltrasonicSensor::calcBestDirection()
         bestDir = minOpening + (maxOpening - minOpening) / 2;
         
         message = "Found maximum distance from angle " + to_string(minOpening) + " to angle " + to_string(maxOpening) + " so best direction is " + to_string(bestDir);
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message, LogDebug);
+        kaliLog->logp2(message, LogDebug);
     }
     
     return bestDir;
@@ -360,7 +362,7 @@ void UltrasonicSensor::sweepNext()
     dists[angleSweep / 10] = getDistance();
 
     string message = "Angle: " + to_string(angleSweep) + " distance: " + to_string(dists[angleSweep / 10]);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     if (angleSweep == sweepMin)
     {
@@ -394,7 +396,7 @@ void UltrasonicSensor::adjustSweep(int deviation)
         dirSweep = Down;
     }
 
-    deviation /= 10;    
+    deviation /= 10;
     if (deviation > 0)
     {
         for (int i = 0; i <= 18; i++)

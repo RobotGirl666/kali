@@ -159,17 +159,17 @@ void Camera::startStreaming()
         if (status == 0)
         {
             streaming = true;
-            kaliLog->log(typeid(this).name(), __FUNCTION__, "Video streaming has commenced!");
+            kaliLog->logp1("Video streaming has commenced!");
         }
         else
         {
             string message = "Failed to start video streaming! Error: " + to_string(status);
-            kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+            kaliLog->logp1(message);
         }
     }
     else
     {
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Already streaming video!");
+        kaliLog->logp1("Already streaming video!");
     }
 }
 
@@ -181,7 +181,7 @@ void Camera::startStreaming()
 void Camera::stopStreaming()
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video streaming.");
+    kaliLog->logp1("Stopping video streaming.");
 
     // set all the paramebers that need to be parsed to pkill
     pid_t pid;
@@ -200,12 +200,12 @@ void Camera::stopStreaming()
     if (status == 0)
     {
         streaming = false;
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Video streaming has stopped!");
+        kaliLog->logp1("Video streaming has stopped!");
     }
     else
     {
         string message = "Failed to stop video streaming! Error: " + to_string(status);
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
     }
 }
 
@@ -252,17 +252,17 @@ void Camera::startRecording()
         {
             recording = true;
             string message = "Video recording to " + string(uniqueFilename) + "has commenced!";
-            kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+            kaliLog->logp1(message);
         }
         else
         {
             string message = "Failed to start video recording! Error: " + to_string(status);
-            kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+            kaliLog->logp1(message);
         }
     }
     else
     {
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Already recording video!");
+        kaliLog->logp1("Already recording video!");
     }
 }
 
@@ -274,7 +274,7 @@ void Camera::startRecording()
 void Camera::stopRecording()
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping video recording.");
+    kaliLog->logp1("Stopping video recording.");
 
     // set all the parameters that need to be parsed to pkill
     pid_t pid;
@@ -293,12 +293,12 @@ void Camera::stopRecording()
     if (status == 0)
     {
         recording = false;
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Video recording has stopped!");
+        kaliLog->logp1("Video recording has stopped!");
     }
     else
     {
         string message = "Failed to stop video recording! Error: " + to_string(status);
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
     }
 }
 
@@ -409,7 +409,7 @@ void Camera::recogniseFaces()
         if(cap.isOpened()) {
         }
         else {
-            kaliLog->log(typeid(this).name(), __FUNCTION__, "Could not open video capture device.");
+            kaliLog->logp1("Could not open video capture device.");
         }
         // Holds the current frame from the Video device:
         Mat frame;
@@ -450,9 +450,9 @@ void Camera::recogniseFaces()
                 int prediction = model->predict(face_resized);
 
                 string message = "Face recognition predition is: " + to_string(prediction);
-                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+                kaliLog->logp1(message);
                 message = "Recognised the following face: " + labels[prediction];
-                kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+                kaliLog->logp1(message);
                 
                 string response = "Hello there, " + labels[prediction];
                 cout << response << endl;
@@ -463,7 +463,7 @@ void Camera::recogniseFaces()
     {
         // at the moment we need to have images in the image database otherwise we have nothing to train the face recognition engine with
         // future enhancement is to add faces on the fly from the captured image
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "No images found in the faces database.");
+        kaliLog->logp1("No images found in the faces database.");
     }
 }
 
@@ -479,7 +479,7 @@ void Camera::recogniseFaces()
 bool Camera::loadKnownFaces(vector<Mat>& images, map<int, string>& labels, vector<int>& labels_index)
 {
     Logging* kaliLog = Logging::Instance();
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Loading known faces from database.");
+    kaliLog->logp1("Loading known faces from database.");
     
     bool success = false;
 
@@ -492,11 +492,11 @@ bool Camera::loadKnownFaces(vector<Mat>& images, map<int, string>& labels, vecto
 
     if( rc ) {
         success = false;
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Failed to open known faces database.");
-        kaliLog->log(typeid(this).name(), __FUNCTION__, sqlite3_errmsg(db));
+        kaliLog->logp1("Failed to open known faces database.");
+        kaliLog->logp1(sqlite3_errmsg(db));
     } else {
         success = true;
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Known faces database successfully opened. Now reading known faces.");
+        kaliLog->logp1("Known faces database successfully opened. Now reading known faces.");
         
         // prepare the database query
         sqlite3_stmt* stmt;
@@ -520,7 +520,7 @@ bool Camera::loadKnownFaces(vector<Mat>& images, map<int, string>& labels, vecto
         
         // log total number of face images loaded
         string message = "Loaded " + to_string(face_pic_count) + " known face images";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         
         // close the prepared statement
         sqlite3_finalize(stmt);

@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     // try catch everything - this will make kali a little more robust
 
     //start
-    kaliLog->log("", __FUNCTION__, "Kali Awakens! Bow to your machine overlord!");
+    kaliLog->lognp1("Kali Awakens! Bow to your machine overlord!");
 
     try {
         // do stuff here (BE MORE SPECIFIC PLSSS DAD)
@@ -270,15 +270,15 @@ int main(int argc, char** argv) {
         }
     }
     catch (const std::exception& ex) {
-        kaliLog->log("", __FUNCTION__, ex.what());
+        kaliLog->lognp1(ex.what());
     }
     catch (...) {
         // Just log that there was an issue
-        kaliLog->log("", __FUNCTION__, "Unknow exception thrown!");
+        kaliLog->lognp1("Unknow exception thrown!");
     }
 
     // goodbye
-    kaliLog->log("", __FUNCTION__, "Goodbye puny humans!");
+    kaliLog->lognp1("Goodbye puny humans!");
     
     return 0;
 }

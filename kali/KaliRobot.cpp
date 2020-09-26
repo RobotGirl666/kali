@@ -17,7 +17,6 @@
 #include <string>
 
 #include "KaliRobot.h"
-#include "Logging.h"
 
 using namespace std;
 

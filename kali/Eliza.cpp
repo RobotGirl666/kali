@@ -39,9 +39,9 @@ void Eliza::converse()
     std::string response;
     while (std::getline(std::cin, input) && input != "quit")
     {
-        kaliLog->log(typeid(this).name(), __FUNCTION__, input);
+        kaliLog->logp1(input);
         response = respond(input);
-        kaliLog->log(typeid(this).name(), __FUNCTION__, response);
+        kaliLog->logp1(response);
         kali->speaker.say(response);
     }
 }

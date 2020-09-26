@@ -53,7 +53,7 @@ void Wheel::setForwardMotion(int speed)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Motors moving forward with speed " + to_string(speed);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     if (speed > 0)
     {
@@ -79,7 +79,7 @@ void Wheel::setReverseMotion(int speed)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Motors reversing with speed " + to_string(speed);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     if (speed > 0)
     {
@@ -101,7 +101,7 @@ void Wheel::stop()
 {
     Logging* kaliLog = Logging::Instance();
     
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stopping motor");
+    kaliLog->logp1("Stopping motor");
 
     digitalWrite(pinForwardMotors, LOW);
     digitalWrite(pinReverseMotors, LOW);

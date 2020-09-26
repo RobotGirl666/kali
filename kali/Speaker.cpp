@@ -47,7 +47,7 @@ Speaker::Speaker() {
     else
     {
         // failed
-        kaliLog->log("", __FUNCTION__, "Failed to initialize espeak.");
+        kaliLog->logp1("Failed to initialize espeak.");
         espeakInitialised = false;
     }
 }
@@ -98,7 +98,7 @@ void Speaker::say(string& text_to_say, int volume, int rate, int pitch, int rang
         if ((speakErr = espeak_Synth(text_to_say.c_str(), text_to_say.size(), 0, POS_SENTENCE, 0, espeakCHARS_AUTO, NULL, NULL)) != EE_OK)
         {
             // failed
-            kaliLog->log("", __FUNCTION__, "Error on synth creation - cannot convert text to speech.");
+            kaliLog->logp1("Error on synth creation - cannot convert text to speech.");
         }
     }
 }

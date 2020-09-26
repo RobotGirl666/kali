@@ -51,20 +51,20 @@ void Wheels::moveForward(int speed, int seconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Moving forward with speed " + to_string(speed) + " for " + to_string(seconds) + " seconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Ramping up the speed");
+    kaliLog->logp1("Ramping up the speed");
     forwardRampUp(speed);
     
     if (seconds > 0)
     {
         // move forward for the specified time
         message = "Holding the speed for " + to_string(seconds) + " seconds.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         delay(seconds * 1000);
         
         // now ramp down
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Ramping dpwn the speed to a halt");
+        kaliLog->logp1("Ramping dpwn the speed to a halt");
         forwardRampDown(speed);
     }
 }
@@ -83,20 +83,20 @@ void Wheels::moveReverse(int speed, int seconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Moving in reverse with speed " + to_string(speed) + " for " + to_string(seconds) + " seconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Ramping up the speed");
+    kaliLog->logp1("Ramping up the speed");
     reverseRampUp(speed);
     
     if (seconds > 0)
     {
         // reverse for the specified time
         message = "Holding the speed for " + to_string(seconds) + " seconds.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         delay(seconds * 1000);
         
         // now ramp down
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Ramping dpwn the speed to a halt");
+        kaliLog->logp1("Ramping dpwn the speed to a halt");
         reverseRampDown(speed);
     }
 }
@@ -154,7 +154,7 @@ void Wheels::forwardRampUp(int speed)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping up the speed to " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     // ramp up the speed in increments of 10% of the total speed
     for (int i = (speed / 10); i < speed; i += (speed / 10))
@@ -166,7 +166,7 @@ void Wheels::forwardRampUp(int speed)
     
     // set the final speed accurately
     message = "Set the speed of both wheels to " + to_string(speed);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     setForwardSpeed(speed);
 }
 
@@ -181,7 +181,7 @@ void Wheels::forwardRampDown(int speed)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping down the speed from " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     // ramp down the speed in increments of 10% of the total speed
     for (int i = speed; i > 0; i -= (speed / 10))
@@ -192,7 +192,7 @@ void Wheels::forwardRampDown(int speed)
     }
     
     // set the final speed accurately
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+    kaliLog->logp1("Stop both wheel motors and come to a halt.");
     stop();
 }
 
@@ -207,7 +207,7 @@ void Wheels::reverseRampUp(int speed)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping up the speed to " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     // ramp up the speed in increments of 10% of the total speed
     for (int i = (speed / 10); i < speed; i += (speed / 10))
@@ -219,7 +219,7 @@ void Wheels::reverseRampUp(int speed)
     
     // set the final speed accurately
     message = "Set the speed of both wheels to " + to_string(speed);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     setReverseSpeed(speed);
 }
 
@@ -234,7 +234,7 @@ void Wheels::reverseRampDown(int speed)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Ramping down the speed from " + to_string(speed) + " in 10 increments of " + to_string(rampIncrement);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     // ramp down the speed in increments of 10% of the total speed
     for (int i = speed; i > 0; i -= (speed / 10))
@@ -245,7 +245,7 @@ void Wheels::reverseRampDown(int speed)
     }
     
     // set the final speed accurately
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+    kaliLog->logp1("Stop both wheel motors and come to a halt.");
     stop();
 }
 
@@ -258,7 +258,7 @@ void Wheels::brakeSoft()
     Logging* kaliLog = Logging::Instance();
     
     string message = "Braking softly down from a speed of " + to_string(currentSpeed);
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     if (currentSpeed > 0)
     {
@@ -278,7 +278,7 @@ void Wheels::stop()
 {
     Logging* kaliLog = Logging::Instance();
 
-    kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+    kaliLog->logp1("Stop both wheel motors and come to a halt.");
     leftWheels.stop();
     rightWheels.stop();
     
@@ -296,7 +296,7 @@ void Wheels::twirlLeft(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Twirling left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     // twirl according to the given wheel speed
     leftWheels.setReverseMotion(speed);
@@ -307,11 +307,11 @@ void Wheels::twirlLeft(int speed, int milliseconds)
     {
         // continue twirling for the specified time
         message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        kaliLog->logp1("Stop both wheel motors and come to a halt.");
         stop();
     }
 }
@@ -327,7 +327,7 @@ void Wheels::twirlRight(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Twirling right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     // twirl according to the given wheel speed
     leftWheels.setForwardMotion(speed);
@@ -338,11 +338,11 @@ void Wheels::twirlRight(int speed, int milliseconds)
     {
         // continue twirling for the specified time
         message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        kaliLog->logp1("Stop both wheel motors and come to a halt.");
         stop();
     }
 }
@@ -358,7 +358,7 @@ void Wheels::twirlLeftPrecise(int speed, int angle)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Twirling left with speed " + to_string(speed) + " for " + to_string(angle) + " degrees.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     if (angle > 0 && angle <= 360)
     {
@@ -370,13 +370,13 @@ void Wheels::twirlLeftPrecise(int speed, int angle)
         // continue twirling for the specified time
         int milliseconds = calcTwirlTime(speed, angle);
         message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         
         // wait for the specified time
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        kaliLog->logp1("Stop both wheel motors and come to a halt.");
         stop();
     }
 }
@@ -392,7 +392,7 @@ void Wheels::twirlRightPrecise(int speed, int angle)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Twirling right with speed " + to_string(speed) + " for " + to_string(angle) + " degrees.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     if (angle > 0 && angle <= 360)
     {
@@ -404,13 +404,13 @@ void Wheels::twirlRightPrecise(int speed, int angle)
         // continue twirling for the specified time
         int milliseconds = calcTwirlTime(speed, angle);
         message = "Holding the twirl for " + to_string(milliseconds) + " milliseconds.";
-        kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+        kaliLog->logp1(message);
         
         // wait for the specified time
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        kaliLog->logp1("Stop both wheel motors and come to a halt.");
         stop();
     }
 }
@@ -443,7 +443,7 @@ void Wheels::turnLeft(int speed, int milliseconds, float turnAdjustment)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     // limit turnAdjustment in case the wrong values have been sent through
     // invalid values will be set to the default turn
@@ -468,7 +468,7 @@ void Wheels::turnRight(int speed, int milliseconds, float turnAdjustment)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     // limit turnAdjustment in case the wrong values have been sent through
     // invalid values will be set to the default turn
@@ -493,7 +493,7 @@ void Wheels::turnHardLeft(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning hard left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     turn((speed / TURN_HARD_FACTOR), speed, milliseconds);
 }
@@ -509,7 +509,7 @@ void Wheels::turnHardRight(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning hard right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     turn(speed, (speed / TURN_HARD_FACTOR), milliseconds);
 }
@@ -525,7 +525,7 @@ void Wheels::turnLeftReverse(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Reverse turning left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     turnReverse((speed / TURN_FACTOR), speed, milliseconds);
 }
@@ -541,7 +541,7 @@ void Wheels::turnRightReverse(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Reverse turning right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     turnReverse(speed, (speed / TURN_FACTOR), milliseconds);
 }
@@ -557,7 +557,7 @@ void Wheels::turnHardLeftReverse(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Reverse turning hard left with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     turnReverse((speed / TURN_HARD_FACTOR), speed, milliseconds);
 }
@@ -573,7 +573,7 @@ void Wheels::turnHardRightReverse(int speed, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Reverse turning hard right with speed " + to_string(speed) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
     
     turnReverse(speed, (speed / TURN_HARD_FACTOR), milliseconds);
 }
@@ -590,7 +590,7 @@ void Wheels::turn(int speedLeft, int speedRight, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Turning left wheels with speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     // turn according to the given wheel speeds
     leftWheels.setForwardMotion(speedLeft);
@@ -611,7 +611,7 @@ void Wheels::turn(int speedLeft, int speedRight, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        kaliLog->logp1("Stop both wheel motors and come to a halt.");
         stop();
     }
 }
@@ -628,7 +628,7 @@ void Wheels::turnReverse(int speedLeft, int speedRight, int milliseconds)
     Logging* kaliLog = Logging::Instance();
     
     string message = "Reverse turning left wheels with speed " + to_string(speedLeft) + " and right wheels with speed " + to_string(speedRight) + " for " + to_string(milliseconds) + " milliseconds.";
-    kaliLog->log(typeid(this).name(), __FUNCTION__, message);
+    kaliLog->logp1(message);
 
     // turn according to the given wheel speeds
     leftWheels.setReverseMotion(speedLeft);
@@ -649,7 +649,7 @@ void Wheels::turnReverse(int speedLeft, int speedRight, int milliseconds)
         delay(milliseconds);
 
         // stop twirling (wheel speed = 0)
-        kaliLog->log(typeid(this).name(), __FUNCTION__, "Stop both wheel motors and come to a halt.");
+        kaliLog->logp1("Stop both wheel motors and come to a halt.");
         stop();
     }
 }
