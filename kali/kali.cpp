@@ -44,7 +44,10 @@ int main(int argc, char** argv) {
                 [](unsigned char c){ return std::tolower(c); });  //wtf is this?
             if (input.compare("remote") == 0)
             {
-                kali->remote.KeyboardControl(kali);
+                while(1)
+                {
+                    kali->remote.KeyboardControl(kali);
+                }
             }
 
             else if (input.compare("forward") == 0)
