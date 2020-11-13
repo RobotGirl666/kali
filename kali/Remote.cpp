@@ -38,7 +38,7 @@ void Remote::KeyboardControl(KaliRobot* kali)
     // POLLING TECHNIQUE
     char key = 127;
     
-    while(1) 
+    //while(1) 
     {
         key = getch();
         while (key == 0 || key == -32)
@@ -48,25 +48,25 @@ void Remote::KeyboardControl(KaliRobot* kali)
             {
             //call forward function
                 kali->wheels.moveForward(30,0);
-                delay(100);
+                delay(1000);
             }
             else if (key == 75) // left arrow
             {
                 //call turn left
                 kali->wheels.twirlLeft(30,0);
-                delay(100);
+                delay(1000);
             }
             else if (key == 77) // right arrow
             {
                 //call turn right
                 kali->wheels.twirlRight(30,0);
-                delay(100);
+                delay(1000);
             }
             else if (key == 80) // down arrow
             {
                 //call reverse?? or brake??
                 kali->wheels.moveReverse(30,0);
-                delay(100);
+                delay(1000);
             }
         }
    }
