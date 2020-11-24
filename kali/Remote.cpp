@@ -11,7 +11,7 @@
  * Created on 22 June 2020, 5:29 pm
  * 
  * need to install ncurses
- * sudo apt-get install ncurses-dev
+ * sudo apt-get install libncurses-dev
  */
 
 #include <iostream>

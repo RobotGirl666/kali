@@ -9,6 +9,10 @@
  * Author: vangelis
  *
  * Created on 26 April 2020, 7:52 am
+ * 
+ * install the following:
+ * sudo apt-get install wiringpi libwiringpi-dev libwiringpi2 -y
+ * 
  */
 
 #include <cstdlib>

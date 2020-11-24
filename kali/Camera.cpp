@@ -50,7 +50,7 @@
  * Recored Stream w/ ffmpeg
  * 
  * # [Varables]
- * source_stram="http://localhost:8080/?action=stream"
+ * source_stream="http://localhost:8080/?action=stream"
  * destination_directory="~/Videos"
  * destination_file="cncjs-recording_$(date +'%Y%m%d_%H%M%S').mpeg"
  * 
@@ -60,12 +60,12 @@
  *******************************************************************************
  * 
  * Face recognition using OpenCV - https://opencv.org/
- * Install the dependencies: sudo apt install build-essential cmake git pkg-config libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev gfortran openexr libatlas-base-dev python3-dev python3-numpy libtbb2 libtbb-dev libdc1394-22-dev
+ * Install the dependencies: sudo apt install build-essential cmake git pkg-config libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev gfortran openexr libatlas-base-dev python3-dev python3-numpy libtbb2 libtbb-dev libdc1394-22-dev -y
  * 
  * Installing on Raspbian: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
  * 
  * Upon further investigation, I don't think it's necessary to install fswebcam but I'll leave it here because it's a good way to check your webcam is working
- * Also need to install a usb camera: sudo apt install fswebcam
+ * Also need to install a usb camera: sudo apt install fswebcam -y
  * check that it works: fswebcam image.jpg
  * 
  * Need to keep a database of face images which is built up from video image captures

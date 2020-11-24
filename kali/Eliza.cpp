@@ -11,7 +11,10 @@
  * Created on 4 September 2020, 10:38 am
  * 
  * Need to install the boost library unfortunately - cbf changing the code instead
- * sudo apt-get install libboost-all-dev
+ * sudo apt-get install libboost-all-dev -y
+ * 
+ * install the espeak libraries
+ * sudo apt-get install espeak-ng espeak-ng-data espeak-ng-espeak libespeak-ng-dev libespeak-ng-libespeak-dev libespeak-ng-libespeak1 libespeak-ng1 speech-dispatcher-espeak-ng -y
  * 
  * todo: buy microphone, hook it up and have a proper conversation
  * 
