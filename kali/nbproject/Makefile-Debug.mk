@@ -68,7 +68,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so /lib/x86_64-linux-gnu/libopencv_core.so /lib/x86_64-linux-gnu/libopencv_highgui.so /lib/x86_64-linux-gnu/libopencv_imgproc.so /lib/x86_64-linux-gnu/libopencv_objdetect.so /lib/x86_64-linux-gnu/libopencv_video.so /lib/x86_64-linux-gnu/libopencv_videoio.so /lib/x86_64-linux-gnu/libopencv_imgcodecs.so /lib/x86_64-linux-gnu/libopencv_face.so /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libespeak.so /usr/lib/x86_64-linux-gnu/libncurses.so /usr/lib/x86_64-linux-gnu/libboost_regex.so
+LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so /usr/local/lib/libopencv_core.so /usr/local/lib/libopencv_highgui.so /usr/local/lib/libopencv_imgproc.so /usr/local/lib/libopencv_objdetect.so /usr/local/lib/libopencv_video.so /usr/local/lib/libopencv_videoio.so /usr/local/lib/libopencv_imgcodecs.so /usr/local/lib/libopencv_face.so /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libespeak.so /usr/lib/x86_64-linux-gnu/libncurses.so /usr/lib/x86_64-linux-gnu/libboost_regex.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -76,21 +76,21 @@ LDLIBSOPTIONS=/usr/lib/x86_64-linux-gnu/libwiringPi.so /lib/x86_64-linux-gnu/lib
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libwiringPi.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_core.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_core.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_highgui.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_highgui.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_imgproc.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_imgproc.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_objdetect.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_objdetect.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_video.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_video.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_videoio.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_videoio.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_imgcodecs.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_imgcodecs.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /lib/x86_64-linux-gnu/libopencv_face.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/local/lib/libopencv_face.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 
@@ -107,87 +107,87 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali: ${OBJECTFILES}
 ${OBJECTDIR}/Buzzer.o: Buzzer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Buzzer.o Buzzer.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Buzzer.o Buzzer.cpp
 
 ${OBJECTDIR}/Camera.o: Camera.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camera.o Camera.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camera.o Camera.cpp
 
 ${OBJECTDIR}/Eliza.o: Eliza.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Eliza.o Eliza.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Eliza.o Eliza.cpp
 
 ${OBJECTDIR}/InfraredSensor.o: InfraredSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfraredSensor.o InfraredSensor.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfraredSensor.o InfraredSensor.cpp
 
 ${OBJECTDIR}/KaliRobot.o: KaliRobot.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/KaliRobot.o KaliRobot.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/KaliRobot.o KaliRobot.cpp
 
 ${OBJECTDIR}/LeftWheels.o: LeftWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LeftWheels.o LeftWheels.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LeftWheels.o LeftWheels.cpp
 
 ${OBJECTDIR}/Logging.o: Logging.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Logging.o Logging.cpp
 
 ${OBJECTDIR}/MicroTimer.o: MicroTimer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MicroTimer.o MicroTimer.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MicroTimer.o MicroTimer.cpp
 
 ${OBJECTDIR}/Remote.o: Remote.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Remote.o Remote.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Remote.o Remote.cpp
 
 ${OBJECTDIR}/RightWheels.o: RightWheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RightWheels.o RightWheels.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RightWheels.o RightWheels.cpp
 
 ${OBJECTDIR}/Servo.o: Servo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Servo.o Servo.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Servo.o Servo.cpp
 
 ${OBJECTDIR}/Speaker.o: Speaker.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Speaker.o Speaker.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Speaker.o Speaker.cpp
 
 ${OBJECTDIR}/UltrasonicSensor.o: UltrasonicSensor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UltrasonicSensor.o UltrasonicSensor.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UltrasonicSensor.o UltrasonicSensor.cpp
 
 ${OBJECTDIR}/Validation.o: Validation.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validation.o Validation.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validation.o Validation.cpp
 
 ${OBJECTDIR}/Wheel.o: Wheel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheel.o Wheel.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheel.o Wheel.cpp
 
 ${OBJECTDIR}/Wheels.o: Wheels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheels.o Wheels.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wheels.o Wheels.cpp
 
 ${OBJECTDIR}/kali.o: kali.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kali.o kali.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/opencv4 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kali.o kali.cpp
 
 # Subprojects
 .build-subprojects:

@@ -11,7 +11,7 @@
  * Created on 12 June 2020, 3:44 pm
  * 
  * How to install espeak for the text to speech conversion
- * sudo apt-get install espeak libespeak1 libespeak-dev espeak-data
+ * sudo apt-get install espeak libespeak1 libespeak-dev espeak-data -y
  * 
  * ok, so I have found out that espeak has been broken on raspberry pi
  * need to use espeak-ng instead

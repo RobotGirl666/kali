@@ -64,6 +64,8 @@
  * 
  * Installing on Raspbian: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
  * 
+ * Installing on Linux development environment (use Method 2): https://computingforgeeks.com/how-to-install-opencv-on-ubuntu-linux/
+ * 
  * Upon further investigation, I don't think it's necessary to install fswebcam but I'll leave it here because it's a good way to check your webcam is working
  * Also need to install a usb camera: sudo apt install fswebcam -y
  * check that it works: fswebcam image.jpg

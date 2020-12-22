@@ -72,21 +72,21 @@
       <compileType>
         <ccTool>
           <incDir>
-            <pElem>/usr/include/opencv4</pElem>
+            <pElem>/usr/local/include/opencv4</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kali</output>
           <linkerLibItems>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libwiringPi.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_core.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_highgui.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgproc.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_objdetect.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_video.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_videoio.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_core.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_highgui.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_imgproc.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_objdetect.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_video.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_imgcodecs.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libncurses.so</linkerLibFileItem>
@@ -174,7 +174,7 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>/usr/include/opencv4</pElem>
+            <pElem>/usr/local/include/opencv4</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
@@ -186,14 +186,14 @@
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libwiringPi.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_core.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_highgui.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgproc.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_objdetect.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_video.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_videoio.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_imgcodecs.so</linkerLibFileItem>
-            <linkerLibFileItem>/lib/x86_64-linux-gnu/libopencv_face.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_core.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_highgui.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_imgproc.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_objdetect.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_video.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_imgcodecs.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/lib/libopencv_face.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libsqlite3.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libespeak.so</linkerLibFileItem>
             <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libncurses.so</linkerLibFileItem>
